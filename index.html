@@ -1,2 +1,226 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VetLife 0.4</title><style>*{box-sizing:border-box}body{margin:0;background:#dfe8e5;font-family:Arial,sans-serif;color:#294844}#app{max-width:430px;min-height:100vh;margin:auto;background:#faf7ef}.top{background:#087774;color:#fff;padding:14px;position:sticky;top:0}.brand{font-size:26px;font-weight:900}.brand b{color:#c7eb72}.stats{display:flex;gap:7px;margin-top:8px;flex-wrap:wrap}.stats span{background:#ffffff22;padding:6px 8px;border-radius:9px;font-size:12px}main{padding:14px 13px 80px}.hero{background:linear-gradient(145deg,#e2f2ec,#d9ebf5);border-radius:22px;padding:20px;text-align:center}.avatar{font-size:78px}.title{font-size:22px;font-weight:900;margin:9px 0}.sub{font-size:13px;color:#71817f}.section{font-size:19px;font-weight:900;margin:18px 0 7px}.card{background:#fffdf8;border:1px solid #e1e3dc;border-radius:16px;padding:14px;margin-top:10px;box-shadow:0 2px 8px #0000000b}.btn{width:100%;border:0;border-radius:13px;padding:13px;margin-top:10px;font-weight:800;background:#38a85b;color:#fff;font-size:14px}.gold{background:#efb52d}.scene{height:340px;position:relative;background:#efd9b8;border:4px solid #c99b69;border-radius:20px;overflow:hidden}.room{position:absolute;background:#fff3dc;border:2px solid #d5b17d;border-radius:12px;text-align:center;font-size:10px;font-weight:bold;padding:8px}.r1{left:7px;top:7px;width:48%;height:120px}.r2{right:7px;top:7px;width:48%;height:120px}.r3{left:7px;bottom:7px;width:48%;height:120px}.r4{right:7px;bottom:7px;width:48%;height:120px}.doctor{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);font-size:58px}.obj{position:absolute;font-size:29px}.plant{left:18px;top:48px}.chair{right:18px;top:48px}.desk{left:50%;top:47px;transform:translateX(-50%)}.sofa{left:50%;bottom:25px;transform:translateX(-50%)}.patient{font-size:92px;background:#e7f2e9;border-radius:18px;padding:10px;text-align:center}.row{display:flex;justify-content:space-between;border-bottom:1px solid #ecece7;padding:9px 0}.option{display:block;width:100%;padding:12px;margin:7px 0;background:#fff;border:1px solid #d8e0dc;border-radius:11px;text-align:left}.notice{background:#fff3c8;padding:11px;border-radius:12px;margin-top:10px;font-size:12px}nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(430px,100%);height:64px;background:#fff;border-top:1px solid #ddd;display:flex;justify-content:space-around}nav button{border:0;background:none;color:#506562;font-size:20px}nav small{display:block;font-size:10px}</style></head><body><div id="app"><header class="top"><div class="brand">Vet<b>Life</b> 🐾</div><div class="stats"><span>🪙 <b id="coins">1200</b></span><span>⭐ <b id="xp">0</b></span><span>🏥 Nível <b id="level">1</b></span></div></header><main id="screen"></main><nav><button onclick="home()">🏠<small>Início</small></button><button onclick="clinic()">🏥<small>Clínica</small></button><button onclick="cases()">🐾<small>Casos</small></button></nav></div><script>
-const S={coins:1200,xp:0,level:1,done:false,pick:""};const C={name:"Thor",emoji:"🐶",diagnosis:"Diabetes mellitus",story:"Está bebendo muita água, urinando muito e emagreceu."};function sync(){coins.textContent=S.coins;xp.textContent=S.xp;level.textContent=S.level}function go(x){screen.innerHTML=x;sync()}function btn(t,f,c=""){return `<button class="btn ${c}" onclick="${f}">${t}</button>`}function scene(){return `<div class="scene"><div class="room r1">🛎️ RECEPÇÃO<div class="obj plant">🪴</div><div class="obj chair">🪑</div></div><div class="room r2">🩺 CONSULTÓRIO<div class="obj desk">🖥️</div></div><div class="room r3">🛋️ ESPERA<div class="obj sofa">🛋️</div></div><div class="room r4">🛒 DECORAÇÃO</div><div class="doctor">👩‍⚕️</div></div>`}function home(){go(`<div class="hero"><div class="avatar">👩‍⚕️</div><div class="title">Bem-vinda ao VetLife!</div><div class="sub">Sua clínica está começando a crescer.</div>${btn("🐾 ATENDER THOR","start()")}</div><div class="section">🏥 Minha Clínica</div><div class="card">${scene()}</div>`)}function clinic(){go(`<div class="section">🏥 Minha Clínica</div><div class="card">${scene()}</div><div class="card"><div class="row"><span>Nível</span><b>${S.level}</b></div><div class="row"><span>VetCoins</span><b>🪙 ${S.coins}</b></div></div>${S.level<5?`<div class="card"><b>Próximo desbloqueio</b><p>🔬 Novo espaço da clínica</p>${btn("UPGRADE — 500 🪙","upgrade()","gold")}</div>`:`<div class="notice">🏆 Clínica no nível máximo!</div>`}`)}function upgrade(){if(S.coins<500){alert("Você precisa de 500 VetCoins.");return}S.coins-=500;S.level++;S.xp+=80;clinic()}function cases(){go(`<div class="section">🐾 Casos Clínicos</div><div class="notice">🟢 Fácil = 50 VetCoins • 🟡 Médio = 150 • 🔴 Difícil = 250</div><div class="card"><div class="patient">${C.emoji}</div><h2>${C.name}</h2><p class="sub">${C.story}</p>${btn("ATENDER THOR","start()")}</div>`)}function start(){go(`<div class="section">🐾 Novo paciente</div><div class="card"><div class="patient">${C.emoji}</div><h2>${C.name}</h2><p>${C.story}</p><b>🟢 Fácil • 🪙 50</b>${btn("INICIAR CONSULTA","anamnesis()")}</div>`)}function anamnesis(){let q=["Há quanto tempo começou?","Mudou o apetite?","Está usando medicamentos?","Bebe mais água?","Está urinando mais?","Houve vômitos ou diarreia?"];go(`<div class="section">📋 Anamnese</div><div class="card"><b>Escolha perguntas importantes:</b>${q.map(x=>`<button class="option" onclick="this.style.background='#e9f8ed'">${x}</button>`).join("")}${btn("PRÓXIMO","physical()")}</div>`)}function physical(){go(`<div class="section">🩺 Exame físico</div><div class="card"><div class="row"><span>🌡️ Temperatura</span><b>Avaliada</b></div><div class="row"><span>💧 Hidratação</span><b>Alterada</b></div><div class="row"><span>⚖️ Peso</span><b>Reduzido</b></div></div><div class="notice">🔎 Pista: muita sede, muita urina e perda de peso.</div>${btn("MONTAR DIAGNÓSTICO","diagnosis()")}`)}function diagnosis(){let a=["Diabetes mellitus","Doença renal crônica","Gastroenterite","Infecção urinária"];go(`<div class="section">🧠 Raciocínio clínico</div><div class="card"><b>Qual diagnóstico é mais provável?</b>${a.map(x=>`<button class="option" onclick='S.pick=${JSON.stringify(x)};document.querySelectorAll(".option").forEach(e=>e.style.background="#fff");this.style.background="#e9f8ed"'>${x}</button>`).join("")}${btn("CONFIRMAR","check()")}</div>`)}function check(){if(S.pick===C.diagnosis){let r=S.done?0:50;if(!S.done){S.coins+=r;S.done=true}S.xp+=100;S.level=Math.floor(S.xp/500)+1;go(`<div class="hero"><div class="avatar">🐶</div><div class="title">🎉 Diagnóstico correto!</div><div class="sub">Diabetes mellitus</div></div><div class="card"><div class="row"><span>⭐ XP</span><b>+100</b></div><div class="row"><span>🪙 VetCoins</span><b>+${r}</b></div></div>${btn("VOLTAR AOS CASOS","cases()")}`)}else{go(`<div class="hero"><div class="title">⚠️ Vamos revisar</div><div class="sub">A hipótese esperada é <b>Diabetes mellitus</b>.</div></div><div class="notice">💡 Observe a combinação entre sede aumentada, urina em excesso e perda de peso.</div>${btn("TENTAR NOVAMENTE","diagnosis()")}`)}}home();</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VetLife 0.4</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7f4ec;color:#263238}
+header{background:#087f78;color:white;padding:22px 18px 18px}
+.logo{font-size:30px;font-weight:800}.logo span{color:#b9ef62}
+.stats{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.stat{background:#ffffff22;padding:9px 13px;border-radius:13px;font-size:16px}
+main{padding:18px;min-height:calc(100vh - 170px);padding-bottom:100px}
+h1{margin:5px 0 8px;font-size:25px}
+h2{margin:18px 0 10px}
+.sub{color:#607d80;margin-bottom:18px}
+.card{background:white;border-radius:18px;padding:17px;margin:12px 0;box-shadow:0 3px 12px #00000012;border:1px solid #e4e0d6}
+.hero{background:linear-gradient(135deg,#dff7e9,#fff8d9);text-align:center}
+.pet{font-size:70px;margin:8px}
+.avatar{font-size:80px;text-align:center}
+.btn{border:0;border-radius:13px;padding:13px 17px;font-size:16px;font-weight:bold;background:#087f78;color:white;margin:5px 3px;cursor:pointer}
+.btn.alt{background:#e7f3ef;color:#087f78}
+.btn.gold{background:#f2b632;color:#392b00}
+.btn.red{background:#d85b5b;color:white}
+.case-title{font-size:19px;font-weight:bold}
+.tag{display:inline-block;padding:5px 9px;border-radius:20px;background:#eee;margin:5px 3px;font-size:13px}
+.easy{background:#dff5df;color:#267326}.medium{background:#fff0c7;color:#856000}.hard{background:#ffdada;color:#9b2222}
+.choice{display:block;width:100%;text-align:left;margin:9px 0;background:#fff;border:2px solid #ddd;border-radius:13px;padding:14px;font-size:15px}
+.choice:hover{border-color:#087f78}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:8px 4px;z-index:5}
+.nav{border:0;background:none;font-size:13px;color:#52666a;padding:6px 12px}.nav b{display:block;font-size:25px}
+.progress{height:10px;background:#e2e2e2;border-radius:10px;overflow:hidden}.progress div{height:100%;background:#f2b632}
+.room{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{background:#f5f7f4;border-radius:14px;padding:15px;text-align:center}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">Vet<span>Life</span> 🐾</div>
+  <div class="stats">
+    <div class="stat">🪙 <b id="coins">1200</b></div>
+    <div class="stat">⭐ <b id="xp">0</b></div>
+    <div class="stat">🏥 Nível <b id="level">1</b></div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<nav class="bottom">
+  <button class="nav" onclick="home()"><b>🏠</b>Início</button>
+  <button class="nav" onclick="clinic()"><b>🏥</b>Clínica</button>
+  <button class="nav" onclick="cases()"><b>🐾</b>Casos</button>
+</nav>
+
+<script>
+const state=JSON.parse(localStorage.getItem("vetlife04"))||{
+ coins:1200,xp:0,level:1,avatar:"👩‍⚕️",room:["🛋️","🌿"]
+};
+
+const casesData=[
+{t:"Vômitos e apatia",s:"Cão, 4 anos, com vômitos há 2 dias, apatia e redução do apetite.",d:"easy",r:50,
+ q:"Qual é uma boa primeira abordagem?",
+ a:["Anamnese, exame físico e avaliação de hidratação","Realizar cirurgia imediatamente","Ignorar o vômito"],
+ c:0},
+{t:"Prurido intenso",s:"Gato jovem apresenta coceira intensa e pequenas crostas na região cervical.",d:"easy",r:50,
+ q:"Qual hipótese deve ser investigada?",
+ a:["Dermatopatia/parasitismo","Fratura de fêmur","Doença cardíaca exclusivamente"],
+ c:0},
+{t:"Diarreia",s:"Cão apresenta diarreia aguda após mudança de alimentação.",d:"easy",r:50,
+ q:"Qual informação é especialmente importante na anamnese?",
+ a:["Mudança recente de dieta e ingestão de alimentos inadequados","Cor dos olhos do tutor","Raça do veterinário"],
+ c:0},
+{t:"Poliúria e polidipsia",s:"Cão adulto apresenta aumento de sede e volume urinário.",d:"medium",r:150,
+ q:"Qual exame pode auxiliar na investigação inicial?",
+ a:["Urina e glicemia","Radiografia da pata apenas","Exame oftalmológico apenas"],
+ c:0},
+{t:"Tosse persistente",s:"Cão apresenta tosse há três semanas e cansaço aos passeios.",d:"medium",r:150,
+ q:"Qual conduta é mais adequada?",
+ a:["Exame físico completo e investigação respiratória/cardiovascular","Dar antibiótico sem avaliação","Não investigar"],
+ c:0},
+{t:"Icterícia",s:"Gato apresenta mucosas amareladas, anorexia e apatia.",d:"medium",r:150,
+ q:"Qual sistema deve receber atenção na investigação?",
+ a:["Hepatobiliar, hematológico e demais causas de icterícia","Somente pele","Somente sistema locomotor"],
+ c:0},
+{t:"Convulsão",s:"Cão apresenta episódio convulsivo pela primeira vez.",d:"hard",r:250,
+ q:"Qual atitude inicial é mais adequada?",
+ a:["Estabilizar o paciente e investigar causas, considerando histórico e exame","Colocar objetos na boca do animal","Forçar o animal a caminhar"],
+ c:0},
+{t:"Obstrução urinária",s:"Gato macho faz esforço para urinar e elimina pouco ou nenhum volume.",d:"hard",r:250,
+ q:"Como esse quadro deve ser encarado?",
+ a:["Como uma emergência que necessita avaliação veterinária imediata","Como algo normal","Apenas oferecer petiscos"],
+ c:0},
+{t:"Dispneia",s:"Cão chega à clínica com dificuldade importante para respirar.",d:"hard",r:250,
+ q:"Qual deve ser a prioridade?",
+ a:["Estabilização e suporte à respiração antes da investigação completa","Realizar banho","Esperar vários dias"],
+ c:0},
+{t:"Anemia",s:"Gato apresenta mucosas pálidas, fraqueza e perda de peso.",d:"hard",r:250,
+ q:"Qual exame é fundamental para começar a investigação?",
+ a:["Hemograma","Somente exame de fezes","Somente radiografia dentária"],
+ c:0}
+];
+
+function save(){localStorage.setItem("vetlife04",JSON.stringify(state))}
+function stats(){
+document.getElementById("coins").textContent=state.coins;
+document.getElementById("xp").textContent=state.xp;
+document.getElementById("level").textContent=state.level;
+}
+function add(x){
+state.coins+=x;
+state.xp+=x;
+let nl=Math.floor(state.xp/300)+1;
+if(nl>state.level)state.level=nl;
+save();stats();
+}
+function home(){
+app.innerHTML=`
+<div class="hero card">
+<div class="avatar">${state.avatar}</div>
+<h1>Bem-vinda à VetLife! 🐾</h1>
+<p class="sub">Sua jornada para se tornar uma excelente veterinária começa aqui.</p>
+<button class="btn" onclick="cases()">🩺 Atender caso</button>
+</div>
+<div class="card">
+<h2>📚 Sua evolução</h2>
+<p>XP: <b>${state.xp}</b></p>
+<div class="progress"><div style="width:${(state.xp%300)/3}%"></div></div>
+<p>Próximo nível: ${state.level*300} XP</p>
+</div>
+<div class="card">
+<h2>🎯 Objetivo do dia</h2>
+<p>Resolva casos clínicos e use suas VetCoins para melhorar sua clínica.</p>
+</div>`;
+stats()
+}
+function clinic(){
+app.innerHTML=`
+<h1>🏥 Minha Clínica</h1>
+<p class="sub">Personalize seu espaço e deixe sua clínica com a sua cara.</p>
+<div class="card hero">
+<div style="font-size:65px">🏥</div>
+<h2>Clínica VetLife</h2>
+<p>Nível ${state.level}</p>
+</div>
+<div class="card">
+<h2>🪴 Ambiente</h2>
+<div class="room">
+<div class="item">${state.room[0]}<br>Sala de espera</div>
+<div class="item">${state.room[1]}<br>Decoração</div>
+</div>
+<button class="btn alt" onclick="decorate()">✨ Personalizar</button>
+</div>
+<div class="card">
+<h2>👩‍⚕️ Personagem</h2>
+<div class="avatar">${state.avatar}</div>
+<button class="btn alt" onclick="changeAvatar()">👗 Trocar personagem</button>
+</div>`;
+}
+function decorate(){
+let options=["🛋️","🪑","🛏️","🪴","🧸","📚","🩺","🖥️"];
+let x=options[Math.floor(Math.random()*options.length)];
+if(state.coins<100){alert("Você precisa de 100 VetCoins.");return}
+state.coins-=100;state.room[1]=x;save();clinic();stats();
+}
+function changeAvatar(){
+let a=["👩‍⚕️","👨‍⚕️","🧑‍⚕️","👩‍🔬","🧑‍🔬"];
+state.avatar=a[(a.indexOf(state.avatar)+1)%a.length];
+save();clinic();
+}
+function cases(){
+let html=`<h1>🐾 Casos Clínicos</h1>
+<p class="sub">Escolha um paciente para colocar seus conhecimentos em prática.</p>`;
+casesData.forEach((c,i)=>{
+html+=`<div class="card">
+<span class="tag ${c.d}">${c.d==="easy"?"Fácil":c.d==="medium"?"Médio":"Difícil"}</span>
+<div class="case-title">${c.t}</div>
+<p>${c.s}</p>
+<p>🎁 Recompensa: <b>${c.r} VetCoins</b></p>
+<button class="btn" onclick="openCase(${i})">Atender paciente</button>
+</div>`});
+app.innerHTML=html;
+}
+function openCase(i){
+let c=casesData[i];
+app.innerHTML=`
+<div class="card">
+<h1>🐾 ${c.t}</h1>
+<span class="tag ${c.d}">${c.d==="easy"?"Fácil":c.d==="medium"?"Médio":"Difícil"} • ${c.r} VetCoins</span>
+<h2>📋 Caso clínico</h2>
+<p>${c.s}</p>
+<h2>🩺 Decisão clínica</h2>
+<p><b>${c.q}</b></p>
+${c.a.map((x,j)=>`<button class="choice" onclick="answer(${i},${j})">${String.fromCharCode(65+j)}) ${x}</button>`).join("")}
+</div>`;
+}
+function answer(i,j){
+let c=casesData[i];
+if(j===c.c){
+add(c.r);
+app.innerHTML=`
+<div class="card hero">
+<div style="font-size:65px">🎉</div>
+<h1>Excelente decisão!</h1>
+<p>Você escolheu a melhor conduta entre as opções apresentadas.</p>
+<h2>+${c.r} VetCoins 🪙</h2>
+<p>+${c.r} XP ⭐</p>
+<button class="btn" onclick="cases()">Próximo caso</button>
+</div>`;
+}else{
+app.innerHTML=`
+<div class="card hero">
+<div style="font-size:65px">📚</div>
+<h1>Quase!</h1>
+<p>Essa não é a melhor opção para este cenário.</p>
+<p><b>Revisar o raciocínio clínico é parte do aprendizado.</b></p>
+<button class="btn" onclick="openCase(${i})">Tentar novamente</button>
+<button class="btn alt" onclick="cases()">Voltar aos casos</button>
+</div>`;
+}
+}
+home();
+</script>
+</body>
+</html>
