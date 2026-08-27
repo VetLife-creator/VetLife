@@ -2,1753 +2,1207 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VetLife</title>
 
 <style>
 *{
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
+  margin:0;
+  padding:0;
 }
 
 :root{
-  --teal:#087f78;
-  --teal2:#0c938a;
-  --green:#32a852;
-  --green2:#52b94d;
-  --blue:#247bb5;
-  --cream:#f7f3e9;
-  --paper:#fffdf7;
-  --ink:#263238;
-  --muted:#718083;
-  --line:#d8ddd8;
-  --gold:#f2bd2d;
-  --shadow:0 8px 22px rgba(40,60,55,.13);
+  --verde:#078b84;
+  --verde2:#16a39a;
+  --verde3:#0b756f;
+  --lima:#a7df32;
+  --azul:#1976a8;
+  --fundo:#f5f3eb;
+  --texto:#263238;
+  --cinza:#6c7b80;
+  --branco:#fff;
 }
 
 body{
-  margin:0;
-  background:#dfe9e5;
-  color:var(--ink);
   font-family:Arial,Helvetica,sans-serif;
+  background:var(--fundo);
+  color:var(--texto);
+  padding-bottom:82px;
 }
 
 button{
-  font:inherit;
+  font-family:inherit;
+  border:0;
   cursor:pointer;
 }
 
-#app{
-  width:100%;
-  max-width:520px;
-  min-height:100vh;
-  margin:auto;
-  background:var(--cream);
-  position:relative;
-  overflow:hidden;
-  padding-bottom:78px;
-}
+/* TOPO */
 
-/* ================= HEADER ================= */
-
-.header{
-  background:linear-gradient(145deg,#087c76,#10968d);
+.topo{
+  background:linear-gradient(145deg,#087b76,#0b968d);
+  padding:25px 18px 28px;
   color:white;
-  padding:18px 18px 16px;
-  position:relative;
+  border-radius:0 0 28px 28px;
+  box-shadow:0 5px 18px #0002;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  font-size:34px;
+.logo{
+  font-size:43px;
   font-weight:800;
-  letter-spacing:-1.5px;
+  letter-spacing:-2px;
 }
 
-.brand .life{
-  color:#9bdd35;
+.logo span{
+  color:var(--lima);
 }
 
-.paws{
-  color:#1881bd;
-  font-size:25px;
-  transform:rotate(-10deg);
-  display:inline-block;
-  margin-left:3px;
+.logo-patas{
+  color:#1680c1;
+  font-size:29px;
+  margin-left:5px;
 }
 
-.subtitle{
-  font-size:12px;
-  opacity:.9;
-  margin-left:4px;
-  margin-top:-4px;
+.slogan{
+  font-size:16px;
+  margin-top:0;
+  opacity:.95;
 }
 
-.stats{
+.status{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:8px;
-  margin-top:15px;
-}
-
-.stat{
-  background:rgba(255,255,255,.16);
-  border-radius:13px;
-  padding:9px 7px;
-  text-align:center;
-  font-size:12px;
-}
-
-.stat strong{
-  display:block;
-  font-size:17px;
-  margin-top:2px;
-}
-
-/* ================= PAGES ================= */
-
-.page{
-  display:none;
-  padding:16px;
-  animation:fade .2s ease;
-}
-
-.page.active{
-  display:block;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(5px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* ================= HOME ================= */
-
-.hero{
-  border-radius:23px;
-  overflow:hidden;
-  background:linear-gradient(145deg,#dff7e9,#fff7d9);
-  border:1px solid #d9dfd6;
-  box-shadow:var(--shadow);
-}
-
-.clinic-scene{
-  height:220px;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(#bfe3e6 0 48%,#a9d79a 48% 100%);
-}
-
-.cloud{
-  position:absolute;
-  width:90px;
-  height:27px;
-  background:white;
-  border-radius:30px;
-  opacity:.75;
-}
-
-.cloud:before,
-.cloud:after{
-  content:"";
-  position:absolute;
-  background:white;
-  border-radius:50%;
-}
-
-.cloud:before{
-  width:35px;
-  height:35px;
-  left:15px;
-  top:-15px;
-}
-
-.cloud:after{
-  width:48px;
-  height:48px;
-  right:12px;
-  top:-24px;
-}
-
-.c1{top:35px;left:15px}
-.c2{top:65px;right:15px;transform:scale(.7)}
-
-.building{
-  position:absolute;
-  left:35px;
-  right:35px;
-  bottom:22px;
-  height:105px;
-  background:#e7dfcb;
-  border:3px solid #a79c85;
-  border-radius:7px 7px 2px 2px;
-}
-
-.roof{
-  position:absolute;
-  left:-10px;
-  right:-10px;
-  top:-18px;
-  height:22px;
-  background:#d47d52;
-  transform:skew(-25deg);
-  border-radius:5px;
-}
-
-.sign{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  top:12px;
-  background:white;
-  color:#087f78;
-  border-radius:6px;
-  padding:4px 13px;
-  font-weight:bold;
-  font-size:11px;
-  white-space:nowrap;
-}
-
-.window{
-  position:absolute;
-  width:36px;
-  height:37px;
-  background:#a8dbe4;
-  border:3px solid #777;
-  bottom:17px;
-}
-
-.w1{left:15px}
-.w2{right:15px}
-
-.door{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:0;
-  width:45px;
-  height:60px;
-  background:#735b4e;
-  border-radius:5px 5px 0 0;
-}
-
-.tree{
-  position:absolute;
-  bottom:20px;
-  width:28px;
-  height:65px;
-  background:#755440;
-  border-radius:5px;
-}
-
-.tree:before{
-  content:"";
-  position:absolute;
-  width:65px;
-  height:65px;
-  background:#55a85a;
-  border-radius:50%;
-  left:-18px;
-  top:-30px;
-}
-
-.t1{left:5px}
-.t2{right:5px}
-
-.vet{
-  position:absolute;
-  left:50%;
-  bottom:3px;
-  transform:translateX(-50%);
-  width:105px;
-  height:145px;
-  z-index:4;
-}
-
-.vet-head{
-  position:absolute;
-  left:29px;
-  top:2px;
-  width:48px;
-  height:53px;
-  background:#f2b27d;
-  border-radius:47% 47% 45% 45%;
-  border:2px solid #8e5c48;
-}
-
-.hair{
-  position:absolute;
-  left:23px;
-  top:-4px;
-  width:60px;
-  height:60px;
-  background:#51352e;
-  border-radius:50% 50% 35% 35%;
-}
-
-.face{
-  position:absolute;
-  left:29px;
-  top:12px;
-  width:48px;
-  height:50px;
-  z-index:2;
-  background:#f4b982;
-  border-radius:48%;
-}
-
-.eye{
-  position:absolute;
-  width:6px;
-  height:8px;
-  background:#303030;
-  border-radius:50%;
-  top:22px;
-}
-
-.e1{left:10px}
-.e2{right:10px}
-
-.mouth{
-  position:absolute;
-  width:15px;
-  height:7px;
-  border-bottom:3px solid #7b4236;
-  border-radius:50%;
-  left:17px;
-  top:35px;
-}
-
-.body{
-  position:absolute;
-  left:18px;
-  top:57px;
-  width:70px;
-  height:88px;
-  background:white;
-  border-radius:20px 20px 8px 8px;
-  border:2px solid #b9c1c0;
-}
-
-.shirt{
-  position:absolute;
-  left:30px;
-  top:58px;
-  width:46px;
-  height:82px;
-  background:#69c4df;
-  clip-path:polygon(25% 0,75% 0,100% 100%,0 100%);
-}
-
-.stetho{
-  position:absolute;
-  width:25px;
-  height:35px;
-  border-left:3px solid #68767a;
-  border-bottom:3px solid #68767a;
-  border-radius:0 0 0 20px;
-  left:25px;
-  top:70px;
-  z-index:3;
-}
-
-.stetho:after{
-  content:"";
-  position:absolute;
-  width:8px;
-  height:8px;
-  background:#68767a;
-  border-radius:50%;
-  left:18px;
-  top:27px;
-}
-
-.hero-content{
-  padding:18px;
-  text-align:center;
-}
-
-.hero-content h1{
-  margin:0;
-  font-size:25px;
-}
-
-.hero-content p{
-  color:#61777a;
-  line-height:1.45;
-}
-
-.primary{
-  border:0;
-  background:linear-gradient(#42b653,#279c42);
-  color:white;
-  font-weight:bold;
-  border-radius:13px;
-  padding:14px 28px;
-  box-shadow:0 4px 10px rgba(40,130,50,.25);
-}
-
-.menu-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(3,1fr);
   gap:10px;
-  margin-top:15px;
+  margin-top:25px;
 }
 
-.menu-btn{
-  border:1px solid #cbd6d2;
-  background:white;
-  border-radius:14px;
-  padding:13px 8px;
-  font-weight:bold;
-  color:#426166;
-  box-shadow:0 3px 8px rgba(0,0,0,.05);
+.status-card{
+  background:#ffffff22;
+  border:1px solid #ffffff15;
+  border-radius:17px;
+  padding:13px 5px;
+  text-align:center;
+  backdrop-filter:blur(5px);
 }
 
-.menu-btn span{
+.status-icon{
   display:block;
-  font-size:23px;
+  font-size:22px;
   margin-bottom:4px;
 }
 
-/* ================= CARDS ================= */
-
-.card{
-  background:white;
-  border-radius:18px;
-  padding:16px;
-  box-shadow:var(--shadow);
-  border:1px solid #dce1dc;
-  margin-bottom:14px;
-}
-
-.card h2{
-  margin:0 0 12px;
+.status-card strong{
   font-size:21px;
 }
 
-.section-title{
-  font-size:22px;
-  font-weight:bold;
-  margin:4px 0 15px;
+/* CONTEÚDO */
+
+main{
+  padding:22px 15px;
+  max-width:700px;
+  margin:auto;
 }
 
-/* ================= PATIENT ================= */
+.tela{
+  display:none;
+}
 
-.patient-scene{
-  height:190px;
-  border-radius:16px;
-  background:linear-gradient(#d4ece8,#f7dcae);
+.tela.ativa{
+  display:block;
+}
+
+/* HERO */
+
+.hero{
+  background:#fff;
+  border-radius:27px;
+  overflow:hidden;
+  box-shadow:0 5px 20px #26323818;
+  border:1px solid #d9ddd8;
+}
+
+.clinica-capa{
+  height:310px;
   position:relative;
   overflow:hidden;
+  background:
+    linear-gradient(#bce5e9 0 55%,#a7d68c 55% 100%);
 }
 
-.dog{
+/* céu */
+
+.nuvem{
   position:absolute;
-  left:50%;
-  top:25px;
-  transform:translateX(-50%);
-  width:145px;
-  height:145px;
+  background:#f7ffff;
+  border-radius:60px;
+  width:115px;
+  height:48px;
+  opacity:.9;
 }
 
-.dog-head{
-  position:absolute;
-  width:105px;
-  height:92px;
-  left:20px;
-  top:20px;
-  background:#c98b4b;
-  border-radius:50% 50% 46% 46%;
-  border:3px solid #80552f;
-}
-
-.ear{
-  position:absolute;
-  width:38px;
-  height:70px;
-  background:#8b5b36;
-  border-radius:60%;
-  top:12px;
-}
-
-.ear.left{left:2px;transform:rotate(25deg)}
-.ear.right{right:2px;transform:rotate(-25deg)}
-
-.muzzle{
-  position:absolute;
-  left:27px;
-  top:50px;
-  width:52px;
-  height:37px;
-  background:#e8bd83;
-  border-radius:50%;
-}
-
-.nose{
-  position:absolute;
-  left:47px;
-  top:51px;
-  width:14px;
-  height:10px;
-  background:#3c302b;
-  border-radius:50%;
-  z-index:2;
-}
-
-.dog-eye{
-  position:absolute;
-  top:42px;
-  width:8px;
-  height:10px;
-  background:#28221e;
-  border-radius:50%;
-  z-index:2;
-}
-
-.de1{left:35px}
-.de2{right:35px}
-
-.dog-body{
-  position:absolute;
-  left:38px;
-  top:101px;
-  width:70px;
-  height:45px;
-  background:#68a87c;
-  border-radius:30px 30px 0 0;
-}
-
-/* ================= FORM ================= */
-
-.progress{
-  display:flex;
-  justify-content:space-between;
-  margin:10px 5px 18px;
-}
-
-.dot{
-  width:25px;
-  height:25px;
-  border-radius:50%;
-  background:#ddd;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:11px;
-  font-weight:bold;
-  position:relative;
-}
-
-.dot.active{
-  background:#2da653;
-  color:white;
-}
-
-.dot:not(:last-child):after{
+.nuvem:before,
+.nuvem:after{
   content:"";
   position:absolute;
-  width:35px;
-  height:2px;
-  background:#ddd;
-  left:23px;
+  background:#f7ffff;
+  border-radius:50%;
 }
 
-.question{
+.nuvem:before{
+  width:65px;
+  height:65px;
+  left:20px;
+  top:-28px;
+}
+
+.nuvem:after{
+  width:55px;
+  height:55px;
+  right:15px;
+  top:-20px;
+}
+
+.n1{left:30px;top:58px}
+.n2{right:35px;top:92px;transform:scale(.7)}
+
+/* árvores */
+
+.arvore{
+  position:absolute;
+  bottom:58px;
+  width:70px;
+  height:150px;
+}
+
+.arvore:before{
+  content:"";
+  position:absolute;
+  width:30px;
+  height:95px;
+  background:#795548;
+  left:20px;
+  bottom:0;
+  border-radius:7px;
+}
+
+.arvore:after{
+  content:"";
+  position:absolute;
+  width:88px;
+  height:88px;
+  background:#58a55c;
+  border-radius:50%;
+  left:-8px;
+  top:0;
+  box-shadow:20px 20px 0 #58a55c;
+}
+
+.arvore.esq{left:5px}
+.arvore.dir{right:5px}
+
+/* prédio */
+
+.predio{
+  position:absolute;
+  left:13%;
+  right:13%;
+  bottom:40px;
+  height:190px;
+  background:#e7dfcb;
+  border:5px solid #b5aa92;
+  border-top:0;
+  box-shadow:0 8px 0 #0001;
+}
+
+.telhado{
+  position:absolute;
+  left:-20px;
+  right:-20px;
+  top:-30px;
+  height:42px;
+  background:#d47b50;
+  transform:skew(-10deg);
+  border-radius:8px;
+}
+
+.janela{
+  position:absolute;
+  width:55px;
+  height:67px;
+  background:#9fd9e5;
+  border:6px solid #68767a;
+  top:83px;
+}
+
+.janela.esq{left:28px}
+.janela.dir{right:28px}
+
+.placa{
+  position:absolute;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  background:white;
+  color:#16837c;
+  padding:9px 17px;
+  border-radius:10px;
+  font-size:14px;
   font-weight:bold;
+  white-space:nowrap;
+}
+
+/* personagem */
+
+.personagem{
+  position:absolute;
+  left:50%;
+  bottom:5px;
+  transform:translateX(-50%);
+  width:135px;
+  height:225px;
+  z-index:5;
+}
+
+.cabeca{
+  position:absolute;
+  width:95px;
+  height:110px;
+  left:20px;
+  top:8px;
+  background:#ffc078;
+  border-radius:48% 48% 45% 45%;
+  border:4px solid #4e3029;
+  z-index:3;
+}
+
+.cabelo{
+  position:absolute;
+  width:102px;
+  height:75px;
+  left:16px;
+  top:0;
+  background:#4b2e29;
+  border-radius:55px 55px 30px 30px;
+  z-index:4;
+}
+
+.cabelo:after{
+  content:"";
+  position:absolute;
+  width:23px;
+  height:65px;
+  left:0;
+  top:35px;
+  background:#4b2e29;
+  border-radius:20px;
+}
+
+.olho{
+  position:absolute;
+  width:10px;
+  height:14px;
+  background:#263238;
+  border-radius:50%;
+  top:52px;
+}
+
+.o1{left:43px}
+.o2{right:43px}
+
+.nariz{
+  position:absolute;
+  width:7px;
+  height:5px;
+  border-bottom:2px solid #9d5d42;
+  left:50%;
+  top:70px;
+  transform:translateX(-50%);
+}
+
+.boca{
+  position:absolute;
+  width:27px;
+  height:12px;
+  border-bottom:4px solid #7e4036;
+  border-radius:50%;
+  left:50%;
+  top:77px;
+  transform:translateX(-50%);
+}
+
+.corpo{
+  position:absolute;
+  width:105px;
+  height:125px;
+  left:15px;
+  bottom:0;
+  background:white;
+  border:4px solid #9da9a9;
+  border-radius:28px 28px 12px 12px;
+}
+
+.camisa{
+  position:absolute;
+  width:45px;
+  height:120px;
+  left:30px;
+  background:#63c3db;
+  clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);
+}
+
+.estetoscopio{
+  position:absolute;
+  width:42px;
+  height:70px;
+  border-left:4px solid #657579;
+  border-bottom:4px solid #657579;
+  border-radius:0 0 0 35px;
+  left:8px;
+  top:15px;
+}
+
+.estetoscopio:after{
+  content:"";
+  position:absolute;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#68787c;
+  bottom:-8px;
+  left:32px;
+}
+
+.hero-info{
+  padding:30px 20px 25px;
+  text-align:center;
+  background:linear-gradient(135deg,#eefcf0,#fffbe5);
+}
+
+.hero-info h1{
+  font-size:31px;
   margin-bottom:12px;
 }
 
-.check{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:10px;
-  border-bottom:1px solid #eee;
+.hero-info p{
+  color:#64777a;
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:23px;
 }
 
-.check input{
-  width:18px;
-  height:18px;
-  accent-color:#299e4a;
-}
-
-.next{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:15px;
-}
-
-.secondary{
-  background:#fff;
-  border:1px solid #bbb;
-  border-radius:9px;
-  padding:11px 18px;
-}
-
-.green{
-  background:#299d45;
-  border:0;
+.botao-principal{
+  background:linear-gradient(#45bc55,#20a43c);
   color:white;
-  border-radius:9px;
-  padding:11px 20px;
+  padding:17px 30px;
+  border-radius:18px;
+  font-size:18px;
   font-weight:bold;
+  box-shadow:0 6px 13px #24a84255;
 }
 
-/* ================= CLINIC ================= */
+/* CARDS */
 
-.room{
-  height:205px;
-  background:linear-gradient(#edf4ed 0 67%,#b9a789 67%);
-  border-radius:16px;
-  position:relative;
-  overflow:hidden;
-  border:1px solid #d3d5cf;
-}
-
-.wall-picture{
-  position:absolute;
-  width:45px;
-  height:52px;
-  background:#fff;
-  border:3px solid #aaa;
-  top:25px;
-}
-
-.wp1{left:22px}
-.wp2{right:22px}
-
-.exam-table{
-  position:absolute;
-  width:120px;
-  height:30px;
-  background:#9ac5c7;
-  left:50%;
-  top:105px;
-  transform:translateX(-50%);
-  border-radius:8px;
-  box-shadow:0 18px 0 -12px #746b5e;
-}
-
-.cabinet{
-  position:absolute;
-  right:25px;
-  bottom:27px;
-  width:55px;
-  height:70px;
-  background:#d9d1b7;
-  border:2px solid #9f947a;
-}
-
-.cabinet:before{
-  content:"";
-  position:absolute;
-  left:6px;
-  right:6px;
-  top:10px;
-  height:4px;
-  background:#8b806a;
-  box-shadow:0 18px #8b806a,0 36px #8b806a;
-}
-
-/* ================= RESULT ================= */
-
-.result{
-  text-align:center;
-  background:linear-gradient(145deg,#087f78,#0a9188);
-  color:white;
-  border-radius:20px;
-  padding:25px 15px;
-}
-
-.stars{
-  font-size:35px;
-  letter-spacing:3px;
-}
-
-.reward{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:6px;
-  margin:20px 0;
-}
-
-.reward div{
+.card{
   background:white;
-  color:#31494b;
-  border-radius:10px;
-  padding:12px 4px;
-  font-weight:bold;
+  margin-top:18px;
+  padding:22px;
+  border-radius:24px;
+  box-shadow:0 4px 16px #26323812;
+  border:1px solid #e0e3df;
 }
 
-/* ================= BOTTOM NAV ================= */
-
-.bottom{
-  position:fixed;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:0;
-  width:100%;
-  max-width:520px;
-  height:78px;
-  background:white;
-  border-top:1px solid #d3d9d6;
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  z-index:20;
+.card h2{
+  font-size:25px;
+  margin-bottom:16px;
 }
 
-.nav{
-  border:0;
-  background:white;
-  color:#667477;
-  font-size:11px;
-}
-
-.nav.active{
-  color:#158f47;
-  font-weight:bold;
-}
-
-.nav-icon{
-  display:block;
-  font-size:23px;
-  margin-bottom:3px;
-}
-
-/* ================= PROFILE ================= */
-
-.profile{
-  display:flex;
-  gap:14px;
-  align-items:center;
-}
-
-.avatar{
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  background:#e9d8ca;
-  border:3px solid #fff;
-  box-shadow:0 2px 7px #aaa;
-  position:relative;
-  overflow:hidden;
-}
-
-.avatar .face{
-  left:14px;
-  top:18px;
-  transform:scale(.8);
-}
-
-.levelbar{
-  height:12px;
+.barra{
+  height:13px;
   background:#e2e5e3;
-  border-radius:10px;
+  border-radius:20px;
   overflow:hidden;
 }
 
-.levelbar span{
-  display:block;
+.barra div{
   height:100%;
-  width:44%;
-  background:linear-gradient(90deg,#29a66d,#3db3d1);
+  width:0%;
+  background:linear-gradient(90deg,#3db7d0,#43b94f);
+  border-radius:20px;
 }
 
-/* ================= LIST ================= */
+/* PERFIL */
 
-.list-item{
+.perfil-card{
+  text-align:center;
+}
+
+.avatar-grande{
+  width:145px;
+  height:145px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#d8f4f4,#effbdc);
+  margin:0 auto 18px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid #eee;
-  padding:13px 0;
+  justify-content:center;
+  font-size:80px;
+  border:5px solid white;
+  box-shadow:0 4px 18px #0002;
 }
 
-.list-item:last-child{
+.nome{
+  font-size:27px;
+  font-weight:bold;
+}
+
+.funcao{
+  color:#718083;
+  margin-top:5px;
+}
+
+.botao-editar{
+  margin-top:20px;
+  background:#087f78;
+  color:white;
+  padding:13px 25px;
+  border-radius:13px;
+  font-weight:bold;
+}
+
+/* LISTAS */
+
+.item{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:15px 0;
+  border-bottom:1px solid #e8ebe8;
+}
+
+.item:last-child{
   border-bottom:0;
 }
 
-.badge{
-  background:#e8f5e9;
-  color:#21853a;
-  border-radius:20px;
-  padding:5px 9px;
-  font-size:12px;
+.item-icon{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  background:#e5f6f3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+}
+
+.item-info{
+  flex:1;
+}
+
+.item-info strong{
+  display:block;
+}
+
+.item-info small{
+  color:#7b8889;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal.ativo{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:420px;
+  background:white;
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 10px 35px #0005;
+}
+
+.modal-box h2{
+  margin-bottom:20px;
+}
+
+.input{
+  width:100%;
+  border:2px solid #d9dfdc;
+  padding:15px;
+  border-radius:13px;
+  font-size:17px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#0b9189;
+}
+
+.modal-botoes{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.modal-botoes button{
+  flex:1;
+  padding:14px;
+  border-radius:12px;
   font-weight:bold;
 }
 
-.shop{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:10px;
+.cancelar{
+  background:#edf0ef;
 }
 
-.product{
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:10px;
-  text-align:center;
-  background:#fff;
-}
-
-.product .pic{
-  font-size:35px;
-  margin-bottom:5px;
-}
-
-.small{
-  color:#728184;
-  font-size:12px;
-}
-
-.back{
-  border:0;
-  background:transparent;
-  font-size:15px;
+.salvar{
+  background:#22a744;
   color:white;
-  padding:0 0 12px;
+}
+
+/* MENU */
+
+.menu{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:82px;
+  background:white;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  box-shadow:0 -4px 15px #0001;
+  z-index:50;
+}
+
+.menu button{
+  background:white;
+  color:#667477;
+  font-size:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+}
+
+.menu button span{
+  font-size:25px;
+}
+
+.menu button.ativo{
+  color:#178c45;
+  font-weight:bold;
+}
+
+/* RESPONSIVO */
+
+@media(min-width:650px){
+  main{
+    padding-top:30px;
+  }
+
+  .clinica-capa{
+    height:360px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div id="app">
+<header class="topo">
 
-<header class="header">
-  <div class="brand">
-    <span>Vet</span><span class="life">Life</span>
-    <span class="paws">🐾</span>
+  <div class="logo">
+    Vet<span>Life</span>
+    <span class="logo-patas">🐾</span>
   </div>
-  <div class="subtitle">Aprenda. Atenda. Evolua.</div>
 
-  <div class="stats">
-    <div class="stat">🪙<strong id="coins">1.200</strong></div>
-    <div class="stat">⭐<strong id="xp">0 XP</strong></div>
-    <div class="stat">🏥<strong id="level">Nível 1</strong></div>
+  <div class="slogan">
+    Aprenda. Atenda. Evolua.
   </div>
+
+  <div class="status">
+
+    <div class="status-card">
+      <span class="status-icon">🪙</span>
+      <strong id="moedas">1.200</strong>
+    </div>
+
+    <div class="status-card">
+      <span class="status-icon">⭐</span>
+      <strong id="xp">0 XP</strong>
+    </div>
+
+    <div class="status-card">
+      <span class="status-icon">🏥</span>
+      <strong id="nivel">Nível 1</strong>
+    </div>
+
+  </div>
+
 </header>
 
-<!-- ================= INÍCIO ================= -->
 
-<section id="home" class="page active">
+<main>
+
+<!-- INÍCIO -->
+
+<section id="inicio" class="tela ativa">
 
   <div class="hero">
 
-    <div class="clinic-scene">
+    <div class="clinica-capa">
 
-      <div class="cloud c1"></div>
-      <div class="cloud c2"></div>
+      <div class="nuvem n1"></div>
+      <div class="nuvem n2"></div>
 
-      <div class="tree t1"></div>
-      <div class="tree t2"></div>
+      <div class="arvore esq"></div>
+      <div class="arvore dir"></div>
 
-      <div class="building">
-        <div class="roof"></div>
-        <div class="sign">CLÍNICA VETERINÁRIA VETLIFE</div>
-        <div class="window w1"></div>
-        <div class="window w2"></div>
-        <div class="door"></div>
+      <div class="predio">
+
+        <div class="telhado"></div>
+
+        <div class="placa">
+          CLÍNICA VETERINÁRIA VETLIFE
+        </div>
+
+        <div class="janela esq"></div>
+        <div class="janela dir"></div>
+
       </div>
 
-      <div class="vet">
-        <div class="hair"></div>
-        <div class="face">
-          <div class="eye e1"></div>
-          <div class="eye e2"></div>
-          <div class="mouth"></div>
+      <div class="personagem">
+
+        <div class="cabelo"></div>
+
+        <div class="cabeca">
+          <div class="olho o1"></div>
+          <div class="olho o2"></div>
+          <div class="nariz"></div>
+          <div class="boca"></div>
         </div>
-        <div class="body"></div>
-        <div class="shirt"></div>
-        <div class="stetho"></div>
+
+        <div class="corpo">
+          <div class="camisa"></div>
+          <div class="estetoscopio"></div>
+        </div>
+
       </div>
 
     </div>
 
-    <div class="hero-content">
-      <h1>Bem-vinda à VetLife! 🐾</h1>
-      <p>Sua jornada para se tornar uma excelente veterinária começa aqui.</p>
+    <div class="hero-info">
 
-      <button class="primary" onclick="startCase()">
+      <h1>
+        Bem-vinda à VetLife! 🐾
+      </h1>
+
+      <p>
+        Sua jornada para se tornar uma excelente
+        veterinária começa aqui.
+      </p>
+
+      <button
+        class="botao-principal"
+        onclick="atenderCaso()">
         🩺 ATENDER CASO
       </button>
+
     </div>
 
   </div>
 
-  <div class="card" style="margin-top:15px">
+
+  <div class="card">
+
     <h2>📚 Sua evolução</h2>
-    <div class="small">XP: <strong id="xpHome">0</strong></div>
-    <div class="levelbar" style="margin-top:10px">
-      <span id="xpBar"></span>
-    </div>
-    <p class="small">Próximo nível: 300 XP</p>
-  </div>
 
-  <div class="menu-grid">
-    <button class="menu-btn" onclick="showPage('clinic')">
-      <span>🏥</span>Minha Clínica
-    </button>
+    <p style="margin-bottom:10px">
+      XP: <strong id="xpTexto">0</strong>
+    </p>
 
-    <button class="menu-btn" onclick="showPage('profile')">
-      <span>👩‍⚕️</span>Meu Personagem
-    </button>
-
-    <button class="menu-btn" onclick="showPage('cases')">
-      <span>🐾</span>Casos
-    </button>
-
-    <button class="menu-btn" onclick="showPage('ranking')">
-      <span>🏆</span>Ranking
-    </button>
-
-    <button class="menu-btn" onclick="showPage('missions')">
-      <span>📋</span>Missões
-    </button>
-
-    <button class="menu-btn" onclick="showPage('shop')">
-      <span>🛒</span>Loja
-    </button>
-  </div>
-
-</section>
-
-<!-- ================= CLÍNICA ================= -->
-
-<section id="clinic" class="page">
-
-  <button class="back" onclick="showPage('home')">← Voltar</button>
-
-  <div class="section-title">🏥 Minha Clínica</div>
-
-  <div class="card">
-
-    <div class="room">
-      <div class="wall-picture wp1">🐶</div>
-      <div class="wall-picture wp2">🐱</div>
-      <div class="exam-table"></div>
-      <div class="cabinet"></div>
+    <div class="barra">
+      <div id="barraXP"></div>
     </div>
 
-    <h2 style="margin-top:15px">Clínica Veterinária VetLife</h2>
-    <p class="small">Nível da clínica: ⭐ 1</p>
-
-    <div class="list-item">
-      <span>🩺 Consultório 1</span>
-      <span class="badge">Nível 1</span>
-    </div>
-
-    <div class="list-item">
-      <span>🛋️ Recepção</span>
-      <span class="badge">Nível 1</span>
-    </div>
-
-    <div class="list-item">
-      <span>🪑 Sala de espera</span>
-      <span class="badge">Nível 1</span>
-    </div>
-
-    <button class="primary" style="width:100%;margin-top:10px">
-      Melhorias
-    </button>
+    <p style="margin-top:10px;color:#718083">
+      Próximo nível: 300 XP
+    </p>
 
   </div>
 
 </section>
 
-<!-- ================= PERFIL ================= -->
 
-<section id="profile" class="page">
+<!-- MISSÕES -->
 
-  <button class="back" onclick="showPage('home')">← Voltar</button>
-
-  <div class="section-title">👩‍⚕️ Meu Personagem</div>
+<section id="missoes" class="tela">
 
   <div class="card">
 
-    <div class="profile">
+    <h2>📋 Missões diárias</h2>
 
-      <div class="avatar">
-        <div class="hair"></div>
-        <div class="face">
-          <div class="eye e1"></div>
-          <div class="eye e2"></div>
-          <div class="mouth"></div>
-        </div>
+    <div class="item">
+
+      <div class="item-icon">🐶</div>
+
+      <div class="item-info">
+        <strong>Atender 3 pacientes</strong>
+        <small>0/3 concluídos</small>
       </div>
 
-      <div>
-        <h2 style="margin:0">Dra. Júlia Martins</h2>
-        <div class="small">Clínica Geral</div>
-        <div class="small">Nível 1 • XP 0/300</div>
+      <strong>🪙 100</strong>
+
+    </div>
+
+    <div class="item">
+
+      <div class="item-icon">🧠</div>
+
+      <div class="item-info">
+        <strong>Acertar 2 diagnósticos</strong>
+        <small>0/2 concluídos</small>
       </div>
 
+      <strong>🪙 150</strong>
+
     </div>
 
-    <hr>
+    <div class="item">
 
-    <h3>ATRIBUTOS</h3>
+      <div class="item-icon">🔬</div>
 
-    <div class="list-item">💚 Empatia <span>❤️❤️❤️🤍🤍</span></div>
-    <div class="list-item">🧠 Raciocínio <span>🟦🟦🤍🤍🤍</span></div>
-    <div class="list-item">⚡ Agilidade <span>🟦🟦🟦🤍🤍</span></div>
-    <div class="list-item">💬 Comunicação <span>🟦🟦🟦🤍🤍</span></div>
-    <div class="list-item">📋 Organização <span>🟩🟩🟩🤍🤍</span></div>
-
-  </div>
-
-</section>
-
-<!-- ================= CASOS ================= -->
-
-<section id="cases" class="page">
-
-  <button class="back" onclick="showPage('home')">← Voltar</button>
-
-  <div class="section-title">🐾 Mapa de Casos</div>
-
-  <div class="card">
-    <h3>Capítulo 1 — Clínica Geral</h3>
-
-    <div class="list-item">
-      <span>🟢 Caso 1</span>
-      <span>⭐⭐⭐</span>
-    </div>
-
-    <div class="list-item">
-      <span>🟢 Caso 2</span>
-      <span>⭐⭐</span>
-    </div>
-
-    <div class="list-item">
-      <span>🟢 Caso 3</span>
-      <span>⭐</span>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Capítulo 2 — Sistema Digestório</h3>
-    <p class="small">🔒 Desbloqueie novos casos evoluindo sua clínica.</p>
-  </div>
-
-  <div class="card">
-    <h3>Capítulo 3 — Sistema Urinário</h3>
-    <p class="small">🔒 Continue sua jornada para desbloquear.</p>
-  </div>
-
-</section>
-
-<!-- ================= MISSÕES ================= -->
-
-<section id="missions" class="page">
-
-  <button class="back" onclick="showPage('home')">← Voltar</button>
-
-  <div class="section-title">📋 Missões Diárias</div>
-
-  <div class="card">
-
-    <div class="list-item">
-      <span>☑️ Atender 3 pacientes</span>
-      <span>🪙 100</span>
-    </div>
-
-    <div class="list-item">
-      <span>☐ Acertar 2 diagnósticos</span>
-      <span>🪙 150</span>
-    </div>
-
-    <div class="list-item">
-      <span>☑️ Solicitar 5 exames</span>
-      <span>🪙 100</span>
-    </div>
-
-    <div class="list-item">
-      <span>☐ Completar 1 caso perfeito</span>
-      <span>🪙 200</span>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= RANKING ================= -->
-
-<section id="ranking" class="page">
-
-  <button class="back" onclick="showPage('home')">← Voltar</button>
-
-  <div class="section-title">🏆 Ranking</div>
-
-  <div class="card">
-
-    <div class="list-item">
-      <span>🥇 Larissa Vet</span>
-      <strong>12.540 XP</strong>
-    </div>
-
-    <div class="list-item">
-      <span>🥈 Vet_Player</span>
-      <strong>11.890 XP</strong>
-    </div>
-
-    <div class="list-item">
-      <span>🥉 Júlia Martins</span>
-      <strong id="rankXP">0 XP</strong>
-    </div>
-
-    <div class="list-item">
-      <span>4️⃣ MedVet</span>
-      <strong>9.870 XP</strong>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= LOJA ================= -->
-
-<section id="shop" class="page">
-
-  <button class="back" onclick="showPage('home')">← Voltar</button>
-
-  <div class="section-title">🛒 Loja</div>
-
-  <div class="shop">
-
-    <div class="product">
-      <div class="pic">🏥</div>
-      <strong>Consultório</strong>
-      <p class="small">🪙 1.500</p>
-    </div>
-
-    <div class="product">
-      <div class="pic">🔬</div>
-      <strong>Ultrassom</strong>
-      <p class="small">🪙 2.000</p>
-    </div>
-
-    <div class="product">
-      <div class="pic">🥼</div>
-      <strong>Jaleco</strong>
-      <p class="small">💎 300</p>
-    </div>
-
-    <div class="product">
-      <div class="pic">🪴</div>
-      <strong>Planta</strong>
-      <p class="small">🪙 200</p>
-    </div>
-
-    <div class="product">
-      <div class="pic">🦴</div>
-      <strong>Quadro</strong>
-      <p class="small">🪙 150</p>
-    </div>
-
-    <div class="product">
-      <div class="pic">🐾</div>
-      <strong>Tapete Pet</strong>
-      <p class="small">💎 100</p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= CONSULTA ================= -->
-
-<section id="consult" class="page">
-
-  <button class="back" onclick="showPage('home')">← Voltar</button>
-
-  <div class="section-title">🐶 Novo Paciente</div>
-
-  <div class="card">
-
-    <div class="patient-scene">
-
-      <div class="dog">
-
-        <div class="ear left"></div>
-        <div class="ear right"></div>
-
-        <div class="dog-head">
-          <div class="dog-eye de1"></div>
-          <div class="dog-eye de2"></div>
-          <div class="muzzle"></div>
-          <div class="nose"></div>
-        </div>
-
-        <div class="dog-body"></div>
-
+      <div class="item-info">
+        <strong>Solicitar 5 exames</strong>
+        <small>0/5 concluídos</small>
       </div>
 
-    </div>
+      <strong>🪙 100</strong>
 
-    <div class="card" style="box-shadow:none;margin:10px 0 0">
-      <strong>Olá, doutora. Meu cachorro Thor não está bem.</strong>
-
-      <p class="small">Nome: Thor</p>
-      <p class="small">Espécie: Canino</p>
-      <p class="small">Raça: Golden Retriever</p>
-      <p class="small">Idade: 4 anos</p>
-      <p class="small">Sexo: Macho</p>
-
-      <button class="primary" style="width:100%" onclick="showPage('anamnesis')">
-        INICIAR CONSULTA
-      </button>
     </div>
 
   </div>
 
 </section>
 
-<!-- ================= ANAMNESE ================= -->
 
-<section id="anamnesis" class="page">
+<!-- CLÍNICA -->
 
-  <button class="back" onclick="showPage('consult')">← Voltar</button>
-
-  <div class="section-title">📋 Anamnese</div>
+<section id="clinica" class="tela">
 
   <div class="card">
 
-    <div class="progress">
-      <div class="dot active">1</div>
-      <div class="dot">2</div>
-      <div class="dot">3</div>
-      <div class="dot">4</div>
-      <div class="dot">5</div>
-    </div>
-
-    <div class="question">
-      O que você gostaria de perguntar?
-    </div>
-
-    <label class="check">
-      <input type="checkbox" checked>
-      Há quanto tempo começou?
-    </label>
-
-    <label class="check">
-      <input type="checkbox">
-      Mudou a alimentação?
-    </label>
-
-    <label class="check">
-      <input type="checkbox" checked>
-      Está bebendo mais água?
-    </label>
-
-    <label class="check">
-      <input type="checkbox" checked>
-      Está urinando mais?
-    </label>
-
-    <label class="check">
-      <input type="checkbox">
-      Está com mais fome?
-    </label>
-
-    <label class="check">
-      <input type="checkbox" checked>
-      Está perdendo peso?
-    </label>
-
-    <label class="check">
-      <input type="checkbox">
-      Está vomitando?
-    </label>
-
-    <label class="check">
-      <input type="checkbox">
-      Está com diarreia?
-    </label>
-
-    <div class="next">
-      <button class="secondary" onclick="showPage('consult')">VOLTAR</button>
-      <button class="green" onclick="showPage('physical')">PRÓXIMO</button>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= EXAME FÍSICO ================= -->
-
-<section id="physical" class="page">
-
-  <button class="back" onclick="showPage('anamnesis')">← Voltar</button>
-
-  <div class="section-title">🩺 Exame Físico</div>
-
-  <div class="card">
-
-    <div class="progress">
-      <div class="dot">1</div>
-      <div class="dot active">2</div>
-      <div class="dot">3</div>
-      <div class="dot">4</div>
-      <div class="dot">5</div>
-    </div>
-
-    <div class="list-item">
-      🌡️ Temperatura
-      <strong>38,7 °C</strong>
-    </div>
-
-    <div class="list-item">
-      ❤️ Frequência Cardíaca
-      <strong>96 bpm</strong>
-    </div>
-
-    <div class="list-item">
-      🫁 Frequência Respiratória
-      <strong>28 mpm</strong>
-    </div>
-
-    <div class="list-item">
-      👄 Mucosas
-      <strong>Normocoradas</strong>
-    </div>
-
-    <div class="list-item">
-      💧 Hidratação
-      <strong>Leve desidratação</strong>
-    </div>
-
-    <div class="list-item">
-      ⚖️ Peso
-      <strong>32 kg</strong>
-    </div>
-
-    <div class="list-item">
-      🐶 Condição Corporal
-      <strong>4/9</strong>
-    </div>
-
-    <div class="next">
-      <button class="secondary" onclick="showPage('anamnesis')">VOLTAR</button>
-      <button class="green" onclick="showPage('exams')">PRÓXIMO</button>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= EXAMES ================= -->
-
-<section id="exams" class="page">
-
-  <button class="back" onclick="showPage('physical')">← Voltar</button>
-
-  <div class="section-title">🔬 Exames</div>
-
-  <div class="card">
-
-    <div class="progress">
-      <div class="dot">1</div>
-      <div class="dot">2</div>
-      <div class="dot active">3</div>
-      <div class="dot">4</div>
-      <div class="dot">5</div>
-    </div>
-
-    <div class="question">Quais exames deseja solicitar?</div>
-
-    <label class="check">
-      <input type="checkbox"> Hemograma
-      <span style="margin-left:auto">🪙 80</span>
-    </label>
-
-    <label class="check">
-      <input type="checkbox" checked> Bioquímica sérica
-      <span style="margin-left:auto">🪙 120</span>
-    </label>
-
-    <label class="check">
-      <input type="checkbox" checked> Urinálise
-      <span style="margin-left:auto">🪙 60</span>
-    </label>
-
-    <label class="check">
-      <input type="checkbox"> Raio-X
-      <span style="margin-left:auto">🪙 100</span>
-    </label>
-
-    <label class="check">
-      <input type="checkbox"> Ultrassom abdominal
-      <span style="margin-left:auto">🪙 150</span>
-    </label>
-
-    <label class="check">
-      <input type="checkbox"> Teste SNAP
-      <span style="margin-left:auto">🪙 80</span>
-    </label>
-
-    <label class="check">
-      <input type="checkbox"> Cultura urinária
-      <span style="margin-left:auto">🪙 120</span>
-    </label>
-
-    <p><strong>Custo total: 🪙 180</strong></p>
-
-    <button class="green" style="width:100%" onclick="showPage('results')">
-      PRÓXIMO
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ================= RESULTADOS ================= -->
-
-<section id="results" class="page">
-
-  <button class="back" onclick="showPage('exams')">← Voltar</button>
-
-  <div class="section-title">📊 Resultados</div>
-
-  <div class="card">
-
-    <div class="list-item">
-      Bioquímica sérica
-      <strong>428 mg/dL ↑</strong>
-    </div>
-
-    <div class="list-item">
-      Ureia
-      <strong>28 mg/dL</strong>
-    </div>
-
-    <div class="list-item">
-      Creatinina
-      <strong>0,9 mg/dL</strong>
-    </div>
-
-    <div class="list-item">
-      ALT
-      <strong>45 UI/L</strong>
-    </div>
-
-    <hr>
-
-    <h3>Urinálise</h3>
-
-    <div class="list-item">
-      Densidade
-      <strong>1.020</strong>
-    </div>
-
-    <div class="list-item">
-      Glicose
-      <strong>+++</strong>
-    </div>
-
-    <div class="list-item">
-      Proteína
-      <strong>+</strong>
-    </div>
-
-    <div class="list-item">
-      Sedimento
-      <strong>Normal</strong>
-    </div>
-
-    <button class="green" style="width:100%;margin-top:15px"
-      onclick="showPage('diagnosis')">
-      PRÓXIMO
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ================= DIAGNÓSTICO ================= -->
-
-<section id="diagnosis" class="page">
-
-  <button class="back" onclick="showPage('results')">← Voltar</button>
-
-  <div class="section-title">🧠 Diagnóstico</div>
-
-  <div class="card">
-
-    <div class="progress">
-      <div class="dot">1</div>
-      <div class="dot">2</div>
-      <div class="dot">3</div>
-      <div class="dot">4</div>
-      <div class="dot active">5</div>
-    </div>
-
-    <h3>Diagnósticos diferenciais</h3>
-
-    <label class="check">
-      <input type="radio" name="diag" checked>
-      Diabetes mellitus
-    </label>
-
-    <label class="check">
-      <input type="radio" name="diag">
-      Doença renal crônica
-    </label>
-
-    <label class="check">
-      <input type="radio" name="diag">
-      Infecção urinária
-    </label>
-
-    <label class="check">
-      <input type="radio" name="diag">
-      Hiperadrenocorticismo
-    </label>
-
-    <label class="check">
-      <input type="radio" name="diag">
-      Outros
-    </label>
-
-    <p><strong>Qual é o diagnóstico mais provável?</strong></p>
-
-    <select id="diagnosisSelect"
-      style="width:100%;padding:13px;border-radius:9px;border:1px solid #ccc">
-      <option>Diabetes mellitus</option>
-      <option>Doença renal crônica</option>
-      <option>Infecção urinária</option>
-      <option>Hiperadrenocorticismo</option>
-    </select>
-
-    <button class="green"
-      style="width:100%;margin-top:15px"
-      onclick="showPage('conduct')">
-      CONFIRMAR
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ================= CONDUTA ================= -->
-
-<section id="conduct" class="page">
-
-  <button class="back" onclick="showPage('diagnosis')">← Voltar</button>
-
-  <div class="section-title">💊 Conduta</div>
-
-  <div class="card">
-
-    <div class="list-item">
-      <span>Iniciar insulina</span>
-      <input type="checkbox" checked>
-    </div>
-
-    <div class="list-item">
-      <span>Orientar dieta</span>
-      <input type="checkbox" checked>
-    </div>
-
-    <div class="list-item">
-      <span>Solicitar curva glicêmica</span>
-      <input type="checkbox">
-    </div>
-
-    <div class="list-item">
-      <span>Reavaliar em 7 dias</span>
-      <input type="checkbox" checked>
-    </div>
-
-    <div class="list-item">
-      <span>Outro exame complementar</span>
-      <input type="checkbox">
-    </div>
-
-    <div class="card" style="background:#f5f7f4;box-shadow:none">
-      <strong>Prescrição</strong>
-      <p class="small">Insulina (0,5 UI/kg)</p>
-      <p class="small">Dieta para diabéticos</p>
-      <p class="small">Reavaliação em 7 dias</p>
-    </div>
-
-    <div class="next">
-      <button class="secondary" onclick="showPage('diagnosis')">VOLTAR</button>
-
-      <button class="green" onclick="finishCase()">
-        FINALIZAR
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= FINAL ================= -->
-
-<section id="result" class="page">
-
-  <div class="result">
-
-    <h1>🎉 Caso Concluído!</h1>
-
-    <div class="dog" style="position:relative;left:auto;top:auto;transform:none;margin:auto">
-      <div class="ear left"></div>
-      <div class="ear right"></div>
-      <div class="dog-head">
-        <div class="dog-eye de1"></div>
-        <div class="dog-eye de2"></div>
-        <div class="muzzle"></div>
-        <div class="nose"></div>
+    <h2>🏥 Minha Clínica</h2>
+
+    <div class="item">
+      <div class="item-icon">🩺</div>
+      <div class="item-info">
+        <strong>Consultório 1</strong>
+        <small>Nível 1</small>
       </div>
-      <div class="dog-body"></div>
+      <span>›</span>
     </div>
 
-    <div class="stars">⭐⭐⭐</div>
-
-    <h2>Ótimo trabalho, doutora!</h2>
-    <p>Você chegou ao diagnóstico correto.</p>
-
-    <div class="reward">
-      <div>XP<br><big>+150</big></div>
-      <div>🪙<br><big>+250</big></div>
-      <div>Rep.<br><big>+10</big></div>
+    <div class="item">
+      <div class="item-icon">🪑</div>
+      <div class="item-info">
+        <strong>Recepção</strong>
+        <small>Nível 1</small>
+      </div>
+      <span>›</span>
     </div>
 
-    <button class="primary" style="width:100%"
-      onclick="continueGame()">
-      CONTINUAR
-    </button>
+    <div class="item">
+      <div class="item-icon">🛋️</div>
+      <div class="item-info">
+        <strong>Sala de espera</strong>
+        <small>Nível 1</small>
+      </div>
+      <span>›</span>
+    </div>
 
   </div>
 
 </section>
 
-<!-- ================= BOTTOM ================= -->
 
-<nav class="bottom">
+<!-- PERFIL -->
 
-  <button class="nav active" onclick="showPage('home',this)">
-    <span class="nav-icon">🏠</span>
+<section id="perfil" class="tela">
+
+  <div class="card perfil-card">
+
+    <div class="avatar-grande">
+      👩🏻‍⚕️
+    </div>
+
+    <div class="nome" id="nomePerfil">
+      Dra. Júlia Martins
+    </div>
+
+    <div class="funcao">
+      Clínica Geral
+    </div>
+
+    <button
+      class="botao-editar"
+      onclick="abrirEdicao()">
+      ✏️ Editar nome
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📊 Atributos</h2>
+
+    <div class="item">
+      <div class="item-icon">💚</div>
+      <div class="item-info">
+        <strong>Empatia</strong>
+        <small>3 / 5</small>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">🧠</div>
+      <div class="item-info">
+        <strong>Raciocínio</strong>
+        <small>2 / 5</small>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">⚡</div>
+      <div class="item-info">
+        <strong>Agilidade</strong>
+        <small>3 / 5</small>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">💬</div>
+      <div class="item-info">
+        <strong>Comunicação</strong>
+        <small>3 / 5</small>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LOJA -->
+
+<section id="loja" class="tela">
+
+  <div class="card">
+
+    <h2>🛒 Loja</h2>
+
+    <div class="item">
+
+      <div class="item-icon">🩺</div>
+
+      <div class="item-info">
+        <strong>Novo Consultório</strong>
+        <small>Melhore sua clínica</small>
+      </div>
+
+      <strong>🪙 1.500</strong>
+
+    </div>
+
+    <div class="item">
+
+      <div class="item-icon">🔬</div>
+
+      <div class="item-info">
+        <strong>Ultrassom</strong>
+        <small>Novos exames disponíveis</small>
+      </div>
+
+      <strong>🪙 2.000</strong>
+
+    </div>
+
+    <div class="item">
+
+      <div class="item-icon">🥼</div>
+
+      <div class="item-info">
+        <strong>Jaleco Premium</strong>
+        <small>Personalize sua personagem</small>
+      </div>
+
+      <strong>💎 300</strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- MENU -->
+
+<nav class="menu">
+
+  <button
+    class="ativo"
+    onclick="abrirTela('inicio',this)">
+    <span>🏠</span>
     Início
   </button>
 
-  <button class="nav" onclick="showPage('missions',this)">
-    <span class="nav-icon">📋</span>
+  <button
+    onclick="abrirTela('missoes',this)">
+    <span>📋</span>
     Missões
   </button>
 
-  <button class="nav" onclick="showPage('clinic',this)">
-    <span class="nav-icon">🏥</span>
+  <button
+    onclick="abrirTela('clinica',this)">
+    <span>🏥</span>
     Clínica
   </button>
 
-  <button class="nav" onclick="showPage('profile',this)">
-    <span class="nav-icon">👩‍⚕️</span>
+  <button
+    onclick="abrirTela('perfil',this)">
+    <span>👩🏻‍⚕️</span>
     Perfil
   </button>
 
-  <button class="nav" onclick="showPage('shop',this)">
-    <span class="nav-icon">🛒</span>
+  <button
+    onclick="abrirTela('loja',this)">
+    <span>🛒</span>
     Loja
   </button>
 
 </nav>
 
+
+<!-- MODAL EDITAR NOME -->
+
+<div
+  id="modalNome"
+  class="modal">
+
+  <div class="modal-box">
+
+    <h2>✏️ Editar personagem</h2>
+
+    <p style="margin-bottom:10px;color:#687779">
+      Como você gostaria de ser chamada?
+    </p>
+
+    <input
+      id="novoNome"
+      class="input"
+      type="text"
+      maxlength="30"
+      placeholder="Ex.: Dra. Júlia Martins">
+
+    <div class="modal-botoes">
+
+      <button
+        class="cancelar"
+        onclick="fecharEdicao()">
+        Cancelar
+      </button>
+
+      <button
+        class="salvar"
+        onclick="salvarNome()">
+        Salvar
+      </button>
+
+    </div>
+
+  </div>
+
 </div>
+
 
 <script>
 
-/* ================= ESTADO DO JOGO ================= */
+/* =========================
+   DADOS DO JOGADOR
+========================= */
 
-let game = {
-  coins:1200,
-  xp:0,
-  level:1,
-  cases:0
+let jogador = {
+  nome: localStorage.getItem("vetlife_nome") || "Dra. Júlia Martins",
+  moedas: 1200,
+  xp: 0,
+  nivel: 1
 };
 
-/* ================= NAVEGAÇÃO ================= */
 
-function showPage(id,button){
+/* =========================
+   ATUALIZAR INTERFACE
+========================= */
 
-  document.querySelectorAll('.page')
-    .forEach(p=>p.classList.remove('active'));
+function atualizar(){
 
-  const page=document.getElementById(id);
+  document.getElementById("moedas").textContent =
+    jogador.moedas.toLocaleString("pt-BR");
 
-  if(page){
-    page.classList.add('active');
-    window.scrollTo(0,0);
+  document.getElementById("xp").textContent =
+    jogador.xp + " XP";
+
+  document.getElementById("nivel").textContent =
+    "Nível " + jogador.nivel;
+
+  document.getElementById("xpTexto").textContent =
+    jogador.xp;
+
+  document.getElementById("nomePerfil").textContent =
+    jogador.nome;
+
+  let progresso =
+    Math.min((jogador.xp / 300) * 100,100);
+
+  document.getElementById("barraXP").style.width =
+    progresso + "%";
+}
+
+atualizar();
+
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+function abrirTela(id,botao){
+
+  document.querySelectorAll(".tela")
+    .forEach(t => t.classList.remove("ativa"));
+
+  document.getElementById(id)
+    .classList.add("ativa");
+
+  document.querySelectorAll(".menu button")
+    .forEach(b => b.classList.remove("ativo"));
+
+  botao.classList.add("ativo");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* =========================
+   EDITAR NOME
+========================= */
+
+function abrirEdicao(){
+
+  document.getElementById("novoNome").value =
+    jogador.nome;
+
+  document.getElementById("modalNome")
+    .classList.add("ativo");
+
+  setTimeout(() => {
+    document.getElementById("novoNome").focus();
+  },100);
+}
+
+
+function fecharEdicao(){
+
+  document.getElementById("modalNome")
+    .classList.remove("ativo");
+}
+
+
+function salvarNome(){
+
+  let nome =
+    document.getElementById("novoNome")
+    .value.trim();
+
+  if(nome.length < 2){
+
+    alert("Digite um nome válido.");
+
+    return;
   }
 
-  document.querySelectorAll('.nav')
-    .forEach(n=>n.classList.remove('active'));
+  jogador.nome = nome;
 
-  if(button){
-    button.classList.add('active');
-  }
+  localStorage.setItem(
+    "vetlife_nome",
+    nome
+  );
+
+  atualizar();
+
+  fecharEdicao();
 }
 
-/* ================= CASO ================= */
 
-function startCase(){
-  showPage('consult');
-}
+/* =========================
+   ATENDER CASO
+========================= */
 
-function finishCase(){
+function atenderCaso(){
 
-  game.xp += 150;
-  game.coins += 250;
-  game.cases++;
+  jogador.xp += 50;
 
-  if(game.xp >= 300){
-    game.level=2;
-  }
+  if(jogador.xp >= 300){
 
-  updateStats();
+    jogador.xp -= 300;
+    jogador.nivel++;
 
-  showPage('result');
-}
+    alert(
+      "🎉 Parabéns!\nVocê subiu para o nível " +
+      jogador.nivel + "!"
+    );
 
-function continueGame(){
-  showPage('home');
-}
+  }else{
 
-/* ================= STATUS ================= */
-
-function updateStats(){
-
-  document.getElementById('coins').textContent =
-    game.coins.toLocaleString('pt-BR');
-
-  document.getElementById('xp').textContent =
-    game.xp + ' XP';
-
-  document.getElementById('level').textContent =
-    'Nível ' + game.level;
-
-  document.getElementById('xpHome').textContent =
-    game.xp;
-
-  document.getElementById('rankXP').textContent =
-    game.xp + ' XP';
-
-  let percent=(game.xp%300)/300*100;
-
-  if(game.xp>=300){
-    percent=100;
+    alert(
+      "🐾 Novo caso disponível!\n\n" +
+      "+50 XP"
+    );
   }
 
-  document.getElementById('xpBar').style.width =
-    percent + '%';
+  atualizar();
 }
 
-updateStats();
+
+/* =========================
+   FECHAR MODAL AO CLICAR FORA
+========================= */
+
+document.getElementById("modalNome")
+.addEventListener("click",function(e){
+
+  if(e.target === this){
+    fecharEdicao();
+  }
+
+});
 
 </script>
 
