@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
 <title>VetLife</title>
 
 <style>
@@ -13,583 +14,1018 @@
 }
 
 :root{
-  --verde:#078b84;
-  --verde2:#16a39a;
-  --verde3:#0b756f;
-  --lima:#a7df32;
-  --azul:#1976a8;
-  --fundo:#f5f3eb;
-  --texto:#263238;
-  --cinza:#6c7b80;
-  --branco:#fff;
+  --teal:#087f7b;
+  --teal2:#159993;
+  --green:#37a947;
+  --green2:#4fbd54;
+  --blue:#4aa9c9;
+  --cream:#f5f0e5;
+  --cream2:#fffdf8;
+  --text:#263238;
+  --muted:#687477;
+  --line:#d8d4c8;
+  --gold:#f5bd28;
+  --shadow:0 5px 18px rgba(0,0,0,.14);
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
+  background:#e9eeee;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--fundo);
-  color:var(--texto);
-  padding-bottom:82px;
+  padding-bottom:78px;
 }
 
-button{
-  font-family:inherit;
-  border:0;
-  cursor:pointer;
+/* APP */
+
+.app{
+  width:100%;
+  max-width:560px;
+  min-height:100vh;
+  margin:auto;
+  background:var(--cream);
 }
 
-/* TOPO */
+/* HEADER */
 
-.topo{
-  background:linear-gradient(145deg,#087b76,#0b968d);
-  padding:25px 18px 28px;
-  color:white;
-  border-radius:0 0 28px 28px;
-  box-shadow:0 5px 18px #0002;
+.header{
+  background:linear-gradient(135deg,#087c77,#0e918b);
+  color:#fff;
+  padding:16px 16px 14px;
 }
 
 .logo{
-  font-size:43px;
-  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:3px;
+  font-size:35px;
+  line-height:1;
+  font-weight:900;
   letter-spacing:-2px;
 }
 
-.logo span{
-  color:var(--lima);
+.logo .vet{
+  color:#fff;
 }
 
-.logo-patas{
-  color:#1680c1;
-  font-size:29px;
-  margin-left:5px;
+.logo .life{
+  color:#b5e631;
 }
 
-.slogan{
-  font-size:16px;
-  margin-top:0;
+.paws{
+  color:#1787bd;
+  font-size:27px;
+  margin-left:4px;
+}
+
+.tagline{
+  font-size:13px;
+  margin-top:3px;
   opacity:.95;
 }
 
-.status{
+.stats{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:25px;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:7px;
+  margin-top:14px;
 }
 
-.status-card{
-  background:#ffffff22;
-  border:1px solid #ffffff15;
-  border-radius:17px;
-  padding:13px 5px;
+.stat{
+  background:rgba(255,255,255,.17);
+  border-radius:13px;
+  padding:9px 4px;
   text-align:center;
-  backdrop-filter:blur(5px);
 }
 
-.status-icon{
+.stat small{
   display:block;
-  font-size:22px;
+  font-size:9px;
+  text-transform:uppercase;
   margin-bottom:4px;
+  font-weight:bold;
 }
 
-.status-card strong{
-  font-size:21px;
+.stat strong{
+  font-size:17px;
 }
 
-/* CONTEÚDO */
+/* SCREENS */
 
-main{
-  padding:22px 15px;
-  max-width:700px;
-  margin:auto;
-}
-
-.tela{
+.screen{
   display:none;
+  padding:14px 12px 25px;
 }
 
-.tela.ativa{
+.screen.active{
   display:block;
 }
 
-/* HERO */
+/* GENERIC */
 
-.hero{
-  background:#fff;
-  border-radius:27px;
+.card{
+  background:var(--cream2);
+  border:1px solid #d7d2c5;
+  border-radius:15px;
+  box-shadow:0 2px 7px rgba(0,0,0,.09);
+  margin-bottom:12px;
   overflow:hidden;
-  box-shadow:0 5px 20px #26323818;
-  border:1px solid #d9ddd8;
 }
 
-.clinica-capa{
-  height:310px;
+.card-head{
+  background:var(--teal);
+  color:white;
+  padding:11px 14px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.card-body{
+  padding:14px;
+}
+
+.btn{
+  border:0;
+  border-radius:8px;
+  padding:11px 18px;
+  font-weight:bold;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.btn.green{
+  background:linear-gradient(#50bd55,#2b9f3a);
+  color:white;
+}
+
+.btn.teal{
+  background:var(--teal);
+  color:white;
+}
+
+.btn.gray{
+  background:#eeeae0;
+  border:1px solid #cfc9bb;
+  color:#4e595b;
+}
+
+.full{
+  width:100%;
+}
+
+/* HOME */
+
+.home-hero{
+  background:var(--cream2);
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #d7d2c5;
+  box-shadow:var(--shadow);
+}
+
+.hero-art{
+  height:260px;
   position:relative;
   overflow:hidden;
-  background:
-    linear-gradient(#bce5e9 0 55%,#a7d68c 55% 100%);
+  background:linear-gradient(#bde4e8 0 58%,#9bcf8a 58% 100%);
 }
 
-/* céu */
+/* CLINIC ILLUSTRATION */
 
-.nuvem{
-  position:absolute;
-  background:#f7ffff;
-  border-radius:60px;
-  width:115px;
-  height:48px;
-  opacity:.9;
-}
-
-.nuvem:before,
-.nuvem:after{
-  content:"";
-  position:absolute;
-  background:#f7ffff;
-  border-radius:50%;
-}
-
-.nuvem:before{
-  width:65px;
-  height:65px;
-  left:20px;
-  top:-28px;
-}
-
-.nuvem:after{
-  width:55px;
-  height:55px;
-  right:15px;
-  top:-20px;
-}
-
-.n1{left:30px;top:58px}
-.n2{right:35px;top:92px;transform:scale(.7)}
-
-/* árvores */
-
-.arvore{
-  position:absolute;
-  bottom:58px;
-  width:70px;
-  height:150px;
-}
-
-.arvore:before{
-  content:"";
-  position:absolute;
-  width:30px;
-  height:95px;
-  background:#795548;
-  left:20px;
-  bottom:0;
-  border-radius:7px;
-}
-
-.arvore:after{
-  content:"";
-  position:absolute;
-  width:88px;
-  height:88px;
-  background:#58a55c;
-  border-radius:50%;
-  left:-8px;
-  top:0;
-  box-shadow:20px 20px 0 #58a55c;
-}
-
-.arvore.esq{left:5px}
-.arvore.dir{right:5px}
-
-/* prédio */
-
-.predio{
+.building{
   position:absolute;
   left:13%;
   right:13%;
-  bottom:40px;
-  height:190px;
-  background:#e7dfcb;
-  border:5px solid #b5aa92;
+  bottom:38px;
+  height:145px;
+  background:#e8dfcc;
+  border:4px solid #aaa18e;
   border-top:0;
-  box-shadow:0 8px 0 #0001;
 }
 
-.telhado{
+.roof{
   position:absolute;
-  left:-20px;
-  right:-20px;
-  top:-30px;
-  height:42px;
-  background:#d47b50;
-  transform:skew(-10deg);
-  border-radius:8px;
+  left:-14px;
+  right:-14px;
+  top:-25px;
+  height:34px;
+  background:#d27b50;
+  transform:skew(-9deg);
+  border-radius:5px;
 }
 
-.janela{
+.sign{
   position:absolute;
-  width:55px;
-  height:67px;
-  background:#9fd9e5;
-  border:6px solid #68767a;
-  top:83px;
-}
-
-.janela.esq{left:28px}
-.janela.dir{right:28px}
-
-.placa{
-  position:absolute;
-  top:24px;
+  top:21px;
   left:50%;
   transform:translateX(-50%);
   background:white;
-  color:#16837c;
-  padding:9px 17px;
-  border-radius:10px;
-  font-size:14px;
+  color:#13817b;
   font-weight:bold;
+  font-size:11px;
   white-space:nowrap;
+  padding:7px 11px;
+  border-radius:7px;
 }
 
-/* personagem */
-
-.personagem{
+.window{
   position:absolute;
-  left:50%;
-  bottom:5px;
-  transform:translateX(-50%);
-  width:135px;
-  height:225px;
-  z-index:5;
+  width:43px;
+  height:52px;
+  top:70px;
+  background:#9ed8e3;
+  border:5px solid #697679;
 }
 
-.cabeca{
-  position:absolute;
-  width:95px;
-  height:110px;
+.window.left{
   left:20px;
-  top:8px;
-  background:#ffc078;
-  border-radius:48% 48% 45% 45%;
-  border:4px solid #4e3029;
+}
+
+.window.right{
+  right:20px;
+}
+
+.tree{
+  position:absolute;
+  bottom:35px;
+  width:55px;
+  height:105px;
+}
+
+.tree:before{
+  content:"";
+  position:absolute;
+  width:19px;
+  height:66px;
+  bottom:0;
+  left:18px;
+  background:#795548;
+}
+
+.tree:after{
+  content:"";
+  position:absolute;
+  width:66px;
+  height:66px;
+  border-radius:50%;
+  background:#54a15b;
+  left:-5px;
+  top:0;
+}
+
+.tree.left{
+  left:0;
+}
+
+.tree.right{
+  right:0;
+}
+
+/* WOMAN */
+
+.doctor{
+  position:absolute;
+  width:112px;
+  height:195px;
+  left:50%;
+  bottom:4px;
+  transform:translateX(-50%);
+}
+
+.doctor-head{
+  position:absolute;
+  left:19px;
+  top:3px;
+  width:74px;
+  height:82px;
+  border-radius:48%;
+  background:#f2b879;
+  border:3px solid #53332b;
   z-index:3;
 }
 
-.cabelo{
+.hair{
   position:absolute;
-  width:102px;
-  height:75px;
-  left:16px;
+  left:14px;
   top:0;
-  background:#4b2e29;
-  border-radius:55px 55px 30px 30px;
+  width:84px;
+  height:57px;
+  background:#503128;
+  border-radius:50px 50px 22px 22px;
   z-index:4;
 }
 
-.cabelo:after{
+.hair:after{
   content:"";
   position:absolute;
-  width:23px;
-  height:65px;
-  left:0;
-  top:35px;
-  background:#4b2e29;
-  border-radius:20px;
+  left:1px;
+  top:27px;
+  width:19px;
+  height:70px;
+  background:#503128;
+  border-radius:15px;
 }
 
-.olho{
+.eye{
   position:absolute;
-  width:10px;
-  height:14px;
+  top:39px;
+  width:7px;
+  height:10px;
   background:#263238;
   border-radius:50%;
-  top:52px;
 }
 
-.o1{left:43px}
-.o2{right:43px}
+.eye.one{
+  left:26px;
+}
 
-.nariz{
+.eye.two{
+  right:26px;
+}
+
+.mouth{
   position:absolute;
-  width:7px;
-  height:5px;
-  border-bottom:2px solid #9d5d42;
   left:50%;
-  top:70px;
-  transform:translateX(-50%);
-}
-
-.boca{
-  position:absolute;
-  width:27px;
-  height:12px;
-  border-bottom:4px solid #7e4036;
+  top:59px;
+  width:20px;
+  height:9px;
+  border-bottom:3px solid #773c37;
   border-radius:50%;
-  left:50%;
-  top:77px;
   transform:translateX(-50%);
 }
 
-.corpo{
+.body-doctor{
   position:absolute;
-  width:105px;
-  height:125px;
-  left:15px;
+  left:12px;
   bottom:0;
-  background:white;
-  border:4px solid #9da9a9;
-  border-radius:28px 28px 12px 12px;
+  width:88px;
+  height:125px;
+  background:#fff;
+  border:3px solid #9aa4a5;
+  border-radius:22px 22px 10px 10px;
 }
 
-.camisa{
+.shirt{
   position:absolute;
-  width:45px;
+  width:38px;
   height:120px;
-  left:30px;
-  background:#63c3db;
-  clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);
+  left:22px;
+  background:#57bfd9;
+  clip-path:polygon(22% 0,78% 0,100% 100%,0 100%);
 }
 
-.estetoscopio{
+.stetho{
   position:absolute;
-  width:42px;
-  height:70px;
-  border-left:4px solid #657579;
-  border-bottom:4px solid #657579;
-  border-radius:0 0 0 35px;
-  left:8px;
+  width:35px;
+  height:62px;
   top:15px;
+  left:8px;
+  border-left:3px solid #657478;
+  border-bottom:3px solid #657478;
+  border-radius:0 0 0 30px;
 }
 
-.estetoscopio:after{
+.stetho:after{
   content:"";
   position:absolute;
-  width:14px;
-  height:14px;
+  width:12px;
+  height:12px;
   border-radius:50%;
-  background:#68787c;
-  bottom:-8px;
-  left:32px;
+  background:#69797b;
+  bottom:-7px;
+  left:27px;
 }
 
-.hero-info{
-  padding:30px 20px 25px;
+.hero-text{
+  padding:19px 18px 18px;
   text-align:center;
-  background:linear-gradient(135deg,#eefcf0,#fffbe5);
+  background:linear-gradient(135deg,#e9f8ec,#fffbe1);
 }
 
-.hero-info h1{
-  font-size:31px;
-  margin-bottom:12px;
-}
-
-.hero-info p{
-  color:#64777a;
-  font-size:17px;
-  line-height:1.5;
-  margin-bottom:23px;
-}
-
-.botao-principal{
-  background:linear-gradient(#45bc55,#20a43c);
-  color:white;
-  padding:17px 30px;
-  border-radius:18px;
-  font-size:18px;
-  font-weight:bold;
-  box-shadow:0 6px 13px #24a84255;
-}
-
-/* CARDS */
-
-.card{
-  background:white;
-  margin-top:18px;
-  padding:22px;
-  border-radius:24px;
-  box-shadow:0 4px 16px #26323812;
-  border:1px solid #e0e3df;
-}
-
-.card h2{
+.hero-text h1{
   font-size:25px;
+  margin-bottom:9px;
+}
+
+.hero-text p{
+  color:#647578;
+  font-size:15px;
+  line-height:1.45;
   margin-bottom:16px;
 }
 
-.barra{
-  height:13px;
-  background:#e2e5e3;
+.big-play{
+  display:inline-block;
+  background:linear-gradient(#50bd55,#2d9f3c);
+  color:white;
+  padding:13px 32px;
+  border-radius:10px;
+  font-size:15px;
+  font-weight:bold;
+  box-shadow:0 4px 9px rgba(39,153,55,.35);
+}
+
+/* XP */
+
+.xp-card{
+  padding:16px;
+}
+
+.xp-title{
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+.progress{
+  height:10px;
+  background:#dddeda;
   border-radius:20px;
   overflow:hidden;
 }
 
-.barra div{
+.progress > div{
   height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#3db7d0,#43b94f);
-  border-radius:20px;
+  width:44%;
+  background:linear-gradient(90deg,#2f9fca,#48b7db);
 }
 
-/* PERFIL */
+/* BUTTON GRID */
 
-.perfil-card{
-  text-align:center;
+.home-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:12px;
 }
 
-.avatar-grande{
-  width:145px;
-  height:145px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#d8f4f4,#effbdc);
-  margin:0 auto 18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:80px;
-  border:5px solid white;
-  box-shadow:0 4px 18px #0002;
-}
-
-.nome{
-  font-size:27px;
+.home-grid button{
+  background:#d9eeee;
+  border:1px solid #bad4d3;
+  border-radius:9px;
+  padding:13px 5px;
+  font-size:11px;
+  color:#31595b;
   font-weight:bold;
 }
 
-.funcao{
-  color:#718083;
-  margin-top:5px;
+/* PROFILE */
+
+.profile{
+  background:#fff;
+  border-radius:15px;
+  overflow:hidden;
+  border:1px solid #d5d0c4;
 }
 
-.botao-editar{
-  margin-top:20px;
-  background:#087f78;
+.profile-top{
+  background:var(--teal);
   color:white;
-  padding:13px 25px;
-  border-radius:13px;
+  padding:12px;
   font-weight:bold;
 }
 
-/* LISTAS */
-
-.item{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  padding:15px 0;
-  border-bottom:1px solid #e8ebe8;
+.profile-body{
+  padding:15px;
 }
 
-.item:last-child{
-  border-bottom:0;
-}
-
-.item-icon{
-  width:43px;
-  height:43px;
-  border-radius:13px;
-  background:#e5f6f3;
+.avatar{
+  width:105px;
+  height:105px;
+  margin:auto;
+  border-radius:50%;
+  background:#e6f4ed;
+  border:4px solid white;
+  box-shadow:0 3px 9px #0002;
   display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:23px;
-}
-
-.item-info{
-  flex:1;
-}
-
-.item-info strong{
-  display:block;
-}
-
-.item-info small{
-  color:#7b8889;
-}
-
-/* MODAL */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#0008;
-  z-index:100;
   align-items:center;
-  justify-content:center;
-  padding:20px;
+  font-size:61px;
 }
 
-.modal.ativo{
+.profile-name{
+  text-align:center;
+  margin-top:10px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.profile-role{
+  text-align:center;
+  font-size:11px;
+  color:#777;
+  margin-top:3px;
+}
+
+.edit{
+  float:right;
+  margin-top:-30px;
+  background:#f7f5ed;
+  border:1px solid #ccc5b7;
+  border-radius:6px;
+  padding:7px;
+}
+
+/* ATTRIBUTES */
+
+.attribute{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  align-items:center;
+  gap:8px;
+  margin:12px 0;
+}
+
+.attribute-bar{
   display:flex;
+  gap:3px;
 }
 
-.modal-box{
-  width:100%;
-  max-width:420px;
+.attribute-bar span{
+  width:15px;
+  height:6px;
+  border-radius:3px;
+  background:#ddd;
+}
+
+.attribute-bar span.on{
+  background:#4aa6bd;
+}
+
+/* CLINIC */
+
+.clinic-picture{
+  height:220px;
+  background:linear-gradient(#c4e3e3,#eee9dc);
+  position:relative;
+  overflow:hidden;
+}
+
+.table{
+  position:absolute;
+  width:125px;
+  height:48px;
+  background:#69b8ca;
+  left:50%;
+  top:105px;
+  transform:translateX(-50%);
+  border-radius:8px;
+  box-shadow:0 13px 0 -7px #777;
+}
+
+.chair{
+  position:absolute;
+  width:50px;
+  height:60px;
+  background:#b7a48c;
+  border-radius:7px;
+  bottom:20px;
+}
+
+.chair.one{
+  left:32px;
+}
+
+.chair.two{
+  right:32px;
+}
+
+.shelf{
+  position:absolute;
+  right:20px;
+  top:20px;
+  width:67px;
+  height:105px;
+  background:#d6c4a4;
+  border:4px solid #9f8c70;
+}
+
+.clinic-level{
+  padding:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* CASE */
+
+.patient-art{
+  height:210px;
+  position:relative;
+  background:linear-gradient(#a9d7df,#d8e7cb);
+  overflow:hidden;
+}
+
+.dog{
+  position:absolute;
+  left:50%;
+  bottom:4px;
+  transform:translateX(-50%);
+  width:145px;
+  height:185px;
+}
+
+.dog-head{
+  position:absolute;
+  left:21px;
+  top:10px;
+  width:103px;
+  height:100px;
+  background:#bd7b43;
+  border-radius:48% 48% 45% 45%;
+  z-index:3;
+}
+
+.ear{
+  position:absolute;
+  width:45px;
+  height:72px;
+  background:#89552f;
+  border-radius:60% 30% 55% 45%;
+  top:18px;
+}
+
+.ear.left{
+  left:-22px;
+  transform:rotate(15deg);
+}
+
+.ear.right{
+  right:-22px;
+  transform:rotate(-15deg);
+}
+
+.muzzle{
+  position:absolute;
+  width:60px;
+  height:42px;
+  background:#d99a5f;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  border-radius:50%;
+}
+
+.dog-eye{
+  position:absolute;
+  width:10px;
+  height:12px;
+  background:#27201c;
+  border-radius:50%;
+  top:43px;
+}
+
+.dog-eye.left{
+  left:30px;
+}
+
+.dog-eye.right{
+  right:30px;
+}
+
+.nose{
+  position:absolute;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%);
+  width:20px;
+  height:14px;
+  background:#35251e;
+  border-radius:50%;
+}
+
+.dog-body{
+  position:absolute;
+  width:105px;
+  height:85px;
+  background:#c98248;
+  left:20px;
+  bottom:0;
+  border-radius:55px 55px 20px 20px;
+}
+
+.speech{
+  position:absolute;
   background:white;
-  border-radius:25px;
-  padding:25px;
-  box-shadow:0 10px 35px #0005;
+  left:14px;
+  right:14px;
+  bottom:12px;
+  padding:10px;
+  border-radius:8px;
+  font-size:13px;
+  z-index:6;
+  box-shadow:0 2px 5px #0002;
 }
 
-.modal-box h2{
+.patient-info{
+  padding:13px;
+  background:#fff;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  padding:5px 0;
+  font-size:12px;
+}
+
+/* STEPS */
+
+.steps{
+  display:flex;
+  justify-content:space-between;
+  margin:4px 8px 17px;
+  position:relative;
+}
+
+.steps:before{
+  content:"";
+  position:absolute;
+  left:12px;
+  right:12px;
+  top:10px;
+  height:3px;
+  background:#d1cec5;
+}
+
+.step{
+  position:relative;
+  z-index:2;
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  background:#dedbd2;
+  text-align:center;
+  font-size:10px;
+  line-height:21px;
+}
+
+.step.active{
+  background:#28a24b;
+  color:white;
+}
+
+.question{
+  padding:9px 0;
+  border-bottom:1px solid #ddd8cd;
+  font-size:12px;
+}
+
+.question label{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.question input{
+  accent-color:#2ca34a;
+}
+
+/* EXAMS */
+
+.check-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px solid #ddd8cd;
+  font-size:12px;
+}
+
+.check-row label{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.price{
+  color:#d69b00;
+  font-weight:bold;
+}
+
+/* RESULT */
+
+.result-row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #ddd8cd;
+  font-size:12px;
+}
+
+.high{
+  color:#d93025;
+  font-weight:bold;
+}
+
+/* DIAGNOSIS */
+
+.option{
+  border:1px solid #d3cec1;
+  border-radius:7px;
+  padding:10px;
+  margin:7px 0;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  background:#fff;
+}
+
+.option.selected{
+  background:#e6f7e8;
+  border-color:#4caf50;
+}
+
+/* SUCCESS */
+
+.success{
+  background:linear-gradient(145deg,#087c78,#11908a);
+  color:white;
+  text-align:center;
+  border-radius:15px;
+  padding:28px 15px;
+}
+
+.success .stars{
+  font-size:34px;
+  margin:10px 0;
+}
+
+.reward{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  background:white;
+  color:#253238;
+  border-radius:10px;
+  margin-top:20px;
+  overflow:hidden;
+}
+
+.reward div{
+  padding:12px 4px;
+  border-right:1px solid #ddd;
+}
+
+.reward strong{
+  display:block;
+  margin-top:4px;
+}
+
+/* MAP */
+
+.chapter{
   margin-bottom:20px;
 }
 
-.input{
-  width:100%;
-  border:2px solid #d9dfdc;
-  padding:15px;
-  border-radius:13px;
-  font-size:17px;
-  outline:none;
-}
-
-.input:focus{
-  border-color:#0b9189;
-}
-
-.modal-botoes{
-  display:flex;
-  gap:10px;
-  margin-top:18px;
-}
-
-.modal-botoes button{
-  flex:1;
-  padding:14px;
-  border-radius:12px;
+.chapter-title{
   font-weight:bold;
+  margin-bottom:10px;
+  font-size:13px;
 }
 
-.cancelar{
-  background:#edf0ef;
+.case-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
 }
 
-.salvar{
-  background:#22a744;
+.case{
+  height:45px;
+  border-radius:50%;
+  background:#dedbd1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  font-size:12px;
+}
+
+.case.done{
+  background:#45aa4e;
   color:white;
 }
 
-/* MENU */
-
-.menu{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:82px;
-  background:white;
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  box-shadow:0 -4px 15px #0001;
-  z-index:50;
+.case.current{
+  border:3px solid #f4bd2d;
+  background:#fff;
 }
 
-.menu button{
-  background:white;
-  color:#667477;
+/* MISSIONS */
+
+.mission{
+  padding:12px;
+  border-bottom:1px solid #ddd8cd;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.mission-check{
+  width:23px;
+  height:23px;
+  border:1px solid #aaa;
+  border-radius:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.mission-check.done{
+  background:#38a84b;
+  color:white;
+}
+
+.mission-info{
+  flex:1;
+}
+
+.mission-info strong{
+  display:block;
   font-size:12px;
+}
+
+.mission-info small{
+  color:#777;
+  font-size:10px;
+}
+
+/* RANK */
+
+.rank{
+  display:grid;
+  grid-template-columns:32px 42px 1fr auto;
+  align-items:center;
+  gap:8px;
+  padding:11px 4px;
+  border-bottom:1px solid #ddd8cd;
+  font-size:12px;
+}
+
+.rank-avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#e8f0e7;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:21px;
+}
+
+/* SHOP */
+
+.shop-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.shop-item{
+  background:#fff;
+  border:1px solid #ddd8cd;
+  border-radius:8px;
+  padding:10px 5px;
+  text-align:center;
+  font-size:10px;
+}
+
+.shop-icon{
+  font-size:34px;
+  height:48px;
+}
+
+.shop-price{
+  color:#228c36;
+  font-weight:bold;
+  margin-top:6px;
+}
+
+/* NAV */
+
+.nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:560px;
+  height:76px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  z-index:50;
+  box-shadow:0 -4px 12px #0001;
+}
+
+.nav button{
+  border:0;
+  background:white;
+  color:#5d686b;
+  font-size:9px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -597,24 +1033,80 @@ main{
   gap:3px;
 }
 
-.menu button span{
-  font-size:25px;
+.nav button span{
+  font-size:22px;
 }
 
-.menu button.ativo{
-  color:#178c45;
+.nav button.active{
+  color:#188b42;
   font-weight:bold;
 }
 
-/* RESPONSIVO */
+/* MODAL */
 
-@media(min-width:650px){
-  main{
-    padding-top:30px;
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+  padding:20px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:400px;
+  background:white;
+  border-radius:16px;
+  padding:20px;
+}
+
+.modal-box h2{
+  margin-bottom:15px;
+}
+
+.input{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.modal-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:15px;
+}
+
+.modal-buttons button{
+  flex:1;
+}
+
+/* MOBILE */
+
+@media(max-width:390px){
+
+  .logo{
+    font-size:31px;
   }
 
-  .clinica-capa{
-    height:360px;
+  .hero-art{
+    height:235px;
+  }
+
+  .home-grid button{
+    font-size:10px;
+  }
+
+  .attribute{
+    grid-template-columns:95px 1fr;
   }
 }
 </style>
@@ -622,32 +1114,34 @@ main{
 
 <body>
 
-<header class="topo">
+<div class="app">
+
+<header class="header">
 
   <div class="logo">
-    Vet<span>Life</span>
-    <span class="logo-patas">🐾</span>
+    <span class="vet">Vet</span><span class="life">Life</span>
+    <span class="paws">🐾</span>
   </div>
 
-  <div class="slogan">
+  <div class="tagline">
     Aprenda. Atenda. Evolua.
   </div>
 
-  <div class="status">
+  <div class="stats">
 
-    <div class="status-card">
-      <span class="status-icon">🪙</span>
-      <strong id="moedas">1.200</strong>
+    <div class="stat">
+      <small>Moedas</small>
+      <strong>🪙 <span id="coins">4.250</span></strong>
     </div>
 
-    <div class="status-card">
-      <span class="status-icon">⭐</span>
-      <strong id="xp">0 XP</strong>
+    <div class="stat">
+      <small>XP</small>
+      <strong>⭐ <span id="xp">350</span>/800</strong>
     </div>
 
-    <div class="status-card">
-      <span class="status-icon">🏥</span>
-      <strong id="nivel">Nível 1</strong>
+    <div class="stat">
+      <small>Nível</small>
+      <strong>🐾 <span id="level">3</span></strong>
     </div>
 
   </div>
@@ -655,60 +1149,52 @@ main{
 </header>
 
 
-<main>
+<!-- 1 INÍCIO -->
 
-<!-- INÍCIO -->
+<section id="home" class="screen active">
 
-<section id="inicio" class="tela ativa">
+  <div class="home-hero">
 
-  <div class="hero">
+    <div class="hero-art">
 
-    <div class="clinica-capa">
+      <div class="tree left"></div>
+      <div class="tree right"></div>
 
-      <div class="nuvem n1"></div>
-      <div class="nuvem n2"></div>
+      <div class="building">
 
-      <div class="arvore esq"></div>
-      <div class="arvore dir"></div>
+        <div class="roof"></div>
 
-      <div class="predio">
-
-        <div class="telhado"></div>
-
-        <div class="placa">
+        <div class="sign">
           CLÍNICA VETERINÁRIA VETLIFE
         </div>
 
-        <div class="janela esq"></div>
-        <div class="janela dir"></div>
+        <div class="window left"></div>
+        <div class="window right"></div>
 
       </div>
 
-      <div class="personagem">
+      <div class="doctor">
 
-        <div class="cabelo"></div>
+        <div class="hair"></div>
 
-        <div class="cabeca">
-          <div class="olho o1"></div>
-          <div class="olho o2"></div>
-          <div class="nariz"></div>
-          <div class="boca"></div>
+        <div class="doctor-head">
+          <div class="eye one"></div>
+          <div class="eye two"></div>
+          <div class="mouth"></div>
         </div>
 
-        <div class="corpo">
-          <div class="camisa"></div>
-          <div class="estetoscopio"></div>
+        <div class="body-doctor">
+          <div class="shirt"></div>
+          <div class="stetho"></div>
         </div>
 
       </div>
 
     </div>
 
-    <div class="hero-info">
+    <div class="hero-text">
 
-      <h1>
-        Bem-vinda à VetLife! 🐾
-      </h1>
+      <h1>Bem-vinda à VetLife! 🐾</h1>
 
       <p>
         Sua jornada para se tornar uma excelente
@@ -716,9 +1202,9 @@ main{
       </p>
 
       <button
-        class="botao-principal"
-        onclick="atenderCaso()">
-        🩺 ATENDER CASO
+        class="big-play"
+        onclick="go('case')">
+        🩺 JOGAR
       </button>
 
     </div>
@@ -726,180 +1212,988 @@ main{
   </div>
 
 
+  <div class="card xp-card">
+
+    <div class="xp-title">
+      📚 Sua evolução
+    </div>
+
+    <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px">
+      <span>XP</span>
+      <strong>350 / 800</strong>
+    </div>
+
+    <div class="progress">
+      <div style="width:44%"></div>
+    </div>
+
+    <div style="font-size:11px;color:#777;margin-top:8px">
+      Próximo nível: 800 XP
+    </div>
+
+  </div>
+
+
+  <div class="home-grid">
+
+    <button onclick="go('clinic')">🏥<br>MINHA CLÍNICA</button>
+    <button onclick="go('profile')">👩🏻‍⚕️<br>MEU PERSONAGEM</button>
+    <button onclick="go('map')">🐾<br>CASOS</button>
+    <button onclick="go('ranking')">🏆<br>RANKING</button>
+    <button onclick="go('shop')">🛒<br>LOJA</button>
+    <button onclick="go('missions')">⚙️<br>MISSÕES</button>
+
+  </div>
+
+</section>
+
+
+<!-- 2 PERSONAGEM -->
+
+<section id="profile" class="screen">
+
   <div class="card">
 
-    <h2>📚 Sua evolução</h2>
+    <div class="card-head">
+      Meu Personagem
+    </div>
 
-    <p style="margin-bottom:10px">
-      XP: <strong id="xpTexto">0</strong>
+    <div class="profile-body">
+
+      <button class="edit" onclick="openName()">
+        ✏️
+      </button>
+
+      <div class="avatar">
+        👩🏻‍⚕️
+      </div>
+
+      <div class="profile-name" id="profileName">
+        Dra. Júlia Martins
+      </div>
+
+      <div class="profile-role">
+        Clínica Geral
+      </div>
+
+      <div style="margin-top:17px;font-size:11px">
+        NÍVEL 3
+      </div>
+
+      <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+
+        <div class="progress" style="flex:1">
+          <div style="width:44%"></div>
+        </div>
+
+        <small>350/800</small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-body">
+
+      <strong>ATRIBUTOS</strong>
+
+      <div class="attribute">
+        <span>💚 Empatia</span>
+        <div class="attribute-bar">
+          <span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="attribute">
+        <span>🧠 Raciocínio</span>
+        <div class="attribute-bar">
+          <span class="on"></span><span class="on"></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="attribute">
+        <span>⚡ Agilidade</span>
+        <div class="attribute-bar">
+          <span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="attribute">
+        <span>💬 Comunicação</span>
+        <div class="attribute-bar">
+          <span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="attribute">
+        <span>📋 Organização</span>
+        <div class="attribute-bar">
+          <span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 3 CLÍNICA -->
+
+<section id="clinic" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Minha Clínica
+    </div>
+
+    <div class="clinic-picture">
+
+      <div class="shelf"></div>
+      <div class="table"></div>
+      <div class="chair one"></div>
+      <div class="chair two"></div>
+
+    </div>
+
+    <div class="clinic-level">
+
+      <span>Nível da Clínica</span>
+
+      <strong>⭐ 1</strong>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-body">
+
+      <strong>ESTRUTURAS</strong>
+
+      <div class="info-row">
+        <span>🩺 Consultório 1</span>
+        <span>Nível 1 ›</span>
+      </div>
+
+      <div class="info-row">
+        <span>🛎️ Recepção</span>
+        <span>Nível 1 ›</span>
+      </div>
+
+      <div class="info-row">
+        <span>🛋️ Sala de Espera</span>
+        <span>Nível 1 ›</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 4 INTERIOR -->
+
+<section id="interior" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Consultório 1 — Nível 1
+    </div>
+
+    <div class="clinic-picture">
+
+      <div class="shelf" style="left:20px;right:auto"></div>
+
+      <div class="table"
+           style="width:145px;top:115px"></div>
+
+      <div style="
+        position:absolute;
+        right:25px;
+        top:35px;
+        width:55px;
+        height:75px;
+        background:#d7e5e2;
+        border:3px solid #71807f;">
+      </div>
+
+    </div>
+
+    <div class="card-body">
+
+      <button class="btn green full">
+        Melhorias
+      </button>
+
+      <div style="margin-top:14px">
+
+        <div class="info-row">
+          <span>🛏️ Mesa de Atendimento</span>
+          <span>Nível 1</span>
+        </div>
+
+        <div class="info-row">
+          <span>🩺 Estetoscópio</span>
+          <span>Nível 1</span>
+        </div>
+
+        <div class="info-row">
+          <span>🌡️ Termômetro</span>
+          <span>Nível 1</span>
+        </div>
+
+        <div class="info-row">
+          <span>⚖️ Balança</span>
+          <span>Nível 1</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 5 PACIENTE -->
+
+<section id="case" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Novo Paciente
+    </div>
+
+    <div class="patient-art">
+
+      <div class="dog">
+
+        <div class="dog-body"></div>
+
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+
+        <div class="dog-head">
+
+          <div class="dog-eye left"></div>
+          <div class="dog-eye right"></div>
+
+          <div class="muzzle">
+            <div class="nose"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="patient-info">
+
+      <div class="speech">
+        Olá, doutora. Meu cachorro Thor não está bem.
+      </div>
+
+      <div style="padding-top:48px">
+
+        <div class="info-row">
+          <span>Nome:</span>
+          <strong>Thor</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Espécie:</span>
+          <strong>Canino</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Raça:</span>
+          <strong>Golden Retriever</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Idade:</span>
+          <strong>4 anos</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Sexo:</span>
+          <strong>Macho</strong>
+        </div>
+
+      </div>
+
+      <button
+        class="btn green full"
+        onclick="go('anamnesis')"
+        style="margin-top:10px">
+        INICIAR CONSULTA
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 6 ANAMNESE -->
+
+<section id="anamnesis" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Anamnese
+    </div>
+
+    <div class="card-body">
+
+      <div class="steps">
+        <div class="step active">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+        <div class="step">5</div>
+      </div>
+
+      <strong style="font-size:13px">
+        O que você gostaria de perguntar?
+      </strong>
+
+      <div class="question">
+        <label>
+          <input type="checkbox" checked>
+          Há quanto tempo começou?
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox">
+          Mudou a alimentação?
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox" checked>
+          Está bebendo mais água?
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox" checked>
+          Está urinando mais?
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox">
+          Está com fome?
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox" checked>
+          Está perdendo peso?
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox">
+          Está vomitando?
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox">
+          Está com diarreia?
+        </label>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:15px">
+
+        <button
+          class="btn gray"
+          onclick="go('case')">
+          VOLTAR
+        </button>
+
+        <button
+          class="btn green"
+          style="margin-left:auto"
+          onclick="go('physical')">
+          PRÓXIMO
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 7 EXAME FÍSICO -->
+
+<section id="physical" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Exame Físico
+    </div>
+
+    <div class="card-body">
+
+      <div class="steps">
+        <div class="step">1</div>
+        <div class="step active">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+        <div class="step">5</div>
+      </div>
+
+      <div class="info-row">
+        <span>🌡️ Temperatura</span>
+        <strong>38,7 °C</strong>
+      </div>
+
+      <div class="info-row">
+        <span>❤️ Frequência Cardíaca</span>
+        <strong>96 bpm</strong>
+      </div>
+
+      <div class="info-row">
+        <span>🫁 Frequência Respiratória</span>
+        <strong>28 mpm</strong>
+      </div>
+
+      <div class="info-row">
+        <span>👄 Mucosas</span>
+        <strong>Normocoradas</strong>
+      </div>
+
+      <div class="info-row">
+        <span>💧 Hidratação</span>
+        <strong>Leve desidratação</strong>
+      </div>
+
+      <div class="info-row">
+        <span>⚖️ Peso</span>
+        <strong>32 kg</strong>
+      </div>
+
+      <div class="info-row">
+        <span>🐶 Condição Corporal</span>
+        <strong>4/9</strong>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:17px">
+
+        <button
+          class="btn gray"
+          onclick="go('anamnesis')">
+          VOLTAR
+        </button>
+
+        <button
+          class="btn green"
+          style="margin-left:auto"
+          onclick="go('exams')">
+          PRÓXIMO
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 8 EXAMES -->
+
+<section id="exams" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Exames
+    </div>
+
+    <div class="card-body">
+
+      <div class="steps">
+        <div class="step">1</div>
+        <div class="step">2</div>
+        <div class="step active">3</div>
+        <div class="step">4</div>
+        <div class="step">5</div>
+      </div>
+
+      <strong style="font-size:13px">
+        Quais exames deseja solicitar?
+      </strong>
+
+      <div class="check-row">
+        <label>
+          <input type="checkbox">
+          Hemograma
+        </label>
+        <span class="price">🪙 80</span>
+      </div>
+
+      <div class="check-row">
+        <label>
+          <input type="checkbox" checked>
+          Bioquímica sérica
+        </label>
+        <span class="price">🪙 120</span>
+      </div>
+
+      <div class="check-row">
+        <label>
+          <input type="checkbox" checked>
+          Urinálise
+        </label>
+        <span class="price">🪙 60</span>
+      </div>
+
+      <div class="check-row">
+        <label>
+          <input type="checkbox">
+          Raio-X
+        </label>
+        <span class="price">🪙 100</span>
+      </div>
+
+      <div class="check-row">
+        <label>
+          <input type="checkbox">
+          Ultrassom abdominal
+        </label>
+        <span class="price">🪙 150</span>
+      </div>
+
+      <div class="check-row">
+        <label>
+          <input type="checkbox">
+          Teste SNAP
+        </label>
+        <span class="price">🪙 80</span>
+      </div>
+
+      <div class="check-row">
+        <label>
+          <input type="checkbox">
+          Cultura urinária
+        </label>
+        <span class="price">🪙 120</span>
+      </div>
+
+      <div style="text-align:right;font-weight:bold;margin-top:13px">
+        Custo total: 🪙 260
+      </div>
+
+      <button
+        class="btn green full"
+        style="margin-top:12px"
+        onclick="go('results')">
+        PRÓXIMO
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 9 RESULTADOS -->
+
+<section id="results" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Resultados
+    </div>
+
+    <div class="card-body">
+
+      <div class="steps">
+        <div class="step">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step active">4</div>
+        <div class="step">5</div>
+      </div>
+
+      <div class="result-row">
+        <span>Bioquímica sérica</span>
+        <strong>Glicose</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Glicose</span>
+        <strong class="high">428 mg/dL ↑</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Ureia</span>
+        <strong>28 mg/dL</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Creatinina</span>
+        <strong>0,9 mg/dL</strong>
+      </div>
+
+      <div class="result-row">
+        <span>ALT</span>
+        <strong>45 UI/L</strong>
+      </div>
+
+      <br>
+
+      <strong>Urinálise</strong>
+
+      <div class="result-row">
+        <span>Densidade</span>
+        <strong>1.020</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Glicose</span>
+        <strong class="high">+++</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Proteína</span>
+        <strong class="high">+</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Sedimento</span>
+        <strong>normal</strong>
+      </div>
+
+      <button
+        class="btn green full"
+        style="margin-top:15px"
+        onclick="go('diagnosis')">
+        PRÓXIMO
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 10 DIAGNÓSTICO -->
+
+<section id="diagnosis" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Diagnóstico
+    </div>
+
+    <div class="card-body">
+
+      <div class="steps">
+        <div class="step">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+        <div class="step active">5</div>
+      </div>
+
+      <strong style="font-size:13px">
+        Diagnósticos diferenciais
+      </strong>
+
+      <div class="option selected">
+        <span>Diabetes mellitus</span>
+        <span>☑</span>
+      </div>
+
+      <div class="option">
+        <span>Doença renal crônica</span>
+        <span>☐</span>
+      </div>
+
+      <div class="option">
+        <span>Infecção urinária</span>
+        <span>☐</span>
+      </div>
+
+      <div class="option">
+        <span>Hiperadrenocorticismo</span>
+        <span>☐</span>
+      </div>
+
+      <div class="option">
+        <span>Outros</span>
+        <span>☐</span>
+      </div>
+
+      <p style="font-size:12px;font-weight:bold;margin-top:16px">
+        Qual é o diagnóstico mais provável?
+      </p>
+
+      <select
+        id="diagnosticSelect"
+        style="width:100%;padding:11px;margin-top:8px;border:1px solid #ccc;border-radius:7px">
+
+        <option>Diabetes mellitus</option>
+        <option>Doença renal crônica</option>
+        <option>Infecção urinária</option>
+        <option>Hiperadrenocorticismo</option>
+
+      </select>
+
+      <button
+        class="btn green full"
+        style="margin-top:15px"
+        onclick="go('conduct')">
+        CONFIRMAR
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 11 CONDUTA -->
+
+<section id="conduct" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Conduta
+    </div>
+
+    <div class="card-body">
+
+      <strong style="font-size:13px">
+        Conduta inicial
+      </strong>
+
+      <div class="question">
+        <label>
+          <input type="checkbox" checked>
+          Iniciar insulina
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox" checked>
+          Orientar dieta
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox">
+          Solicitar curva glicêmica
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox" checked>
+          Reavaliar em 7 dias
+        </label>
+      </div>
+
+      <div class="question">
+        <label>
+          <input type="checkbox">
+          Outro exame complementar
+        </label>
+      </div>
+
+      <div style="
+        background:#f1eee6;
+        border:1px solid #d6d0c3;
+        border-radius:8px;
+        padding:12px;
+        margin-top:13px;
+        font-size:11px">
+
+        <strong>Prescrição</strong>
+
+        <p style="margin-top:7px">
+          Insulina (0,5 UI/kg)<br>
+          Dieta para diabéticos<br>
+          Reavaliação em 7 dias
+        </p>
+
+      </div>
+
+      <button
+        class="btn green full"
+        style="margin-top:15px"
+        onclick="finishCase()">
+        FINALIZAR
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 12 RESULTADO DO CASO -->
+
+<section id="success" class="screen">
+
+  <div class="success">
+
+    <h2>Caso Concluído!</h2>
+
+    <div class="stars">
+      ⭐⭐⭐
+    </div>
+
+    <h3>Ótimo trabalho, doutora!</h3>
+
+    <p style="margin-top:8px;font-size:12px">
+      Você diagnosticou corretamente.
     </p>
 
-    <div class="barra">
-      <div id="barraXP"></div>
-    </div>
+    <div class="reward">
 
-    <p style="margin-top:10px;color:#718083">
-      Próximo nível: 300 XP
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- MISSÕES -->
-
-<section id="missoes" class="tela">
-
-  <div class="card">
-
-    <h2>📋 Missões diárias</h2>
-
-    <div class="item">
-
-      <div class="item-icon">🐶</div>
-
-      <div class="item-info">
-        <strong>Atender 3 pacientes</strong>
-        <small>0/3 concluídos</small>
+      <div>
+        XP
+        <strong>+150</strong>
       </div>
 
-      <strong>🪙 100</strong>
-
-    </div>
-
-    <div class="item">
-
-      <div class="item-icon">🧠</div>
-
-      <div class="item-info">
-        <strong>Acertar 2 diagnósticos</strong>
-        <small>0/2 concluídos</small>
+      <div>
+        🪙
+        <strong>+250</strong>
       </div>
 
-      <strong>🪙 150</strong>
-
-    </div>
-
-    <div class="item">
-
-      <div class="item-icon">🔬</div>
-
-      <div class="item-info">
-        <strong>Solicitar 5 exames</strong>
-        <small>0/5 concluídos</small>
+      <div>
+        Reputação
+        <strong>+10</strong>
       </div>
 
-      <strong>🪙 100</strong>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CLÍNICA -->
-
-<section id="clinica" class="tela">
-
-  <div class="card">
-
-    <h2>🏥 Minha Clínica</h2>
-
-    <div class="item">
-      <div class="item-icon">🩺</div>
-      <div class="item-info">
-        <strong>Consultório 1</strong>
-        <small>Nível 1</small>
-      </div>
-      <span>›</span>
-    </div>
-
-    <div class="item">
-      <div class="item-icon">🪑</div>
-      <div class="item-info">
-        <strong>Recepção</strong>
-        <small>Nível 1</small>
-      </div>
-      <span>›</span>
-    </div>
-
-    <div class="item">
-      <div class="item-icon">🛋️</div>
-      <div class="item-info">
-        <strong>Sala de espera</strong>
-        <small>Nível 1</small>
-      </div>
-      <span>›</span>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PERFIL -->
-
-<section id="perfil" class="tela">
-
-  <div class="card perfil-card">
-
-    <div class="avatar-grande">
-      👩🏻‍⚕️
-    </div>
-
-    <div class="nome" id="nomePerfil">
-      Dra. Júlia Martins
-    </div>
-
-    <div class="funcao">
-      Clínica Geral
     </div>
 
     <button
-      class="botao-editar"
-      onclick="abrirEdicao()">
-      ✏️ Editar nome
+      class="btn green full"
+      style="margin-top:18px"
+      onclick="go('map')">
+      CONTINUAR
     </button>
 
   </div>
 
+</section>
+
+
+<!-- 13 MAPA -->
+
+<section id="map" class="screen">
 
   <div class="card">
 
-    <h2>📊 Atributos</h2>
-
-    <div class="item">
-      <div class="item-icon">💚</div>
-      <div class="item-info">
-        <strong>Empatia</strong>
-        <small>3 / 5</small>
-      </div>
+    <div class="card-head">
+      Mapa de Casos
     </div>
 
-    <div class="item">
-      <div class="item-icon">🧠</div>
-      <div class="item-info">
-        <strong>Raciocínio</strong>
-        <small>2 / 5</small>
-      </div>
-    </div>
+    <div class="card-body">
 
-    <div class="item">
-      <div class="item-icon">⚡</div>
-      <div class="item-info">
-        <strong>Agilidade</strong>
-        <small>3 / 5</small>
-      </div>
-    </div>
+      <div class="chapter">
 
-    <div class="item">
-      <div class="item-icon">💬</div>
-      <div class="item-info">
-        <strong>Comunicação</strong>
-        <small>3 / 5</small>
+        <div class="chapter-title">
+          Capítulo 1 - Clínica Geral
+        </div>
+
+        <div class="case-grid">
+
+          <div class="case done">1</div>
+          <div class="case done">2</div>
+          <div class="case done">3</div>
+          <div class="case current">4</div>
+          <div class="case">5</div>
+
+        </div>
+
+        <div style="margin-top:7px">
+          ⭐ ⭐ ⭐
+        </div>
+
       </div>
+
+      <div class="chapter">
+
+        <div class="chapter-title">
+          Capítulo 2 - Sistema Digestório
+        </div>
+
+        <div class="case-grid">
+
+          <div class="case">🔒</div>
+          <div class="case">🔒</div>
+          <div class="case">🔒</div>
+          <div class="case">🔒</div>
+          <div class="case">🔒</div>
+
+        </div>
+
+      </div>
+
+      <div class="chapter">
+
+        <div class="chapter-title">
+          Capítulo 3 - Sistema Urinário
+        </div>
+
+        <div class="case-grid">
+
+          <div class="case">🔒</div>
+          <div class="case">🔒</div>
+          <div class="case">🔒</div>
+          <div class="case">🔒</div>
+          <div class="case">🔒</div>
+
+        </div>
+
+      </div>
+
     </div>
 
   </div>
@@ -907,50 +2201,82 @@ main{
 </section>
 
 
-<!-- LOJA -->
+<!-- 14 MISSÕES -->
 
-<section id="loja" class="tela">
+<section id="missions" class="screen">
 
   <div class="card">
 
-    <h2>🛒 Loja</h2>
-
-    <div class="item">
-
-      <div class="item-icon">🩺</div>
-
-      <div class="item-info">
-        <strong>Novo Consultório</strong>
-        <small>Melhore sua clínica</small>
-      </div>
-
-      <strong>🪙 1.500</strong>
-
+    <div class="card-head">
+      Missões Diárias
     </div>
 
-    <div class="item">
+    <div class="card-body">
 
-      <div class="item-icon">🔬</div>
+      <div style="
+        text-align:center;
+        background:#e5eeee;
+        padding:12px;
+        border-radius:7px;
+        margin-bottom:10px;
+        font-size:12px">
 
-      <div class="item-info">
-        <strong>Ultrassom</strong>
-        <small>Novos exames disponíveis</small>
+        Novas missões em:
+        <strong>12h 45m</strong>
+
       </div>
 
-      <strong>🪙 2.000</strong>
+      <div class="mission">
 
-    </div>
+        <div class="mission-check done">✓</div>
 
-    <div class="item">
+        <div class="mission-info">
+          <strong>Atender 3 pacientes</strong>
+          <small>Concluída · 2/3</small>
+        </div>
 
-      <div class="item-icon">🥼</div>
+        <span>🪙100</span>
 
-      <div class="item-info">
-        <strong>Jaleco Premium</strong>
-        <small>Personalize sua personagem</small>
       </div>
 
-      <strong>💎 300</strong>
+      <div class="mission">
+
+        <div class="mission-check"></div>
+
+        <div class="mission-info">
+          <strong>Acertar 2 diagnósticos</strong>
+          <small>0/2</small>
+        </div>
+
+        <span>🪙150</span>
+
+      </div>
+
+      <div class="mission">
+
+        <div class="mission-check done">✓</div>
+
+        <div class="mission-info">
+          <strong>Solicitar 5 exames</strong>
+          <small>5/5</small>
+        </div>
+
+        <span>🪙100</span>
+
+      </div>
+
+      <div class="mission">
+
+        <div class="mission-check"></div>
+
+        <div class="mission-info">
+          <strong>Completar 1 caso perfeito</strong>
+          <small>0/1</small>
+        </div>
+
+        <span>🪙200</span>
+
+      </div>
 
     </div>
 
@@ -958,40 +2284,164 @@ main{
 
 </section>
 
-</main>
+
+<!-- 15 RANKING -->
+
+<section id="ranking" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Ranking
+    </div>
+
+    <div class="card-body">
+
+      <div class="rank">
+        <strong>1</strong>
+        <div class="rank-avatar">👩🏻‍⚕️</div>
+        <span>Larissa Vet</span>
+        <strong>12.540 XP</strong>
+      </div>
+
+      <div class="rank">
+        <strong>2</strong>
+        <div class="rank-avatar">👩🏼‍⚕️</div>
+        <span>Vet_Player</span>
+        <strong>11.890 XP</strong>
+      </div>
+
+      <div class="rank" style="background:#eef8ee">
+        <strong>3</strong>
+        <div class="rank-avatar">👩🏻‍⚕️</div>
+        <span>Júlia Martins</span>
+        <strong>10.250 XP</strong>
+      </div>
+
+      <div class="rank">
+        <strong>4</strong>
+        <div class="rank-avatar">👨🏻‍⚕️</div>
+        <span>MedVet</span>
+        <strong>9.870 XP</strong>
+      </div>
+
+      <div class="rank">
+        <strong>5</strong>
+        <div class="rank-avatar">👩🏻‍⚕️</div>
+        <span>AnimalCare</span>
+        <strong>9.210 XP</strong>
+      </div>
+
+      <button
+        class="btn green full"
+        style="margin-top:14px">
+        VER RECOMPENSAS
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
 
 
-<!-- MENU -->
+<!-- 16 LOJA -->
 
-<nav class="menu">
+<section id="shop" class="screen">
+
+  <div class="card">
+
+    <div class="card-head">
+      Loja
+    </div>
+
+    <div class="card-body">
+
+      <div class="shop-grid">
+
+        <div class="shop-item">
+          <div class="shop-icon">🏥</div>
+          <strong>Novo Consultório</strong>
+          <div class="shop-price">🪙 1.500</div>
+        </div>
+
+        <div class="shop-item">
+          <div class="shop-icon">🔬</div>
+          <strong>Ultrassom</strong>
+          <div class="shop-price">🪙 2.000</div>
+        </div>
+
+        <div class="shop-item">
+          <div class="shop-icon">🥼</div>
+          <strong>Jaleco Premium</strong>
+          <div class="shop-price">💎 300</div>
+        </div>
+
+        <div class="shop-item">
+          <div class="shop-icon">🌿</div>
+          <strong>Planta Decorativa</strong>
+          <div class="shop-price">🪙 200</div>
+        </div>
+
+        <div class="shop-item">
+          <div class="shop-icon">🦴</div>
+          <strong>Quadro Anatômico</strong>
+          <div class="shop-price">🪙 150</div>
+        </div>
+
+        <div class="shop-item">
+          <div class="shop-icon">🟤</div>
+          <strong>Tapete Pet</strong>
+          <div class="shop-price">💎 100</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</div>
+
+
+<!-- NAVEGAÇÃO -->
+
+<nav class="nav">
 
   <button
-    class="ativo"
-    onclick="abrirTela('inicio',this)">
+    class="active"
+    data-screen="home"
+    onclick="go('home',this)">
     <span>🏠</span>
     Início
   </button>
 
   <button
-    onclick="abrirTela('missoes',this)">
+    data-screen="missions"
+    onclick="go('missions',this)">
     <span>📋</span>
     Missões
   </button>
 
   <button
-    onclick="abrirTela('clinica',this)">
+    data-screen="clinic"
+    onclick="go('clinic',this)">
     <span>🏥</span>
     Clínica
   </button>
 
   <button
-    onclick="abrirTela('perfil',this)">
+    data-screen="profile"
+    onclick="go('profile',this)">
     <span>👩🏻‍⚕️</span>
     Perfil
   </button>
 
   <button
-    onclick="abrirTela('loja',this)">
+    data-screen="shop"
+    onclick="go('shop',this)">
     <span>🛒</span>
     Loja
   </button>
@@ -999,38 +2449,37 @@ main{
 </nav>
 
 
-<!-- MODAL EDITAR NOME -->
+<!-- MODAL NOME -->
 
 <div
-  id="modalNome"
+  id="nameModal"
   class="modal">
 
   <div class="modal-box">
 
-    <h2>✏️ Editar personagem</h2>
+    <h2>Editar personagem</h2>
 
-    <p style="margin-bottom:10px;color:#687779">
-      Como você gostaria de ser chamada?
+    <p style="font-size:12px;color:#687477;margin-bottom:10px">
+      Digite o nome que deseja utilizar:
     </p>
 
     <input
-      id="novoNome"
+      id="nameInput"
       class="input"
-      type="text"
-      maxlength="30"
-      placeholder="Ex.: Dra. Júlia Martins">
+      maxlength="35"
+      placeholder="Dra. Júlia Martins">
 
-    <div class="modal-botoes">
+    <div class="modal-buttons">
 
       <button
-        class="cancelar"
-        onclick="fecharEdicao()">
+        class="btn gray"
+        onclick="closeName()">
         Cancelar
       </button>
 
       <button
-        class="salvar"
-        onclick="salvarNome()">
+        class="btn green"
+        onclick="saveName()">
         Salvar
       </button>
 
@@ -1043,166 +2492,206 @@ main{
 
 <script>
 
-/* =========================
-   DADOS DO JOGADOR
-========================= */
+/* ===========================
+   DADOS
+=========================== */
 
-let jogador = {
-  nome: localStorage.getItem("vetlife_nome") || "Dra. Júlia Martins",
-  moedas: 1200,
-  xp: 0,
-  nivel: 1
+let player = {
+
+  name:
+    localStorage.getItem("vetlife_name")
+    || "Dra. Júlia Martins",
+
+  coins:4250,
+
+  xp:350,
+
+  level:3
+
 };
 
 
-/* =========================
-   ATUALIZAR INTERFACE
-========================= */
-
-function atualizar(){
-
-  document.getElementById("moedas").textContent =
-    jogador.moedas.toLocaleString("pt-BR");
-
-  document.getElementById("xp").textContent =
-    jogador.xp + " XP";
-
-  document.getElementById("nivel").textContent =
-    "Nível " + jogador.nivel;
-
-  document.getElementById("xpTexto").textContent =
-    jogador.xp;
-
-  document.getElementById("nomePerfil").textContent =
-    jogador.nome;
-
-  let progresso =
-    Math.min((jogador.xp / 300) * 100,100);
-
-  document.getElementById("barraXP").style.width =
-    progresso + "%";
-}
-
-atualizar();
-
-
-/* =========================
+/* ===========================
    NAVEGAÇÃO
-========================= */
+=========================== */
 
-function abrirTela(id,botao){
+function go(id,button){
 
-  document.querySelectorAll(".tela")
-    .forEach(t => t.classList.remove("ativa"));
+  document
+    .querySelectorAll(".screen")
+    .forEach(screen=>{
+      screen.classList.remove("active");
+    });
 
-  document.getElementById(id)
-    .classList.add("ativa");
+  const target =
+    document.getElementById(id);
 
-  document.querySelectorAll(".menu button")
-    .forEach(b => b.classList.remove("ativo"));
+  if(target){
+    target.classList.add("active");
+  }
 
-  botao.classList.add("ativo");
+  if(button){
+
+    document
+      .querySelectorAll(".nav button")
+      .forEach(btn=>{
+        btn.classList.remove("active");
+      });
+
+    button.classList.add("active");
+
+  }else{
+
+    document
+      .querySelectorAll(".nav button")
+      .forEach(btn=>{
+        btn.classList.remove("active");
+      });
+
+    const nav =
+      document.querySelector(
+        '.nav button[data-screen="'+id+'"]'
+      );
+
+    if(nav){
+      nav.classList.add("active");
+    }
+
+  }
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+
 }
 
 
-/* =========================
-   EDITAR NOME
-========================= */
+/* ===========================
+   NOME
+=========================== */
 
-function abrirEdicao(){
+function openName(){
 
-  document.getElementById("novoNome").value =
-    jogador.nome;
+  document
+    .getElementById("nameInput")
+    .value=player.name;
 
-  document.getElementById("modalNome")
-    .classList.add("ativo");
+  document
+    .getElementById("nameModal")
+    .classList.add("show");
 
-  setTimeout(() => {
-    document.getElementById("novoNome").focus();
-  },100);
 }
 
 
-function fecharEdicao(){
+function closeName(){
 
-  document.getElementById("modalNome")
-    .classList.remove("ativo");
+  document
+    .getElementById("nameModal")
+    .classList.remove("show");
+
 }
 
 
-function salvarNome(){
+function saveName(){
 
-  let nome =
-    document.getElementById("novoNome")
-    .value.trim();
+  const value =
+    document
+      .getElementById("nameInput")
+      .value
+      .trim();
 
-  if(nome.length < 2){
+  if(value.length<2){
 
     alert("Digite um nome válido.");
 
     return;
   }
 
-  jogador.nome = nome;
+  player.name=value;
 
   localStorage.setItem(
-    "vetlife_nome",
-    nome
+    "vetlife_name",
+    value
   );
 
-  atualizar();
+  document
+    .getElementById("profileName")
+    .textContent=value;
 
-  fecharEdicao();
+  closeName();
+
 }
 
 
-/* =========================
-   ATENDER CASO
-========================= */
+/* ===========================
+   FINALIZAR CASO
+=========================== */
 
-function atenderCaso(){
+function finishCase(){
 
-  jogador.xp += 50;
+  player.xp += 150;
+  player.coins += 250;
 
-  if(jogador.xp >= 300){
+  if(player.xp>=800){
 
-    jogador.xp -= 300;
-    jogador.nivel++;
+    player.xp-=800;
+    player.level++;
 
-    alert(
-      "🎉 Parabéns!\nVocê subiu para o nível " +
-      jogador.nivel + "!"
-    );
-
-  }else{
-
-    alert(
-      "🐾 Novo caso disponível!\n\n" +
-      "+50 XP"
-    );
   }
 
-  atualizar();
+  document
+    .getElementById("xp")
+    .textContent=player.xp;
+
+  document
+    .getElementById("coins")
+    .textContent=
+      player.coins.toLocaleString("pt-BR");
+
+  document
+    .getElementById("level")
+    .textContent=player.level;
+
+  go("success");
+
 }
 
 
-/* =========================
-   FECHAR MODAL AO CLICAR FORA
-========================= */
+/* ===========================
+   FECHAR MODAL
+=========================== */
 
-document.getElementById("modalNome")
-.addEventListener("click",function(e){
+document
+  .getElementById("nameModal")
+  .addEventListener(
+    "click",
+    function(e){
 
-  if(e.target === this){
-    fecharEdicao();
-  }
+      if(e.target===this){
+        closeName();
+      }
 
-});
+    }
+  );
+
+
+/* ===========================
+   TECLADO ENTER
+=========================== */
+
+document
+  .getElementById("nameInput")
+  .addEventListener(
+    "keydown",
+    function(e){
+
+      if(e.key==="Enter"){
+        saveName();
+      }
+
+    }
+  );
 
 </script>
 
