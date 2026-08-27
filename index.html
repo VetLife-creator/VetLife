@@ -2,196 +2,311 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>VetLife — 1.0</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>VetLife 1.0</title>
 
 <style>
 :root{
 --teal:#087f78;
---teal2:#159b92;
+--teal2:#159a91;
 --green:#2d9b45;
 --lime:#b9ed55;
---cream:#f8f4e9;
---paper:#fffdf7;
+--cream:#f6f1e6;
+--paper:#fffdf8;
 --ink:#26363a;
---muted:#718084;
---line:#d9d4c7;
---gold:#f1bd35;
---blue:#35a9cf;
---shadow:0 8px 22px rgba(35,55,55,.12)
+--muted:#6f7d7f;
+--line:#d9d3c6;
+--gold:#efb934
 }
 
 *{box-sizing:border-box}
 
-html,body{
+body{
 margin:0;
-background:#dfe7e3;
-font-family:Arial,Helvetica,sans-serif;
+background:#dce6e2;
+font-family:Arial,sans-serif;
 color:var(--ink)
 }
 
-button{font-family:inherit}
+button{
+font:inherit;
+cursor:pointer
+}
 
 .app{
 width:min(100%,430px);
 min-height:100vh;
 margin:auto;
 background:var(--cream);
-padding-bottom:76px;
+padding-bottom:78px;
 overflow:hidden
 }
 
-.topbar{
-background:linear-gradient(135deg,#087f78,#12988e);
-color:white;
-padding:15px 15px 12px;
-box-shadow:0 3px 12px #0002;
-position:relative;
-z-index:3
+.top{
+background:linear-gradient(135deg,#087f78,#11968e);
+color:#fff;
+padding:13px 14px 12px
 }
 
-.brand{
-font-size:32px;
+.logo{
 font-weight:900;
-letter-spacing:-1.5px
+font-size:34px;
+letter-spacing:-1.8px
 }
 
-.brand span{color:var(--lime)}
-
-.paws{
-color:#167bc2;
-font-size:22px;
-margin-left:5px
+.logo span{
+color:var(--lime)
 }
 
-.tagline{
+.paw{
+color:#157bc0;
+font-size:22px
+}
+
+.tag{
 font-size:10px;
-opacity:.9;
-margin-left:4px;
-margin-top:-5px
+margin-top:-5px;
+margin-left:3px
 }
 
-.topstats{
+.stats{
 display:grid;
-grid-template-columns:1.1fr 1fr 1fr;
+grid-template-columns:1.15fr 1fr 1fr;
 gap:7px;
-margin-top:12px
+margin-top:11px
 }
 
 .stat{
-background:#ffffff1e;
-border:1px solid #ffffff25;
-border-radius:13px;
-padding:7px 5px;
+background:#fff2;
+border:1px solid #ffffff2b;
+border-radius:12px;
+padding:7px 4px;
 text-align:center;
-font-size:10px
+font-size:9px
 }
 
-.stat b{
+.stat strong{
 display:block;
 font-size:14px;
 margin-top:2px
 }
 
-.page{padding:12px}
+.page{
+padding:12px
+}
 
 .hero{
-border-radius:22px;
+border:1px solid #d8d5ca;
+border-radius:21px;
 overflow:hidden;
-box-shadow:var(--shadow);
-border:1px solid #d8ddcf;
-background:linear-gradient(150deg,#dff4e8,#fff5cb);
-margin-bottom:12px
+background:linear-gradient(150deg,#e0f5e8,#fff5cb);
+box-shadow:0 8px 24px #233b3618
 }
 
 .hero-art{
-height:245px;
+height:252px;
 position:relative;
 overflow:hidden;
-background:linear-gradient(#9bd2d1,#dcebdc 62%,#c8b083 62% 100%)
+background:linear-gradient(#a8d9dd,#e7f0dc 66%,#aebc88 66%)
 }
 
 .cloud{
 position:absolute;
-background:#ffffff99;
-border-radius:50%;
-width:90px;
-height:28px;
-filter:blur(1px)
+background:#fff9;
+border-radius:50px;
+width:85px;
+height:25px
 }
 
-.c1{left:20px;top:28px}
-.c2{right:25px;top:50px;width:70px}
+.c1{left:15px;top:25px}
+.c2{right:20px;top:52px;width:65px}
 
 .building{
 position:absolute;
+left:10px;
 bottom:0;
-left:15px;
-width:205px;
-height:105px;
-background:#e7ece5;
-border:3px solid #b6c2b9;
-border-radius:8px 8px 0 0;
-box-shadow:inset 0 0 0 5px #d6ddd6
+width:220px;
+height:110px;
+background:#eef1e9;
+border:3px solid #aebbb1;
+border-radius:9px 9px 0 0
 }
 
 .building:before{
-content:"VET";
+content:"VetLife";
 position:absolute;
-left:15px;
+left:18px;
 top:10px;
 color:#087f78;
 font-weight:900;
-font-size:18px
+font-size:17px
 }
 
-.window{
+.win{
 position:absolute;
-width:38px;
-height:27px;
-background:#83b9c0;
-border:3px solid #718d90;
-border-radius:3px
+width:39px;
+height:29px;
+background:#82bbc1;
+border:3px solid #718e92;
+border-radius:3px;
+bottom:20px
 }
 
-.w1{left:18px;bottom:19px}
-.w2{left:76px;bottom:19px}
-.w3{left:134px;bottom:19px}
+.w1{left:18px}
+.w2{left:76px}
+.w3{left:134px}
 
 .door{
 position:absolute;
-right:12px;
+right:14px;
 bottom:0;
-width:38px;
-height:62px;
-background:#927a61;
+width:39px;
+height:63px;
+background:#987e61;
 border-radius:4px 4px 0 0
 }
 
 .tree{
 position:absolute;
-right:24px;
+right:12px;
 bottom:27px;
-font-size:75px
+font-size:65px
 }
 
-.sun{
+/* PERSONAGEM */
+
+.char{
 position:absolute;
-right:35px;
-top:20px;
-font-size:42px
+right:5px;
+bottom:7px;
+width:170px;
+height:220px
 }
 
-.doctorHero{
+.char .body{
 position:absolute;
-right:10px;
-bottom:12px;
-font-size:104px;
-filter:drop-shadow(0 5px 3px #0002)
+bottom:0;
+left:30px;
+width:110px;
+height:100px;
+background:#fff;
+border:3px solid #26363a;
+border-radius:45px 45px 15px 15px
+}
+
+.char .shirt{
+position:absolute;
+left:48px;
+bottom:0;
+width:72px;
+height:88px;
+background:#e9f5fa;
+border-radius:38px 38px 8px 8px
+}
+
+.char .neck{
+position:absolute;
+left:72px;
+bottom:82px;
+width:30px;
+height:30px;
+background:#e4a06c;
+border-radius:10px
+}
+
+.char .head{
+position:absolute;
+left:43px;
+top:38px;
+width:88px;
+height:92px;
+background:#f0ad78;
+border-radius:47% 47% 43% 43%;
+border:3px solid #5b3528
+}
+
+.char .hair{
+position:absolute;
+left:37px;
+top:27px;
+width:100px;
+height:83px;
+background:#553328;
+border-radius:55% 55% 40% 42%;
+transform:rotate(-3deg)
+}
+
+.char .hair2{
+position:absolute;
+left:43px;
+top:58px;
+width:22px;
+height:78px;
+background:#553328;
+border-radius:15px
+}
+
+.char .eye{
+position:absolute;
+top:83px;
+width:9px;
+height:12px;
+background:#26363a;
+border-radius:50%;
+z-index:3
+}
+
+.char .e1{left:64px}
+.char .e2{left:101px}
+
+.char .nose{
+position:absolute;
+top:98px;
+left:82px;
+width:7px;
+height:5px;
+border-radius:50%;
+background:#c47b5e;
+z-index:3
+}
+
+.char .smile{
+position:absolute;
+top:105px;
+left:76px;
+width:25px;
+height:13px;
+border-bottom:3px solid #8b4b3d;
+border-radius:0 0 20px 20px;
+z-index:3
+}
+
+.char .stetho{
+position:absolute;
+left:38px;
+bottom:38px;
+width:95px;
+height:55px;
+border:4px solid #53a8bd;
+border-top:0;
+border-radius:0 0 55px 55px;
+z-index:4
+}
+
+.char .disc{
+position:absolute;
+right:20px;
+bottom:39px;
+width:18px;
+height:18px;
+border-radius:50%;
+background:#657278;
+border:3px solid #dce5e8;
+z-index:5
 }
 
 .hero-copy{
-padding:15px;
+padding:14px;
 text-align:center
 }
 
@@ -208,176 +323,269 @@ font-size:13px
 
 .primary{
 border:0;
-background:linear-gradient(180deg,#36a44d,#208b3b);
-color:white;
+color:#fff;
 font-weight:900;
-border-radius:11px;
-padding:12px 18px;
-box-shadow:0 4px 0 #176d2d;
+background:linear-gradient(#35a64e,#20883a);
+border-radius:10px;
+padding:12px 16px;
+box-shadow:0 4px 0 #176b2c;
 width:100%;
-font-size:14px
+font-size:13px
 }
 
-.section-title{
-font-size:19px;
+.section{
 font-weight:900;
+font-size:18px;
 margin:16px 3px 9px
 }
 
-.menu-grid{
+.grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:8px
 }
 
-.menu-card{
+.menu{
 border:1px solid var(--line);
 background:var(--paper);
 border-radius:13px;
-padding:11px 8px;
+padding:10px;
 text-align:center;
-box-shadow:0 3px 10px #00000008;
-color:var(--ink)
+box-shadow:0 3px 12px #00000009
 }
 
-.menu-card .ico{font-size:25px}
+.menu .ico{
+font-size:24px
+}
 
-.menu-card b{
+.menu b{
 display:block;
 font-size:10px;
 margin-top:4px
 }
 
-.progress-card{
+.progress{
 background:var(--paper);
 border:1px solid var(--line);
-border-radius:16px;
-padding:14px;
+border-radius:15px;
+padding:13px;
 margin-top:12px;
-box-shadow:var(--shadow)
+box-shadow:0 5px 15px #0001
 }
 
-.progress-head{
+.ph{
 display:flex;
 justify-content:space-between;
 font-weight:800;
-font-size:13px
+font-size:12px
 }
 
 .bar{
-height:10px;
-background:#e2e5df;
+height:9px;
+background:#e2e4df;
 border-radius:99px;
 overflow:hidden;
-margin-top:9px
+margin-top:8px
 }
 
 .bar i{
 display:block;
 height:100%;
-background:linear-gradient(90deg,#2da24d,#43b8cf);
+background:linear-gradient(90deg,#2ca34d,#35acd0);
 border-radius:99px
 }
 
-.screen-head{
+.head{
 display:flex;
 align-items:center;
 gap:8px;
-margin:5px 2px 12px
+margin:3px 1px 11px
 }
 
 .back{
-border:0;
-background:#fff;
 border:1px solid var(--line);
-border-radius:9px;
-padding:8px 11px
+background:#fff;
+border-radius:8px;
+padding:7px 10px
 }
 
-.screen-head h2{
-margin:0;
-font-size:19px
+.head h2{
+font-size:19px;
+margin:0
 }
 
 .card{
 background:var(--paper);
 border:1px solid var(--line);
-border-radius:16px;
-padding:13px;
+border-radius:15px;
+padding:12px;
 margin:9px 0;
-box-shadow:0 4px 13px #00000009
+box-shadow:0 4px 14px #00000009
 }
 
-.pet-art{
-height:180px;
+.pet{
+height:185px;
 border-radius:13px;
-background:linear-gradient(#cbe5d9,#f4ead1);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:105px;
 position:relative;
-overflow:hidden
+overflow:hidden;
+background:linear-gradient(#cfe5d9,#f0e4cc)
 }
 
-.pet-art:after{
-content:"";
+.pet .floor{
 position:absolute;
 bottom:0;
-left:0;
-right:0;
+width:100%;
 height:35px;
-background:#b8c99b
+background:#b9c894
 }
 
-.info-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:5px;
-margin-top:9px
+/* CACHORRO */
+
+.dog{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+bottom:10px;
+width:150px;
+height:150px
+}
+
+.dog .ears{
+position:absolute;
+top:23px;
+width:46px;
+height:72px;
+background:#a86f42;
+border-radius:55% 35% 45% 45%;
+z-index:1
+}
+
+.dog .le{
+left:0;
+transform:rotate(14deg)
+}
+
+.dog .re{
+right:0;
+transform:rotate(-14deg)
+}
+
+.dog .face{
+position:absolute;
+left:20px;
+top:17px;
+width:110px;
+height:112px;
+background:#c58a52;
+border-radius:48% 48% 45% 45%;
+border:3px solid #734b32;
+z-index:2
+}
+
+.dog .muzzle{
+position:absolute;
+left:38px;
+top:69px;
+width:65px;
+height:43px;
+background:#e7c28f;
+border-radius:50%;
+z-index:3
+}
+
+.dog .eye{
+position:absolute;
+top:58px;
+width:10px;
+height:12px;
+background:#2b2925;
+border-radius:50%;
+z-index:4
+}
+
+.dog .e1{left:47px}
+.dog .e2{right:47px}
+
+.dog .nose{
+position:absolute;
+top:76px;
+left:68px;
+width:22px;
+height:15px;
+background:#2b2925;
+border-radius:50%;
+z-index:5
+}
+
+.dog .mouth{
+position:absolute;
+top:89px;
+left:60px;
+width:37px;
+height:22px;
+border-bottom:3px solid #713d34;
+border-radius:0 0 30px 30px;
+z-index:4
+}
+
+.dog .tongue{
+position:absolute;
+top:101px;
+left:72px;
+width:15px;
+height:20px;
+background:#df7d82;
+border-radius:0 0 12px 12px;
+z-index:4
 }
 
 .info{
-background:#f1eee5;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:5px;
+margin-top:8px
+}
+
+.inf{
+background:#f0eee6;
 border-radius:8px;
-padding:8px;
+padding:7px;
 font-size:10px
 }
 
-.info b{
+.inf b{
 display:block;
-font-size:9px;
-color:#7b8585;
+color:#788386;
+font-size:8px;
 margin-bottom:2px
 }
 
-.case-desc{
-font-size:12px;
+.desc{
+font-size:11px;
 line-height:1.45;
-color:#637275
+color:#647477
 }
 
 .steps{
 display:flex;
-align-items:center;
-margin:2px 0 14px
+margin:2px 0 13px
 }
 
 .step{
 flex:1;
 text-align:center;
-font-size:8px;
+font-size:7px;
 color:#999
 }
 
 .dot{
-width:21px;
-height:21px;
+width:20px;
+height:20px;
 border-radius:50%;
 background:#ddd;
-margin:auto auto 3px;
+margin:auto auto 2px;
 padding-top:4px;
-font-weight:bold
+font-weight:800
 }
 
 .step.on{
@@ -393,97 +601,133 @@ color:white
 .option{
 width:100%;
 text-align:left;
-background:white;
 border:1px solid #d9ddd7;
-border-radius:9px;
-padding:10px;
+background:#fff;
+border-radius:8px;
+padding:9px;
 margin:4px 0;
-font-size:11px
+font-size:10px
 }
 
-.option.selected{
-background:#eaf7ec;
+.option.sel{
+background:#e9f7ec;
 border-color:#2d9b45
 }
 
-.result{
-background:linear-gradient(145deg,#087f78,#16a096);
-color:white;
-text-align:center;
-padding:22px;
-border-radius:18px
+.row{
+display:flex;
+align-items:center;
+border-bottom:1px solid #eee;
+padding:9px 0;
+font-size:10px;
+gap:6px
 }
 
-.result .big{font-size:70px}
+.row:last-child{
+border:0
+}
+
+.row span{
+margin-left:auto;
+font-weight:800
+}
+
+.clinicart{
+height:225px;
+border-radius:13px;
+background:linear-gradient(#d8e9e1 0 70%,#c9a87c 70%);
+position:relative;
+overflow:hidden;
+border:3px solid #b8b2a5
+}
+
+.clinicart .window{
+position:absolute;
+top:25px;
+left:25px;
+width:78px;
+height:62px;
+background:#b7d7db;
+border:5px solid #fff
+}
+
+.clinicart .cab{
+position:absolute;
+right:15px;
+top:18px;
+width:90px;
+height:90px;
+background:#eee6d2;
+border:3px solid #a9997e;
+border-radius:5px
+}
+
+.clinicart .bottles{
+position:absolute;
+right:28px;
+top:35px;
+font-size:25px
+}
+
+.clinicart .table{
+position:absolute;
+left:25px;
+bottom:38px;
+width:110px;
+height:45px;
+background:#59a8ad;
+border:3px solid #668181;
+border-radius:8px
+}
+
+.clinicart .bed{
+position:absolute;
+right:18px;
+bottom:35px;
+width:120px;
+height:43px;
+background:#e9f0ef;
+border:4px solid #768484;
+border-radius:8px;
+transform:skew(-8deg)
+}
+
+.clinicart .plant{
+position:absolute;
+right:8px;
+bottom:95px;
+font-size:32px
+}
+
+.result{
+background:linear-gradient(145deg,#087f78,#149b91);
+color:#fff;
+text-align:center;
+border-radius:17px;
+padding:20px
+}
+
+.stars{
+font-size:28px;
+color:#ffd34d
+}
 
 .reward{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
+grid-template-columns:1fr 1fr 1fr;
+gap:6px;
 margin:12px 0
 }
 
 .reward div{
 background:#ffffff20;
-border-radius:10px;
-padding:10px;
-font-weight:800
-}
-
-.clinic-art{
-height:230px;
-border-radius:14px;
-background:linear-gradient(#d8e9e2 0 70%,#c9a77b 70%);
-position:relative;
-overflow:hidden;
-border:3px solid #b9b3a3
-}
-
-.clinic-art .desk{
-position:absolute;
-left:10%;
-bottom:14%;
-font-size:50px
-}
-
-.clinic-art .bed{
-position:absolute;
-right:8%;
-bottom:15%;
-font-size:58px
-}
-
-.clinic-art .doc{
-position:absolute;
-left:42%;
-bottom:18%;
-font-size:65px
-}
-
-.clinic-art .plant{
-position:absolute;
-right:5%;
-top:8%;
-font-size:38px
-}
-
-.list-row{
-display:flex;
-align-items:center;
-gap:8px;
-border-bottom:1px solid #eee;
-padding:10px 0;
+border-radius:9px;
+padding:9px;
+font-weight:800;
 font-size:11px
 }
 
-.list-row:last-child{border:0}
-
-.list-row span:last-child{
-margin-left:auto;
-font-weight:800
-}
-
-.shop-grid{
+.shop{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:8px
@@ -492,22 +736,24 @@ gap:8px
 .product{
 background:#fff;
 border:1px solid var(--line);
-border-radius:12px;
-padding:10px;
+border-radius:11px;
+padding:9px;
 text-align:center;
-font-size:10px
+font-size:9px
 }
 
-.product .pico{font-size:36px}
+.product .pi{
+font-size:34px
+}
 
-.smallbtn{
+.small{
 border:0;
 background:#e8f4ef;
 color:#087f78;
-border-radius:8px;
+border-radius:7px;
 padding:7px;
 width:100%;
-font-size:10px;
+font-size:9px;
 font-weight:800
 }
 
@@ -517,7 +763,7 @@ bottom:0;
 left:50%;
 transform:translateX(-50%);
 width:min(430px,100%);
-height:76px;
+height:78px;
 background:#fff;
 border-top:1px solid #d7d3c9;
 display:grid;
@@ -530,32 +776,18 @@ box-shadow:0 -5px 15px #00000008
 border:0;
 background:none;
 color:#687477;
-font-size:9px
+font-size:8px
 }
 
 .nav .ni{
 display:block;
-font-size:21px;
+font-size:19px;
 margin-bottom:2px
 }
 
 .nav.active{
 color:#087f78;
 font-weight:900
-}
-
-.toast{
-position:fixed;
-left:50%;
-bottom:88px;
-transform:translateX(-50%);
-background:#26363a;
-color:#fff;
-padding:10px 14px;
-border-radius:10px;
-font-size:11px;
-z-index:50;
-display:none
 }
 </style>
 </head>
@@ -564,223 +796,181 @@ display:none
 
 <div class="app">
 
-<header class="topbar">
+<header class="top">
 
-<div class="brand">
-Vet<span>Life</span><span class="paws">🐾</span>
+<div class="logo">
+Vet<span>Life</span> <span class="paw">🐾</span>
 </div>
 
-<div class="tagline">
+<div class="tag">
 Aprenda. Atenda. Evolua.
 </div>
 
-<div class="topstats">
+<div class="stats">
 
 <div class="stat">
 🪙 MOEDAS
-<b id="coins">4250</b>
+<strong id="coins">4250</strong>
 </div>
 
 <div class="stat">
 💎 RECURSOS
-<b id="gems">125</b>
+<strong>125</strong>
 </div>
 
 <div class="stat">
 ⭐ NÍVEL
-<b id="level">3</b>
+<strong id="level">3</strong>
 </div>
 
 </div>
+
 </header>
 
 <main id="page" class="page"></main>
 
 <nav class="bottom">
 
-<button class="nav active" id="homeNav" onclick="home()">
-<span class="ni">🏠</span>
+<button class="nav active" onclick="home()">
+🏠
+<span class="ni"></span>
 Início
 </button>
 
-<button class="nav" id="missionNav" onclick="missions()">
-<span class="ni">☑️</span>
+<button class="nav" onclick="missions()">
+☑️
+<span class="ni"></span>
 Missões
 </button>
 
-<button class="nav" id="clinicNav" onclick="clinic()">
-<span class="ni">🏥</span>
+<button class="nav" onclick="clinic()">
+🏥
+<span class="ni"></span>
 Clínica
 </button>
 
-<button class="nav" id="profileNav" onclick="profile()">
-<span class="ni">👤</span>
+<button class="nav" onclick="profile()">
+👤
+<span class="ni"></span>
 Perfil
 </button>
 
-<button class="nav" id="moreNav" onclick="more()">
-<span class="ni">•••</span>
+<button class="nav" onclick="more()">
+•••
+<span class="ni"></span>
 Mais
 </button>
 
 </nav>
 
-<div id="toast" class="toast"></div>
-
 </div>
 
 <script>
 
-const data={
+let s=JSON.parse(localStorage.getItem("vetlife10")||"null")||
+{
 coins:4250,
-gems:125,
 xp:350,
 level:3,
 done:0,
-clinicLevel:1,
-avatar:"👩‍⚕️",
-missions:{
-patients:0,
-diagnosis:0,
-exams:0
-}
+clinic:1
 };
 
-let s=
-JSON.parse(localStorage.getItem("vetlife10")||"null")
-||data;
-
-const casesData=[
-
-{
-name:"Thor",
-species:"Canino",
-breed:"Golden Retriever",
-age:"4 anos",
-sex:"Macho",
-pet:"🐶",
-reward:250,
-desc:"Meu cachorro não está bem. Está bebendo mais água, urinando mais e perdeu peso.",
-questions:[
-"Há quanto tempo começou?",
-"Mudou a alimentação?",
-"Está bebendo mais água?",
-"Está urinando mais?",
-"Está perdendo peso?"
-],
-diagnosis:[
-"Diabetes mellitus",
-"Doença renal crônica",
-"Infecção urinária",
-"Hiperadrenocorticismo"
-],
-correct:0
-},
-
-{
-name:"Luna",
-species:"Felino",
-breed:"SRD",
-age:"3 anos",
-sex:"Fêmea",
-pet:"🐱",
-reward:300,
-desc:"Luna está vomitando e perdeu o apetite nos últimos dois dias.",
-questions:[
-"Quando começaram os vômitos?",
-"Comeu algo diferente?",
-"Está bebendo água?",
-"Há diarreia?",
-"Já teve episódios anteriores?"
-],
-diagnosis:[
-"Gastrite",
-"Obstrução gastrointestinal",
-"Doença renal",
-"Parasitismo"
-],
-correct:0
-},
-
-{
-name:"Max",
-species:"Canino",
-breed:"Beagle",
-age:"6 anos",
-sex:"Macho",
-pet:"🐶",
-reward:450,
-desc:"Max apresenta tosse persistente, cansaço e dificuldade respiratória após esforço.",
-questions:[
-"Quando começou a tosse?",
-"Piora com exercício?",
-"Há desmaios?",
-"Usa medicamentos?",
-"Já teve doença cardíaca?"
-],
-diagnosis:[
-"Doença cardíaca",
-"Traqueíte",
-"Alergia",
-"Parasitismo"
-],
-correct:0
-}
-
-];
+const page=document.getElementById("page");
 
 function save(){
 localStorage.setItem("vetlife10",JSON.stringify(s))
 }
 
 function stats(){
-coins.textContent=s.coins;
-gems.textContent=s.gems;
-level.textContent=s.level
+document.getElementById("coins").textContent=s.coins;
+document.getElementById("level").textContent=s.level
 }
 
-function nav(id){
-document
-.querySelectorAll(".nav")
-.forEach(x=>x.classList.remove("active"));
-
-document
-.getElementById(id)
-?.classList.add("active")
+function head(t){
+return `
+<div class="head">
+<button class="back" onclick="home()">←</button>
+<h2>${t}</h2>
+</div>`
 }
 
-function toast(t){
-
-const x=document.getElementById("toast");
-
-x.textContent=t;
-x.style.display="block";
-
-setTimeout(
-()=>x.style.display="none",
-1800
-)
-
+function nav(i){
+document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
+document.querySelectorAll(".nav")[i]?.classList.add("active")
 }
 
 function addXP(n){
-
 s.xp+=n;
+s.coins+=n;
 
 if(s.xp>=800){
-s.level++;
-s.xp-=800
+s.xp-=800;
+s.level++
 }
-
-s.coins+=n;
 
 save();
 stats()
 }
 
+/* VETERINÁRIA */
+
+function doctor(){
+
+return `
+<div class="char">
+
+<div class="hair"></div>
+
+<div class="head"></div>
+
+<div class="eye e1"></div>
+<div class="eye e2"></div>
+
+<div class="nose"></div>
+<div class="smile"></div>
+
+<div class="body"></div>
+<div class="shirt"></div>
+<div class="neck"></div>
+
+<div class="stetho"></div>
+<div class="disc"></div>
+
+</div>
+`
+}
+
+/* CACHORRO */
+
+function dog(){
+
+return `
+<div class="dog">
+
+<div class="ears le"></div>
+<div class="ears re"></div>
+
+<div class="face"></div>
+
+<div class="eye e1"></div>
+<div class="eye e2"></div>
+
+<div class="muzzle"></div>
+
+<div class="nose"></div>
+<div class="mouth"></div>
+<div class="tongue"></div>
+
+</div>
+`
+}
+
+/* HOME */
+
 function home(){
 
-nav("homeNav");
+nav(0);
 
 page.innerHTML=`
 
@@ -788,16 +978,14 @@ page.innerHTML=`
 
 <div class="hero-art">
 
-<div class="sun">☀️</div>
-
 <div class="cloud c1"></div>
 <div class="cloud c2"></div>
 
 <div class="building">
 
-<div class="window w1"></div>
-<div class="window w2"></div>
-<div class="window w3"></div>
+<div class="win w1"></div>
+<div class="win w2"></div>
+<div class="win w3"></div>
 
 <div class="door"></div>
 
@@ -805,9 +993,7 @@ page.innerHTML=`
 
 <div class="tree">🌳</div>
 
-<div class="doctorHero">
-👩‍⚕️
-</div>
+${doctor()}
 
 </div>
 
@@ -829,49 +1015,51 @@ Sua jornada para se tornar uma excelente veterinária começa aqui.
 
 </section>
 
-<div class="section-title">
+<div class="section">
 Menu principal
 </div>
 
-<div class="menu-grid">
+<div class="grid">
 
-<button class="menu-card" onclick="clinic()">
+<button class="menu" onclick="clinic()">
 <div class="ico">🏥</div>
 <b>MINHA CLÍNICA</b>
 </button>
 
-<button class="menu-card" onclick="profile()">
+<button class="menu" onclick="profile()">
 <div class="ico">👩‍⚕️</div>
 <b>MEU PERSONAGEM</b>
 </button>
 
-<button class="menu-card" onclick="cases()">
+<button class="menu" onclick="cases()">
 <div class="ico">🐾</div>
 <b>CASOS</b>
 </button>
 
-<button class="menu-card" onclick="ranking()">
+<button class="menu" onclick="ranking()">
 <div class="ico">🏆</div>
 <b>RANKING</b>
 </button>
 
-<button class="menu-card" onclick="shop()">
+<button class="menu" onclick="shop()">
 <div class="ico">🛒</div>
 <b>LOJA</b>
 </button>
 
-<button class="menu-card" onclick="more()">
+<button class="menu" onclick="more()">
 <div class="ico">⚙️</div>
 <b>CONFIGURAÇÕES</b>
 </button>
 
 </div>
 
-<div class="progress-card">
+<div class="progress">
 
-<div class="progress-head">
+<div class="ph">
 
-<span>📚 Sua evolução</span>
+<span>
+📚 Sua evolução
+</span>
 
 <span>
 Nível ${s.level}
@@ -880,61 +1068,47 @@ Nível ${s.level}
 </div>
 
 <div class="bar">
+
 <i style="width:${s.xp/8}%"></i>
+
 </div>
 
-<p style="font-size:11px;color:#718084;margin:7px 0 0">
+<p style="font-size:10px;color:#718084;margin:7px 0 0">
 
-${s.xp}/800 XP •
-${s.done} casos concluídos
+${s.xp}/800 XP • ${s.done} casos concluídos
 
 </p>
 
 </div>
 
-`
-
+`;
 }
 
-function head(t){
-
-return`
-
-<div class="screen-head">
-
-<button class="back" onclick="home()">
-←
-</button>
-
-<h2>
-${t}
-</h2>
-
-</div>
-
-`
-
-}
+/* PERFIL */
 
 function profile(){
 
-nav("profileNav");
+nav(3);
 
 page.innerHTML=
+
 head("Meu Personagem")+
+
 `
 
 <div class="card" style="text-align:center">
 
-<div style="font-size:82px">
-${s.avatar}
+<div style="height:185px;position:relative">
+
+${doctor()}
+
 </div>
 
-<h2 style="margin:4px">
+<h2 style="margin:0">
 Dra. Júlia Martins
 </h2>
 
-<p style="color:#718084;font-size:11px">
+<p style="font-size:10px;color:#718084">
 Clínica Geral
 </p>
 
@@ -954,9 +1128,7 @@ ${s.xp}/800 XP
 
 <div class="card">
 
-<b>
-ATRIBUTOS
-</b>
+<b>ATRIBUTOS</b>
 
 ${[
 "💚 Empatia",
@@ -964,99 +1136,63 @@ ${[
 "⚡ Agilidade",
 "💬 Comunicação",
 "📋 Organização"
-]
-.map((x,i)=>`
+].map(x=>
 
-<div class="list-row">
+`<div class="row">${x}<span>● ● ● ○ ○</span></div>`
 
-${x}
-
-<span>
-${"●".repeat(3+i%2)}
-${"○".repeat(2-i%2)}
-</span>
+).join("")}
 
 </div>
 
-`).join("")}
-
-</div>
-
-<div class="card">
-
-<button class="primary"
-onclick="changeAvatar()">
-
-PERSONALIZAR PERSONAGEM
-
-</button>
-
-</div>
-
-`
-
+`;
 }
 
-function changeAvatar(){
-
-s.avatar=
-s.avatar==="👩‍⚕️"
-?"🧑‍⚕️"
-:s.avatar==="🧑‍⚕️"
-?"👨‍⚕️"
-:"👩‍⚕️";
-
-save();
-profile()
-
-}
+/* CLÍNICA */
 
 function clinic(){
 
-nav("clinicNav");
+nav(2);
 
 page.innerHTML=
+
 head("Minha Clínica")+
+
 `
 
 <div class="card">
 
-<div class="clinic-art">
+<div class="clinicart">
+
+<div class="window"></div>
+<div class="cab"></div>
+
+<div class="bottles">
+🧴🧴
+</div>
+
+<div class="table"></div>
+<div class="bed"></div>
 
 <div class="plant">
 🪴
 </div>
 
-<div class="desk">
-💻
-</div>
-
-<div class="doc">
-${s.avatar}
-</div>
-
-<div class="bed">
-🛏️
-</div>
-
 </div>
 
 </div>
 
 <div class="card">
 
-<b>
-Nível da Clínica
-</b>
+<b>Nível da Clínica</b>
 
 <span style="float:right">
-⭐ ${s.clinicLevel}
+⭐ ${s.clinic}
 </span>
 
-<div style="color:#e7b21f;font-size:20px;margin-top:6px">
+<div style="color:#e5b12b;font-size:19px">
 
-${"★".repeat(s.clinicLevel)}
-${"☆".repeat(5-s.clinicLevel)}
+${"★".repeat(s.clinic)}
+${"☆".repeat(5-s.clinic)}
 
 </div>
 
@@ -1064,137 +1200,124 @@ ${"☆".repeat(5-s.clinicLevel)}
 
 <div class="card">
 
-<b>
-Estruturas
-</b>
+<b>Estruturas</b>
 
-<div class="list-row">
+<div class="row">
 🩺 Consultório 1
 <span>Nível 1 ›</span>
 </div>
 
-<div class="list-row">
+<div class="row">
 🛎️ Recepção
 <span>Nível 1 ›</span>
 </div>
 
-<div class="list-row">
+<div class="row">
 🪑 Sala de Espera
 <span>Nível 1 ›</span>
 </div>
 
 </div>
 
-<div class="card">
-
-<b>
-Equipamentos
-</b>
-
-<div class="menu-grid">
-
-<div class="menu-card">
-🛏️
-<b>Mesa de Atendimento</b>
-</div>
-
-<div class="menu-card">
-🩺
-<b>Estetoscópio</b>
-</div>
-
-<div class="menu-card">
-🌡️
-<b>Termômetro</b>
-</div>
-
-<div class="menu-card">
-⚖️
-<b>Balança</b>
-</div>
-
-</div>
-
-<button class="primary"
-onclick="upgradeClinic()">
-
-MELHORIAS
-
-</button>
-
-</div>
-
-`
-
+`;
 }
 
-function upgradeClinic(){
+/* CASOS */
 
-if(s.coins<1500)
-return toast("Você precisa de 1.500 moedas.");
+const casesData=[
 
-s.coins-=1500;
+{
+name:"Thor",
+breed:"Golden Retriever",
+pet:"dog",
+desc:"Meu cachorro não está bem. Está bebendo mais água, urinando mais e perdeu peso.",
+diagnosis:[
+"Diabetes mellitus",
+"Doença renal crônica",
+"Infecção urinária",
+"Hiperadrenocorticismo"
+]
+},
 
-s.clinicLevel=
-Math.min(5,s.clinicLevel+1);
+{
+name:"Luna",
+breed:"SRD",
+pet:"cat",
+desc:"Luna está vomitando e perdeu o apetite nos últimos dois dias.",
+diagnosis:[
+"Gastrite",
+"Obstrução gastrointestinal",
+"Doença renal",
+"Parasitismo"
+]
+}
 
-save();
-stats();
-clinic();
+];
 
-toast("Clínica melhorada!")
+function caseArt(c){
 
+if(c.pet==="dog"){
+return dog()
+}
+
+return `<div style="font-size:105px;text-align:center;padding-top:28px">🐱</div>`
 }
 
 function cases(){
 
-nav("homeNav");
+nav(0);
 
 page.innerHTML=
+
 head("Mapa de Casos")+
 
 casesData.map((c,i)=>`
 
 <div class="card">
 
-<div class="pet-art">
-${c.pet}
+<div class="pet">
+
+${caseArt(c)}
+
+<div class="floor"></div>
+
 </div>
 
-<h2 style="margin:10px 0 5px">
+<h2 style="margin:9px 0 4px">
 ${c.name}
 </h2>
 
-<p class="case-desc">
+<p class="desc">
 ${c.desc}
 </p>
 
-<div class="info-grid">
-
 <div class="info">
+
+<div class="inf">
 <b>ESPÉCIE</b>
-${c.species}
+Canino
 </div>
 
-<div class="info">
+<div class="inf">
 <b>RAÇA</b>
 ${c.breed}
 </div>
 
-<div class="info">
+<div class="inf">
 <b>IDADE</b>
-${c.age}
+4 anos
 </div>
 
-<div class="info">
+<div class="inf">
 <b>SEXO</b>
-${c.sex}
+Macho
 </div>
 
 </div>
 
 <button class="primary"
-onclick="startCase(${i})">
+style="margin-top:9px"
+onclick="flow(${i},0)">
 
 INICIAR CONSULTA
 
@@ -1206,22 +1329,24 @@ INICIAR CONSULTA
 
 }
 
+/* ETAPAS */
+
 function steps(n){
 
-let a=[
+return `
+
+<div class="steps">
+
+${[
 "Paciente",
 "Anamnese",
 "Exame",
 "Exames",
 "Diagnóstico",
 "Conduta"
-];
+].map((x,i)=>
 
-return`
-
-<div class="steps">
-
-${a.map((x,i)=>`
+`
 
 <div class="step ${i<=n?"on":""}">
 
@@ -1233,70 +1358,75 @@ ${x}
 
 </div>
 
-`).join("")}
+`
+
+).join("")}
 
 </div>
 
 `
-
 }
 
-function startCase(i){
-flow(i,0)
-}
+/* FLUXO DO CASO */
 
-function flow(i,st){
+function flow(i,n){
 
 let c=casesData[i];
 
-if(st===0)
+if(n===0){
 
 page.innerHTML=
+
 head("Novo Paciente")+
+
 `
 
 <div class="card">
 
 ${steps(0)}
 
-<div class="pet-art">
-${c.pet}
+<div class="pet">
+
+${caseArt(c)}
+
+<div class="floor"></div>
+
 </div>
 
-<div class="case-desc"
-style="margin-top:10px">
+<div class="desc" style="margin-top:9px">
 
-Olá, doutora.
-Meu nome é <b>${c.name}</b>
+Olá, doutora. Meu nome é
+<b>${c.name}</b>
 e não estou bem.
 
 </div>
 
-<div class="info-grid">
-
 <div class="info">
+
+<div class="inf">
 <b>ESPÉCIE</b>
-${c.species}
+Canino
 </div>
 
-<div class="info">
+<div class="inf">
 <b>RAÇA</b>
 ${c.breed}
 </div>
 
-<div class="info">
+<div class="inf">
 <b>IDADE</b>
-${c.age}
+4 anos
 </div>
 
-<div class="info">
+<div class="inf">
 <b>SEXO</b>
-${c.sex}
+Macho
 </div>
 
 </div>
 
 <button class="primary"
+style="margin-top:9px"
 onclick="flow(${i},1)">
 
 INICIAR CONSULTA
@@ -1307,10 +1437,14 @@ INICIAR CONSULTA
 
 `;
 
-else if(st===1)
+}
+
+else if(n===1){
 
 page.innerHTML=
+
 head("Anamnese")+
+
 `
 
 <div class="card">
@@ -1321,16 +1455,27 @@ ${steps(1)}
 O que você gostaria de perguntar?
 </b>
 
-${c.questions.map(q=>`
+${[
+"Há quanto tempo começou?",
+"Mudou a alimentação?",
+"Está bebendo mais água?",
+"Está urinando mais?",
+"Está perdendo peso?"
+].map(x=>
 
-<button class="option"
-onclick="this.classList.toggle('selected')">
+`
 
-☐ ${q}
+<button
+class="option"
+onclick="this.classList.toggle('sel')">
+
+☐ ${x}
 
 </button>
 
-`).join("")}
+`
+
+).join("")}
 
 <button class="primary"
 onclick="flow(${i},2)">
@@ -1343,10 +1488,14 @@ PRÓXIMO
 
 `;
 
-else if(st===2)
+}
+
+else if(n===2){
 
 page.innerHTML=
+
 head("Exame Físico")+
+
 `
 
 <div class="card">
@@ -1360,11 +1509,14 @@ ${[
 ["👄","Mucosas","Normocoradas"],
 ["💧","Hidratação","Leve desidratação"],
 ["⚖️","Peso","32 kg"]
-].map(r=>`
+].map(r=>
 
-<div class="list-row">
+`
 
-${r[0]} ${r[1]}
+<div class="row">
+
+${r[0]}
+${r[1]}
 
 <span>
 ${r[2]}
@@ -1372,9 +1524,12 @@ ${r[2]}
 
 </div>
 
-`).join("")}
+`
 
-<button class="primary"
+).join("")}
+
+<button
+class="primary"
 onclick="flow(${i},3)">
 
 PRÓXIMO
@@ -1385,10 +1540,14 @@ PRÓXIMO
 
 `;
 
-else if(st===3)
+}
+
+else if(n===3){
 
 page.innerHTML=
+
 head("Exames")+
+
 `
 
 <div class="card">
@@ -1405,18 +1564,24 @@ ${[
 "Urinálise — 🪙60",
 "Raio-X — 🪙100",
 "Ultrassom abdominal — 🪙150"
-].map(x=>`
+].map(x=>
 
-<button class="option"
-onclick="this.classList.toggle('selected')">
+`
+
+<button
+class="option"
+onclick="this.classList.toggle('sel')">
 
 ☐ ${x}
 
 </button>
 
-`).join("")}
+`
 
-<button class="primary"
+).join("")}
+
+<button
+class="primary"
 onclick="flow(${i},4)">
 
 PRÓXIMO
@@ -1427,10 +1592,14 @@ PRÓXIMO
 
 `;
 
-else if(st===4)
+}
+
+else{
 
 page.innerHTML=
+
 head("Diagnóstico")+
+
 `
 
 <div class="card">
@@ -1441,44 +1610,58 @@ ${steps(4)}
 Qual é o diagnóstico mais provável?
 </b>
 
-${c.diagnosis.map((x,k)=>`
+${c.diagnosis.map((x,k)=>
 
-<button class="option"
+`
+
+<button
+class="option"
 onclick="diagnose(${i},${k})">
 
 ${x}
 
 </button>
 
-`).join("")}
+`
+
+).join("")}
 
 </div>
 
-`
+`;
 
 }
 
+}
+
+/* DIAGNÓSTICO */
+
 function diagnose(i,k){
 
-let c=casesData[i];
+if(k!==0){
 
-if(k!==c.correct)
-return toast(
-"Hipótese incorreta — revise os achados."
-);
+alert("Hipótese incorreta. Revise os achados.");
+
+return;
+
+}
 
 page.innerHTML=
+
 head("Conduta")+
+
 `
 
 <div class="card">
 
 ${steps(5)}
 
-<div style="background:#eaf7ec;border-radius:10px;padding:10px;font-size:11px">
+<div style="background:#eaf7ec;border-radius:9px;padding:10px;font-size:10px">
 
 Diagnóstico:
-<b>${c.diagnosis[k]}</b>
+<b>
+${casesData[i].diagnosis[0]}
+</b>
 
 </div>
 
@@ -1486,22 +1669,25 @@ ${[
 "Orientar tutor",
 "Registrar achados",
 "Solicitar acompanhamento"
-].map(x=>`
+].map(x=>
 
-<div class="list-row">
+`
+
+<div class="row">
 
 ☑️ ${x}
 
-<span>
-✓
-</span>
+<span>✓</span>
 
 </div>
 
-`).join("")}
+`
 
-<button class="primary"
-onclick="finishCase(${i})">
+).join("")}
+
+<button
+class="primary"
+onclick="finishCase()">
 
 FINALIZAR
 
@@ -1509,36 +1695,31 @@ FINALIZAR
 
 </div>
 
-`
+`;
 
 }
 
-function finishCase(i){
+/* FINAL */
 
-let c=casesData[i];
+function finishCase(){
 
 s.done++;
 
-s.missions.patients++;
-s.missions.diagnosis++;
-s.missions.exams++;
-
 addXP(150);
 
-s.coins+=c.reward;
+page.innerHTML=
 
-save();
-stats();
-
-page.innerHTML=`
+`
 
 <div class="result">
 
-<div class="big">
-${c.pet}
+<div style="height:150px;position:relative">
+
+${dog()}
+
 </div>
 
-<div style="font-size:28px">
+<div class="stars">
 ★★★
 </div>
 
@@ -1547,7 +1728,7 @@ Caso Concluído!
 </h1>
 
 <p>
-Ótimo trabalho, doutora!
+Ótimo trabalho, doutora!<br>
 Você chegou ao diagnóstico correto.
 </p>
 
@@ -1560,12 +1741,18 @@ XP +150
 
 <div>
 🪙<br>
-+${c.reward}
++150
+</div>
+
+<div>
+🏆<br>
++10
 </div>
 
 </div>
 
-<button class="primary"
+<button
+class="primary"
 onclick="cases()">
 
 CONTINUAR
@@ -1574,63 +1761,61 @@ CONTINUAR
 
 </div>
 
-`
+`;
 
 }
 
+/* MISSÕES */
+
 function missions(){
 
-nav("missionNav");
+nav(1);
 
 page.innerHTML=
+
 head("Missões Diárias")+
+
 `
 
 <div class="card">
 
 ${[
-["Atender 3 pacientes",s.missions.patients,3,"🪙100"],
-["Acertar 2 diagnósticos",s.missions.diagnosis,2,"🪙150"],
-["Solicitar 5 exames",s.missions.exams,5,"🪙100"],
-["Completar 1 caso perfeito",s.done?1:0,1,"🪙200"]
-].map(x=>`
+"Atender 3 pacientes",
+"Acertar 2 diagnósticos",
+"Solicitar 5 exames",
+"Completar 1 caso perfeito"
+].map((x,i)=>
 
-<div class="list-row">
+`
 
-☑️ ${x[0]}
+<div class="row">
+
+☑️ ${x}
 
 <span>
-${Math.min(x[1],x[2])}/${x[2]}
-${x[3]}
+${i<2?"2/3":"0/5"} 🪙
 </span>
-
-</div>
-
-`).join("")}
-
-</div>
-
-<div class="card"
-style="text-align:center">
-
-<b>
-Novas missões em
-</b>
-
-<h2>
-12h 45m
-</h2>
 
 </div>
 
 `
 
+).join("")}
+
+</div>
+
+`;
+
 }
+
+/* RANKING */
 
 function ranking(){
 
 page.innerHTML=
+
 head("Ranking")+
+
 `
 
 <div class="card">
@@ -1638,12 +1823,14 @@ head("Ranking")+
 ${[
 ["🥇","Larissa Vet","12.540 XP"],
 ["🥈","Vet_Player","11.890 XP"],
-["🥉","Júlia Martins (você)",(s.xp+800*(s.level-1))+" XP"],
+["🥉","Júlia Martins (você)","10.250 XP"],
 ["4️⃣","MedVet","9.870 XP"],
 ["5️⃣","AnimalCare","9.210 XP"]
-].map(r=>`
+].map(r=>
 
-<div class="list-row">
+`
+
+<div class="row">
 
 <b>
 ${r[0]} ${r[1]}
@@ -1655,7 +1842,9 @@ ${r[2]}
 
 </div>
 
-`).join("")}
+`
+
+).join("")}
 
 <button class="primary">
 VER RECOMPENSAS
@@ -1663,30 +1852,36 @@ VER RECOMPENSAS
 
 </div>
 
-`
+`;
 
 }
+
+/* LOJA */
 
 function shop(){
 
 page.innerHTML=
+
 head("Loja")+
+
 `
 
-<div class="shop-grid">
+<div class="shop">
 
 ${[
-["🏥","Novo Consultório",1500],
-["🖥️","Ultrassom",2000],
-["🥼","Jaleco Premium",300],
-["🪴","Planta Decorativa",200],
-["🦴","Quadro Anatômico",150],
-["🐾","Tapete Pet",100]
-].map(x=>`
+["🏥","Novo Consultório","1.500"],
+["🖥️","Ultrassom","2.000"],
+["🥼","Jaleco Premium","300"],
+["🪴","Planta Decorativa","200"],
+["🦴","Quadro Anatômico","150"],
+["🐾","Tapete Pet","100"]
+].map(x=>
+
+`
 
 <div class="product">
 
-<div class="pico">
+<div class="pi">
 ${x[0]}
 </div>
 
@@ -1698,8 +1893,9 @@ ${x[1]}
 🪙 ${x[2]}
 </p>
 
-<button class="smallbtn"
-onclick="buy(${x[2]})">
+<button
+class="small"
+onclick="alert('Item adicionado à clínica!')">
 
 COMPRAR
 
@@ -1707,40 +1903,29 @@ COMPRAR
 
 </div>
 
-`).join("")}
+`
+
+).join("")}
 
 </div>
 
-`
+`;
 
 }
 
-function buy(n){
-
-if(s.coins<n)
-return toast("Moedas insuficientes.");
-
-s.coins-=n;
-
-save();
-stats();
-
-toast("Item comprado!")
-
-}
+/* MAIS */
 
 function more(){
 
-nav("moreNav");
-
 page.innerHTML=
+
 head("Mais")+
+
 `
 
-<div class="menu-grid">
+<div class="grid">
 
-<button class="menu-card"
-onclick="shop()">
+<button class="menu" onclick="shop()">
 
 <div class="ico">
 🛒
@@ -1752,8 +1937,7 @@ LOJA
 
 </button>
 
-<button class="menu-card"
-onclick="ranking()">
+<button class="menu" onclick="ranking()">
 
 <div class="ico">
 🏆
@@ -1765,8 +1949,7 @@ RANKING
 
 </button>
 
-<button class="menu-card"
-onclick="home()">
+<button class="menu" onclick="home()">
 
 <div class="ico">
 🏠
@@ -1778,36 +1961,9 @@ INÍCIO
 
 </button>
 
-<button class="menu-card"
-onclick="resetGame()">
-
-<div class="ico">
-🔄
 </div>
 
-<b>
-REINICIAR
-</b>
-
-</button>
-
-</div>
-
-`
-
-}
-
-function resetGame(){
-
-if(confirm("Reiniciar o progresso?")){
-
-s=JSON.parse(JSON.stringify(data));
-
-save();
-stats();
-home()
-
-}
+`;
 
 }
 
