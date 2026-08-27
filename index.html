@@ -2,330 +2,513 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>VetLife 1.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>VetLife — 1.0</title>
 
 <style>
-*{box-sizing:border-box}
-body{
-margin:0;
-background:#e9e4d8;
-font-family:Arial,sans-serif;
-color:#263238
+:root{
+--teal:#087f78;
+--teal2:#159b92;
+--green:#2d9b45;
+--lime:#b9ed55;
+--cream:#f8f4e9;
+--paper:#fffdf7;
+--ink:#26363a;
+--muted:#718084;
+--line:#d9d4c7;
+--gold:#f1bd35;
+--blue:#35a9cf;
+--shadow:0 8px 22px rgba(35,55,55,.12)
 }
-button{font:inherit;cursor:pointer}
+
+*{box-sizing:border-box}
+
+html,body{
+margin:0;
+background:#dfe7e3;
+font-family:Arial,Helvetica,sans-serif;
+color:var(--ink)
+}
+
+button{font-family:inherit}
 
 .app{
-max-width:430px;
-margin:auto;
-background:#f7f3e9;
+width:min(100%,430px);
 min-height:100vh;
-padding-bottom:72px
+margin:auto;
+background:var(--cream);
+padding-bottom:76px;
+overflow:hidden
 }
 
-.top{
-background:#087f78;
-color:#fff;
-padding:13px 14px 10px;
-position:sticky;
-top:0;
-z-index:5
+.topbar{
+background:linear-gradient(135deg,#087f78,#12988e);
+color:white;
+padding:15px 15px 12px;
+box-shadow:0 3px 12px #0002;
+position:relative;
+z-index:3
 }
 
-.topline{
-display:flex;
-align-items:center;
-justify-content:space-between
+.brand{
+font-size:32px;
+font-weight:900;
+letter-spacing:-1.5px
 }
 
-.logo{
-font-size:26px;
-font-weight:800
+.brand span{color:var(--lime)}
+
+.paws{
+color:#167bc2;
+font-size:22px;
+margin-left:5px
 }
 
-.logo b{color:#b9ee5a}
+.tagline{
+font-size:10px;
+opacity:.9;
+margin-left:4px;
+margin-top:-5px
+}
 
-.paw{font-size:22px}
-
-.stats{
+.topstats{
 display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:6px;
-margin-top:9px
+grid-template-columns:1.1fr 1fr 1fr;
+gap:7px;
+margin-top:12px
 }
 
 .stat{
-background:#ffffff20;
-border-radius:10px;
-padding:6px;
+background:#ffffff1e;
+border:1px solid #ffffff25;
+border-radius:13px;
+padding:7px 5px;
 text-align:center;
-font-size:11px
+font-size:10px
 }
 
-.stat strong{
+.stat b{
 display:block;
 font-size:14px;
 margin-top:2px
 }
 
-.content{padding:12px}
-
-.screenTitle{
-font-weight:800;
-font-size:18px;
-text-align:center;
-margin:3px 0 10px
-}
-
-.card{
-background:#fff;
-border:1px solid #d9d4c9;
-border-radius:14px;
-padding:12px;
-margin:9px 0;
-box-shadow:0 2px 7px #0000000d
-}
+.page{padding:12px}
 
 .hero{
-background:linear-gradient(145deg,#d9f2e8,#fff4cc);
-text-align:center;
-padding:16px
+border-radius:22px;
+overflow:hidden;
+box-shadow:var(--shadow);
+border:1px solid #d8ddcf;
+background:linear-gradient(150deg,#dff4e8,#fff5cb);
+margin-bottom:12px
 }
 
-.heroAvatar{font-size:80px}
-
-.hero h1{
-margin:5px 0;
-font-size:24px
+.hero-art{
+height:245px;
+position:relative;
+overflow:hidden;
+background:linear-gradient(#9bd2d1,#dcebdc 62%,#c8b083 62% 100%)
 }
 
-.muted{
-color:#657779;
-font-size:13px;
-line-height:1.4
+.cloud{
+position:absolute;
+background:#ffffff99;
+border-radius:50%;
+width:90px;
+height:28px;
+filter:blur(1px)
 }
 
-.btn{
+.c1{left:20px;top:28px}
+.c2{right:25px;top:50px;width:70px}
+
+.building{
+position:absolute;
+bottom:0;
+left:15px;
+width:205px;
+height:105px;
+background:#e7ece5;
+border:3px solid #b6c2b9;
+border-radius:8px 8px 0 0;
+box-shadow:inset 0 0 0 5px #d6ddd6
+}
+
+.building:before{
+content:"VET";
+position:absolute;
+left:15px;
+top:10px;
+color:#087f78;
+font-weight:900;
+font-size:18px
+}
+
+.window{
+position:absolute;
+width:38px;
+height:27px;
+background:#83b9c0;
+border:3px solid #718d90;
+border-radius:3px
+}
+
+.w1{left:18px;bottom:19px}
+.w2{left:76px;bottom:19px}
+.w3{left:134px;bottom:19px}
+
+.door{
+position:absolute;
+right:12px;
+bottom:0;
+width:38px;
+height:62px;
+background:#927a61;
+border-radius:4px 4px 0 0
+}
+
+.tree{
+position:absolute;
+right:24px;
+bottom:27px;
+font-size:75px
+}
+
+.sun{
+position:absolute;
+right:35px;
+top:20px;
+font-size:42px
+}
+
+.doctorHero{
+position:absolute;
+right:10px;
+bottom:12px;
+font-size:104px;
+filter:drop-shadow(0 5px 3px #0002)
+}
+
+.hero-copy{
+padding:15px;
+text-align:center
+}
+
+.hero-copy h1{
+font-size:23px;
+margin:0 0 5px
+}
+
+.hero-copy p{
+margin:0 0 12px;
+color:var(--muted);
+font-size:13px
+}
+
+.primary{
 border:0;
-border-radius:9px;
-background:#16953d;
-color:#fff;
-font-weight:800;
-padding:11px 14px;
+background:linear-gradient(180deg,#36a44d,#208b3b);
+color:white;
+font-weight:900;
+border-radius:11px;
+padding:12px 18px;
+box-shadow:0 4px 0 #176d2d;
 width:100%;
-margin-top:8px
+font-size:14px
 }
 
-.btn.teal{background:#087f78}
-.btn.light{
-background:#e7f2ef;
-color:#087f78
-}
-.btn.gold{
-background:#e8b52c;
-color:#493900
+.section-title{
+font-size:19px;
+font-weight:900;
+margin:16px 3px 9px
 }
 
-.grid2{
+.menu-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:8px
 }
 
-.mini{
-border:1px solid #d9d4c9;
-background:#fff;
-border-radius:10px;
-padding:10px;
+.menu-card{
+border:1px solid var(--line);
+background:var(--paper);
+border-radius:13px;
+padding:11px 8px;
 text-align:center;
-font-size:12px
+box-shadow:0 3px 10px #00000008;
+color:var(--ink)
 }
 
-.mini b{
+.menu-card .ico{font-size:25px}
+
+.menu-card b{
 display:block;
-margin-top:5px
+font-size:10px;
+margin-top:4px
+}
+
+.progress-card{
+background:var(--paper);
+border:1px solid var(--line);
+border-radius:16px;
+padding:14px;
+margin-top:12px;
+box-shadow:var(--shadow)
+}
+
+.progress-head{
+display:flex;
+justify-content:space-between;
+font-weight:800;
+font-size:13px
 }
 
 .bar{
-height:8px;
-background:#e4e5e2;
-border-radius:8px;
-overflow:hidden
+height:10px;
+background:#e2e5df;
+border-radius:99px;
+overflow:hidden;
+margin-top:9px
 }
 
 .bar i{
 display:block;
 height:100%;
-background:#29a7c5
+background:linear-gradient(90deg,#2da24d,#43b8cf);
+border-radius:99px
 }
 
-.steps{
+.screen-head{
 display:flex;
-justify-content:space-between;
-margin:8px 0 14px
-}
-
-.step{
-text-align:center;
-font-size:9px;
-color:#777;
-flex:1
-}
-
-.dot{
-width:22px;
-height:22px;
-border-radius:50%;
-background:#ddd;
-margin:auto;
-padding-top:4px;
-font-weight:bold
-}
-
-.step.on .dot{
-background:#15953e;
-color:#fff
-}
-
-.step.on{
-color:#263238;
-font-weight:bold
-}
-
-.pet{
-font-size:76px;
-text-align:center
-}
-
-.speech{
-background:#fff;
-border:1px solid #ddd;
-border-radius:10px;
-padding:10px;
-margin:5px 0 12px;
-position:relative;
-font-size:13px
-}
-
-.info{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:4px;
-font-size:11px
-}
-
-.info div{
-background:#f6f3ec;
-padding:7px;
-border-radius:7px
-}
-
-.choice{
-width:100%;
-text-align:left;
-background:#fff;
-border:1px solid #d7d7d2;
-border-radius:9px;
-padding:10px;
-margin:4px 0;
-font-size:12px
-}
-
-.choice.ok{
-border-color:#15953e;
-background:#edf8ef
-}
-
-.row{
-display:flex;
-justify-content:space-between;
 align-items:center;
-padding:8px 0;
-border-bottom:1px solid #eee;
-font-size:12px
+gap:8px;
+margin:5px 2px 12px
 }
 
-.row:last-child{border:0}
-
-.check{
-color:#15953e;
-font-weight:bold
+.back{
+border:0;
+background:#fff;
+border:1px solid var(--line);
+border-radius:9px;
+padding:8px 11px
 }
 
-.clinic{
-height:245px;
-background:linear-gradient(#dcefe8 0 72%,#caa77b 72%);
-border:3px solid #c6b59d;
-border-radius:12px;
+.screen-head h2{
+margin:0;
+font-size:19px
+}
+
+.card{
+background:var(--paper);
+border:1px solid var(--line);
+border-radius:16px;
+padding:13px;
+margin:9px 0;
+box-shadow:0 4px 13px #00000009
+}
+
+.pet-art{
+height:180px;
+border-radius:13px;
+background:linear-gradient(#cbe5d9,#f4ead1);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:105px;
 position:relative;
 overflow:hidden
 }
 
-.clinic .obj{
+.pet-art:after{
+content:"";
 position:absolute;
-font-size:34px
+bottom:0;
+left:0;
+right:0;
+height:35px;
+background:#b8c99b
 }
 
-.o1{left:7%;top:12%}
-.o2{right:8%;top:13%}
-.o3{left:11%;bottom:9%}
-.o4{right:12%;bottom:10%}
-
-.doctor{
-position:absolute;
-font-size:50px;
-left:43%;
-top:48%
+.info-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:5px;
+margin-top:9px
 }
 
-.room{
-border:1px solid #d8d2c7;
+.info{
+background:#f1eee5;
+border-radius:8px;
+padding:8px;
+font-size:10px
+}
+
+.info b{
+display:block;
+font-size:9px;
+color:#7b8585;
+margin-bottom:2px
+}
+
+.case-desc{
+font-size:12px;
+line-height:1.45;
+color:#637275
+}
+
+.steps{
+display:flex;
+align-items:center;
+margin:2px 0 14px
+}
+
+.step{
+flex:1;
+text-align:center;
+font-size:8px;
+color:#999
+}
+
+.dot{
+width:21px;
+height:21px;
+border-radius:50%;
+background:#ddd;
+margin:auto auto 3px;
+padding-top:4px;
+font-weight:bold
+}
+
+.step.on{
+color:var(--teal);
+font-weight:800
+}
+
+.step.on .dot{
+background:var(--teal);
+color:white
+}
+
+.option{
+width:100%;
+text-align:left;
+background:white;
+border:1px solid #d9ddd7;
 border-radius:9px;
-padding:9px;
-background:#fff;
+padding:10px;
+margin:4px 0;
+font-size:11px
+}
+
+.option.selected{
+background:#eaf7ec;
+border-color:#2d9b45
+}
+
+.result{
+background:linear-gradient(145deg,#087f78,#16a096);
+color:white;
+text-align:center;
+padding:22px;
+border-radius:18px
+}
+
+.result .big{font-size:70px}
+
+.reward{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin:12px 0
+}
+
+.reward div{
+background:#ffffff20;
+border-radius:10px;
+padding:10px;
+font-weight:800
+}
+
+.clinic-art{
+height:230px;
+border-radius:14px;
+background:linear-gradient(#d8e9e2 0 70%,#c9a77b 70%);
+position:relative;
+overflow:hidden;
+border:3px solid #b9b3a3
+}
+
+.clinic-art .desk{
+position:absolute;
+left:10%;
+bottom:14%;
+font-size:50px
+}
+
+.clinic-art .bed{
+position:absolute;
+right:8%;
+bottom:15%;
+font-size:58px
+}
+
+.clinic-art .doc{
+position:absolute;
+left:42%;
+bottom:18%;
+font-size:65px
+}
+
+.clinic-art .plant{
+position:absolute;
+right:5%;
+top:8%;
+font-size:38px
+}
+
+.list-row{
 display:flex;
 align-items:center;
 gap:8px;
+border-bottom:1px solid #eee;
+padding:10px 0;
 font-size:11px
 }
 
-.room span{font-size:25px}
+.list-row:last-child{border:0}
+
+.list-row span:last-child{
+margin-left:auto;
+font-weight:800
+}
+
+.shop-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px
+}
 
 .product{
-border:1px solid #ddd6ca;
-border-radius:10px;
-padding:8px;
+background:#fff;
+border:1px solid var(--line);
+border-radius:12px;
+padding:10px;
 text-align:center;
-background:#fff;
-font-size:11px
+font-size:10px
 }
 
-.product .ico{font-size:30px}
+.product .pico{font-size:36px}
 
-.product button{
-font-size:11px;
-padding:7px
-}
-
-.tabs{
-display:flex;
-gap:5px;
-overflow:auto;
-margin-bottom:9px
-}
-
-.tab{
-white-space:nowrap;
-border:1px solid #d5d0c7;
-background:#fff;
+.smallbtn{
+border:0;
+background:#e8f4ef;
+color:#087f78;
 border-radius:8px;
-padding:7px 10px;
-font-size:11px
-}
-
-.tab.active{
-background:#087f78;
-color:#fff
+padding:7px;
+width:100%;
+font-size:10px;
+font-weight:800
 }
 
 .bottom{
@@ -334,45 +517,46 @@ bottom:0;
 left:50%;
 transform:translateX(-50%);
 width:min(430px,100%);
-height:70px;
+height:76px;
 background:#fff;
-border-top:1px solid #d5d0c7;
+border-top:1px solid #d7d3c9;
 display:grid;
 grid-template-columns:repeat(5,1fr);
-z-index:9
+z-index:20;
+box-shadow:0 -5px 15px #00000008
 }
 
 .nav{
 border:0;
 background:none;
-color:#586668;
+color:#687477;
 font-size:9px
 }
 
-.nav span{
+.nav .ni{
 display:block;
-font-size:22px
+font-size:21px;
+margin-bottom:2px
 }
 
 .nav.active{
 color:#087f78;
-font-weight:bold
+font-weight:900
 }
 
-.stars{
-color:#e7b21f;
-font-size:22px
+.toast{
+position:fixed;
+left:50%;
+bottom:88px;
+transform:translateX(-50%);
+background:#26363a;
+color:#fff;
+padding:10px 14px;
+border-radius:10px;
+font-size:11px;
+z-index:50;
+display:none
 }
-
-.success{
-background:#e0f4e7;
-border-left:4px solid #15953e;
-padding:10px;
-border-radius:7px;
-font-size:12px
-}
-
-.locked{opacity:.45}
 </style>
 </head>
 
@@ -380,84 +564,81 @@ font-size:12px
 
 <div class="app">
 
-<header class="top">
+<header class="topbar">
 
-<div class="topline">
-<div class="logo">
-Vet<span class="paw">Life🐾</span>
-</div>
-<span>⋮</span>
+<div class="brand">
+Vet<span>Life</span><span class="paws">🐾</span>
 </div>
 
-<div class="stats">
+<div class="tagline">
+Aprenda. Atenda. Evolua.
+</div>
+
+<div class="topstats">
 
 <div class="stat">
 🪙 MOEDAS
-<strong id="coins">4250</strong>
+<b id="coins">4250</b>
 </div>
 
 <div class="stat">
 💎 RECURSOS
-<strong id="gems">125</strong>
+<b id="gems">125</b>
 </div>
 
 <div class="stat">
-⭐ XP
-<strong id="xp">350/800</strong>
+⭐ NÍVEL
+<b id="level">3</b>
 </div>
 
 </div>
 </header>
 
-<main id="content" class="content"></main>
+<main id="page" class="page"></main>
 
 <nav class="bottom">
 
-<button class="nav active" id="n-home" onclick="home()">
-<span>🏠</span>
+<button class="nav active" id="homeNav" onclick="home()">
+<span class="ni">🏠</span>
 Início
 </button>
 
-<button class="nav" id="n-missions" onclick="missions()">
-<span>☑️</span>
+<button class="nav" id="missionNav" onclick="missions()">
+<span class="ni">☑️</span>
 Missões
 </button>
 
-<button class="nav" id="n-clinic" onclick="clinic()">
-<span>🏥</span>
+<button class="nav" id="clinicNav" onclick="clinic()">
+<span class="ni">🏥</span>
 Clínica
 </button>
 
-<button class="nav" id="n-profile" onclick="profile()">
-<span>👤</span>
+<button class="nav" id="profileNav" onclick="profile()">
+<span class="ni">👤</span>
 Perfil
 </button>
 
-<button class="nav" id="n-more" onclick="more()">
-<span>•••</span>
+<button class="nav" id="moreNav" onclick="more()">
+<span class="ni">•••</span>
 Mais
 </button>
 
 </nav>
 
-</div>
+<div id="toast" class="toast"></div>
 
+</div>
 
 <script>
 
-const initial={
+const data={
 coins:4250,
 gems:125,
 xp:350,
 level:3,
-rep:10,
 done:0,
-stock:5,
 clinicLevel:1,
-rooms:1,
 avatar:"👩‍⚕️",
-decor:["🪴","🖼️","🛏️"],
-history:[],
 missions:{
 patients:0,
 diagnosis:0,
@@ -465,8 +646,9 @@ exams:0
 }
 };
 
-let s=JSON.parse(localStorage.getItem("vetlife10")||"null")||initial;
-
+let s=
+JSON.parse(localStorage.getItem("vetlife10")||"null")
+||data;
 
 const casesData=[
 
@@ -477,9 +659,8 @@ breed:"Golden Retriever",
 age:"4 anos",
 sex:"Macho",
 pet:"🐶",
-diff:"Fácil",
 reward:250,
-desc:"Está mais quieto e não está bem. Tutor relata aumento da sede, urina frequente e perda de peso.",
+desc:"Meu cachorro não está bem. Está bebendo mais água, urinando mais e perdeu peso.",
 questions:[
 "Há quanto tempo começou?",
 "Mudou a alimentação?",
@@ -503,9 +684,8 @@ breed:"SRD",
 age:"3 anos",
 sex:"Fêmea",
 pet:"🐱",
-diff:"Médio",
 reward:300,
-desc:"Apresenta vômitos e falta de apetite há dois dias.",
+desc:"Luna está vomitando e perdeu o apetite nos últimos dois dias.",
 questions:[
 "Quando começaram os vômitos?",
 "Comeu algo diferente?",
@@ -529,9 +709,8 @@ breed:"Beagle",
 age:"6 anos",
 sex:"Macho",
 pet:"🐶",
-diff:"Difícil",
 reward:450,
-desc:"Chega com tosse persistente, cansaço e dificuldade respiratória após esforço.",
+desc:"Max apresenta tosse persistente, cansaço e dificuldade respiratória após esforço.",
 questions:[
 "Quando começou a tosse?",
 "Piora com exercício?",
@@ -550,54 +729,482 @@ correct:0
 
 ];
 
-
 function save(){
 localStorage.setItem("vetlife10",JSON.stringify(s))
 }
 
-
 function stats(){
-
-document.getElementById("coins").textContent=s.coins;
-
-document.getElementById("gems").textContent=s.gems;
-
-document.getElementById("xp").textContent=s.xp+"/800";
-
+coins.textContent=s.coins;
+gems.textContent=s.gems;
+level.textContent=s.level
 }
 
-
 function nav(id){
-
 document
 .querySelectorAll(".nav")
 .forEach(x=>x.classList.remove("active"));
 
-document.getElementById(id).classList.add("active");
-
+document
+.getElementById(id)
+?.classList.add("active")
 }
 
+function toast(t){
+
+const x=document.getElementById("toast");
+
+x.textContent=t;
+x.style.display="block";
+
+setTimeout(
+()=>x.style.display="none",
+1800
+)
+
+}
 
 function addXP(n){
 
 s.xp+=n;
 
 if(s.xp>=800){
-
 s.level++;
-
-s.xp-=800;
-
+s.xp-=800
 }
 
 s.coins+=n;
 
 save();
+stats()
+}
 
-stats();
+function home(){
+
+nav("homeNav");
+
+page.innerHTML=`
+
+<section class="hero">
+
+<div class="hero-art">
+
+<div class="sun">☀️</div>
+
+<div class="cloud c1"></div>
+<div class="cloud c2"></div>
+
+<div class="building">
+
+<div class="window w1"></div>
+<div class="window w2"></div>
+<div class="window w3"></div>
+
+<div class="door"></div>
+
+</div>
+
+<div class="tree">🌳</div>
+
+<div class="doctorHero">
+👩‍⚕️
+</div>
+
+</div>
+
+<div class="hero-copy">
+
+<h1>
+Bem-vinda à VetLife! 🐾
+</h1>
+
+<p>
+Sua jornada para se tornar uma excelente veterinária começa aqui.
+</p>
+
+<button class="primary" onclick="cases()">
+▶ JOGAR
+</button>
+
+</div>
+
+</section>
+
+<div class="section-title">
+Menu principal
+</div>
+
+<div class="menu-grid">
+
+<button class="menu-card" onclick="clinic()">
+<div class="ico">🏥</div>
+<b>MINHA CLÍNICA</b>
+</button>
+
+<button class="menu-card" onclick="profile()">
+<div class="ico">👩‍⚕️</div>
+<b>MEU PERSONAGEM</b>
+</button>
+
+<button class="menu-card" onclick="cases()">
+<div class="ico">🐾</div>
+<b>CASOS</b>
+</button>
+
+<button class="menu-card" onclick="ranking()">
+<div class="ico">🏆</div>
+<b>RANKING</b>
+</button>
+
+<button class="menu-card" onclick="shop()">
+<div class="ico">🛒</div>
+<b>LOJA</b>
+</button>
+
+<button class="menu-card" onclick="more()">
+<div class="ico">⚙️</div>
+<b>CONFIGURAÇÕES</b>
+</button>
+
+</div>
+
+<div class="progress-card">
+
+<div class="progress-head">
+
+<span>📚 Sua evolução</span>
+
+<span>
+Nível ${s.level}
+</span>
+
+</div>
+
+<div class="bar">
+<i style="width:${s.xp/8}%"></i>
+</div>
+
+<p style="font-size:11px;color:#718084;margin:7px 0 0">
+
+${s.xp}/800 XP •
+${s.done} casos concluídos
+
+</p>
+
+</div>
+
+`
 
 }
 
+function head(t){
+
+return`
+
+<div class="screen-head">
+
+<button class="back" onclick="home()">
+←
+</button>
+
+<h2>
+${t}
+</h2>
+
+</div>
+
+`
+
+}
+
+function profile(){
+
+nav("profileNav");
+
+page.innerHTML=
+head("Meu Personagem")+
+`
+
+<div class="card" style="text-align:center">
+
+<div style="font-size:82px">
+${s.avatar}
+</div>
+
+<h2 style="margin:4px">
+Dra. Júlia Martins
+</h2>
+
+<p style="color:#718084;font-size:11px">
+Clínica Geral
+</p>
+
+<b>
+NÍVEL ${s.level}
+</b>
+
+<div class="bar">
+<i style="width:${s.xp/8}%"></i>
+</div>
+
+<p style="font-size:10px;color:#718084">
+${s.xp}/800 XP
+</p>
+
+</div>
+
+<div class="card">
+
+<b>
+ATRIBUTOS
+</b>
+
+${[
+"💚 Empatia",
+"🧠 Raciocínio",
+"⚡ Agilidade",
+"💬 Comunicação",
+"📋 Organização"
+]
+.map((x,i)=>`
+
+<div class="list-row">
+
+${x}
+
+<span>
+${"●".repeat(3+i%2)}
+${"○".repeat(2-i%2)}
+</span>
+
+</div>
+
+`).join("")}
+
+</div>
+
+<div class="card">
+
+<button class="primary"
+onclick="changeAvatar()">
+
+PERSONALIZAR PERSONAGEM
+
+</button>
+
+</div>
+
+`
+
+}
+
+function changeAvatar(){
+
+s.avatar=
+s.avatar==="👩‍⚕️"
+?"🧑‍⚕️"
+:s.avatar==="🧑‍⚕️"
+?"👨‍⚕️"
+:"👩‍⚕️";
+
+save();
+profile()
+
+}
+
+function clinic(){
+
+nav("clinicNav");
+
+page.innerHTML=
+head("Minha Clínica")+
+`
+
+<div class="card">
+
+<div class="clinic-art">
+
+<div class="plant">
+🪴
+</div>
+
+<div class="desk">
+💻
+</div>
+
+<div class="doc">
+${s.avatar}
+</div>
+
+<div class="bed">
+🛏️
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<b>
+Nível da Clínica
+</b>
+
+<span style="float:right">
+⭐ ${s.clinicLevel}
+</span>
+
+<div style="color:#e7b21f;font-size:20px;margin-top:6px">
+
+${"★".repeat(s.clinicLevel)}
+${"☆".repeat(5-s.clinicLevel)}
+
+</div>
+
+</div>
+
+<div class="card">
+
+<b>
+Estruturas
+</b>
+
+<div class="list-row">
+🩺 Consultório 1
+<span>Nível 1 ›</span>
+</div>
+
+<div class="list-row">
+🛎️ Recepção
+<span>Nível 1 ›</span>
+</div>
+
+<div class="list-row">
+🪑 Sala de Espera
+<span>Nível 1 ›</span>
+</div>
+
+</div>
+
+<div class="card">
+
+<b>
+Equipamentos
+</b>
+
+<div class="menu-grid">
+
+<div class="menu-card">
+🛏️
+<b>Mesa de Atendimento</b>
+</div>
+
+<div class="menu-card">
+🩺
+<b>Estetoscópio</b>
+</div>
+
+<div class="menu-card">
+🌡️
+<b>Termômetro</b>
+</div>
+
+<div class="menu-card">
+⚖️
+<b>Balança</b>
+</div>
+
+</div>
+
+<button class="primary"
+onclick="upgradeClinic()">
+
+MELHORIAS
+
+</button>
+
+</div>
+
+`
+
+}
+
+function upgradeClinic(){
+
+if(s.coins<1500)
+return toast("Você precisa de 1.500 moedas.");
+
+s.coins-=1500;
+
+s.clinicLevel=
+Math.min(5,s.clinicLevel+1);
+
+save();
+stats();
+clinic();
+
+toast("Clínica melhorada!")
+
+}
+
+function cases(){
+
+nav("homeNav");
+
+page.innerHTML=
+head("Mapa de Casos")+
+
+casesData.map((c,i)=>`
+
+<div class="card">
+
+<div class="pet-art">
+${c.pet}
+</div>
+
+<h2 style="margin:10px 0 5px">
+${c.name}
+</h2>
+
+<p class="case-desc">
+${c.desc}
+</p>
+
+<div class="info-grid">
+
+<div class="info">
+<b>ESPÉCIE</b>
+${c.species}
+</div>
+
+<div class="info">
+<b>RAÇA</b>
+${c.breed}
+</div>
+
+<div class="info">
+<b>IDADE</b>
+${c.age}
+</div>
+
+<div class="info">
+<b>SEXO</b>
+${c.sex}
+</div>
+
+</div>
+
+<button class="primary"
+onclick="startCase(${i})">
+
+INICIAR CONSULTA
+
+</button>
+
+</div>
+
+`).join("")
+
+}
 
 function steps(n){
 
@@ -610,14 +1217,17 @@ let a=[
 "Conduta"
 ];
 
-return `
+return`
+
 <div class="steps">
 
 ${a.map((x,i)=>`
 
 <div class="step ${i<=n?"on":""}">
 
-<div class="dot">${i+1}</div>
+<div class="dot">
+${i+1}
+</div>
 
 ${x}
 
@@ -626,470 +1236,82 @@ ${x}
 `).join("")}
 
 </div>
-`;
+
+`
 
 }
-
-
-function home(){
-
-nav("n-home");
-
-stats();
-
-content.innerHTML=`
-
-<div class="hero card">
-
-<div class="heroAvatar">
-${s.avatar}
-</div>
-
-<h1>
-Bem-vinda à VetLife! 🐾
-</h1>
-
-<p class="muted">
-Sua jornada para se tornar uma excelente veterinária começa aqui.
-</p>
-
-<button class="btn" onclick="cases()">
-▶ JOGAR
-</button>
-
-</div>
-
-
-<div class="grid2">
-
-<button class="mini" onclick="clinic()">
-🏥
-<b>MINHA CLÍNICA</b>
-</button>
-
-<button class="mini" onclick="profile()">
-👩‍⚕️
-<b>MEU PERSONAGEM</b>
-</button>
-
-<button class="mini" onclick="cases()">
-🐾
-<b>CASOS</b>
-</button>
-
-<button class="mini" onclick="ranking()">
-🏆
-<b>RANKING</b>
-</button>
-
-<button class="mini" onclick="more()">
-🛒
-<b>LOJA</b>
-</button>
-
-<button class="mini" onclick="more()">
-⚙️
-<b>CONFIGURAÇÕES</b>
-</button>
-
-</div>
-
-
-<div class="card">
-
-<b>📚 Sua evolução</b>
-
-<p class="muted">
-Nível ${s.level} • ${s.xp}/800 XP
-</p>
-
-<div class="bar">
-
-<i style="width:${Math.min(100,s.xp/8)}%"></i>
-
-</div>
-
-<p class="muted">
-🏆 Reputação ${s.rep}
-•
-🩺 ${s.done} casos concluídos
-</p>
-
-</div>
-
-`;
-
-}
-
-
-function profile(){
-
-nav("n-profile");
-
-content.innerHTML=`
-
-<div class="screenTitle">
-Meu Personagem
-</div>
-
-
-<div class="card">
-
-<div style="font-size:65px;text-align:center">
-${s.avatar}
-</div>
-
-<h2 style="text-align:center">
-Dra. Júlia Martins
-</h2>
-
-<p class="muted" style="text-align:center">
-Clínica Geral
-</p>
-
-<b>NÍVEL ${s.level}</b>
-
-<div class="bar">
-
-<i style="width:${s.xp/8}%"></i>
-
-</div>
-
-<p class="muted">
-${s.xp}/800 XP
-</p>
-
-</div>
-
-
-<div class="card">
-
-<b>ATRIBUTOS</b>
-
-<div class="row">
-💚 Empatia
-<span>❤️❤️❤️🤍🤍</span>
-</div>
-
-<div class="row">
-🧠 Raciocínio
-<span>🟩🟩🟩🤍🤍</span>
-</div>
-
-<div class="row">
-⚡ Agilidade
-<span>🟦🟦🟦🤍🤍</span>
-</div>
-
-<div class="row">
-💬 Comunicação
-<span>🟦🟦🟦🟦🤍</span>
-</div>
-
-<div class="row">
-📋 Organização
-<span>🟩🟩🟩🤍🤍</span>
-</div>
-
-</div>
-
-
-<div class="card">
-
-<b>PERSONALIZAÇÃO</b>
-
-<div class="grid2">
-
-<button class="btn light" onclick="changeAvatar()">
-Trocar personagem
-</button>
-
-<button class="btn light" onclick="addXP(25)">
-Treinar +25 XP
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-function clinic(){
-
-nav("n-clinic");
-
-content.innerHTML=`
-
-<div class="screenTitle">
-Minha Clínica
-</div>
-
-
-<div class="card">
-
-<div class="clinic">
-
-<span class="obj o1">🖼️</span>
-
-<span class="obj o2">🧰</span>
-
-<span class="obj o3">🛏️</span>
-
-<span class="obj o4">🪴</span>
-
-<span class="doctor">
-${s.avatar}
-</span>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<b>
-Nível da Clínica
-</b>
-
-<span style="float:right">
-⭐ ${s.clinicLevel}
-</span>
-
-<div class="stars">
-★${"★".repeat(s.clinicLevel-1)}☆☆☆☆
-</div>
-
-</div>
-
-
-<div class="card">
-
-<b>Estruturas</b>
-
-<div class="room">
-<span>🩺</span>
-Consultório 1
-<small>Nível 1</small>
-</div>
-
-<div class="room">
-<span>🛎️</span>
-Recepção
-<small>Nível 1</small>
-</div>
-
-<div class="room">
-<span>🪑</span>
-Sala de Espera
-<small>Nível 1</small>
-</div>
-
-</div>
-
-
-<div class="card">
-
-<b>Equipamentos</b>
-
-<div class="grid2">
-
-<div class="mini">
-🛏️
-<b>Mesa</b>
-</div>
-
-<div class="mini">
-🩺
-<b>Estetoscópio</b>
-</div>
-
-<div class="mini">
-🌡️
-<b>Termômetro</b>
-</div>
-
-<div class="mini">
-⚖️
-<b>Balança</b>
-</div>
-
-</div>
-
-<button class="btn" onclick="upgradeClinic()">
-Melhorias
-</button>
-
-</div>
-
-`;
-
-}
-
-
-function upgradeClinic(){
-
-let cost=1500;
-
-if(s.coins<cost){
-
-alert("Você precisa de "+cost+" moedas.");
-
-return;
-
-}
-
-s.coins-=cost;
-
-s.clinicLevel++;
-
-save();
-
-clinic();
-
-stats();
-
-}
-
-
-function cases(){
-
-nav("n-home");
-
-content.innerHTML=`
-
-<div class="screenTitle">
-Novo Paciente
-</div>
-
-${casesData.map((c,i)=>`
-
-<div class="card">
-
-<div class="pet">
-${c.pet}
-</div>
-
-<h2 style="text-align:center">
-${c.name}
-</h2>
-
-<p class="muted">
-${c.desc}
-</p>
-
-<div class="info">
-
-<div>
-Espécie: ${c.species}
-</div>
-
-<div>
-Raça: ${c.breed}
-</div>
-
-<div>
-Idade: ${c.age}
-</div>
-
-<div>
-Sexo: ${c.sex}
-</div>
-
-</div>
-
-<button class="btn" onclick="startCase(${i})">
-INICIAR CONSULTA
-</button>
-
-</div>
-
-`).join("")}
-
-`;
-
-}
-
 
 function startCase(i){
-
-if(s.stock<=0){
-
-alert(
-"Sem itens de atendimento. Compre recursos na Loja."
-);
-
-return;
-
+flow(i,0)
 }
 
-caseFlow(i,0,{});
-
-}
-
-
-function caseFlow(i,step,state){
+function flow(i,st){
 
 let c=casesData[i];
 
+if(st===0)
 
-if(step===0){
-
-content.innerHTML=`
-
-<div class="screenTitle">
-Novo Paciente
-</div>
+page.innerHTML=
+head("Novo Paciente")+
+`
 
 <div class="card">
 
 ${steps(0)}
 
-<div class="pet">
+<div class="pet-art">
 ${c.pet}
 </div>
 
-<div class="speech">
-Olá, doutora. Meu nome é ${c.name} e não estou bem.
+<div class="case-desc"
+style="margin-top:10px">
+
+Olá, doutora.
+Meu nome é <b>${c.name}</b>
+e não estou bem.
+
+</div>
+
+<div class="info-grid">
+
+<div class="info">
+<b>ESPÉCIE</b>
+${c.species}
 </div>
 
 <div class="info">
-
-<div>
-Nome: ${c.name}
+<b>RAÇA</b>
+${c.breed}
 </div>
 
-<div>
-Espécie: ${c.species}
+<div class="info">
+<b>IDADE</b>
+${c.age}
 </div>
 
-<div>
-Raça: ${c.breed}
-</div>
-
-<div>
-Idade: ${c.age}
+<div class="info">
+<b>SEXO</b>
+${c.sex}
 </div>
 
 </div>
 
-<button class="btn" onclick="caseFlow(${i},1,{})">
+<button class="primary"
+onclick="flow(${i},1)">
+
 INICIAR CONSULTA
+
 </button>
 
 </div>
 
 `;
 
-}
+else if(st===1)
 
-
-else if(step===1){
-
-content.innerHTML=`
+page.innerHTML=
+head("Anamnese")+
+`
 
 <div class="card">
 
@@ -1099,10 +1321,10 @@ ${steps(1)}
 O que você gostaria de perguntar?
 </b>
 
-${c.questions.map((q,k)=>`
+${c.questions.map(q=>`
 
-<button class="choice"
-onclick="this.classList.toggle('ok')">
+<button class="option"
+onclick="this.classList.toggle('selected')">
 
 ☐ ${q}
 
@@ -1110,8 +1332,8 @@ onclick="this.classList.toggle('ok')">
 
 `).join("")}
 
-<button class="btn"
-onclick="caseFlow(${i},2,{})">
+<button class="primary"
+onclick="flow(${i},2)">
 
 PRÓXIMO
 
@@ -1121,53 +1343,39 @@ PRÓXIMO
 
 `;
 
-}
+else if(st===2)
 
-
-else if(step===2){
-
-content.innerHTML=`
+page.innerHTML=
+head("Exame Físico")+
+`
 
 <div class="card">
 
 ${steps(2)}
 
-<b>
-Exame Físico
-</b>
+${[
+["🌡️","Temperatura","38,7 °C"],
+["❤️","Frequência Cardíaca","96 bpm"],
+["🫁","Frequência Respiratória","28 mpm"],
+["👄","Mucosas","Normocoradas"],
+["💧","Hidratação","Leve desidratação"],
+["⚖️","Peso","32 kg"]
+].map(r=>`
 
-<div class="row">
-🌡️ Temperatura
-<b>38,7 °C</b>
+<div class="list-row">
+
+${r[0]} ${r[1]}
+
+<span>
+${r[2]}
+</span>
+
 </div>
 
-<div class="row">
-❤️ Frequência Cardíaca
-<b>96 bpm</b>
-</div>
+`).join("")}
 
-<div class="row">
-🫁 Frequência Respiratória
-<b>28 mpm</b>
-</div>
-
-<div class="row">
-👄 Mucosas
-<b>Normocoradas</b>
-</div>
-
-<div class="row">
-💧 Hidratação
-<b>Leve desidratação</b>
-</div>
-
-<div class="row">
-⚖️ Peso
-<b>32 kg</b>
-</div>
-
-<button class="btn"
-onclick="caseFlow(${i},3,{})">
+<button class="primary"
+onclick="flow(${i},3)">
 
 PRÓXIMO
 
@@ -1177,12 +1385,11 @@ PRÓXIMO
 
 `;
 
-}
+else if(st===3)
 
-
-else if(step===3){
-
-content.innerHTML=`
+page.innerHTML=
+head("Exames")+
+`
 
 <div class="card">
 
@@ -1198,10 +1405,10 @@ ${[
 "Urinálise — 🪙60",
 "Raio-X — 🪙100",
 "Ultrassom abdominal — 🪙150"
-].map((x,k)=>`
+].map(x=>`
 
-<button class="choice"
-onclick="this.classList.toggle('ok')">
+<button class="option"
+onclick="this.classList.toggle('selected')">
 
 ☐ ${x}
 
@@ -1209,8 +1416,8 @@ onclick="this.classList.toggle('ok')">
 
 `).join("")}
 
-<button class="btn"
-onclick="caseFlow(${i},4,{})">
+<button class="primary"
+onclick="flow(${i},4)">
 
 PRÓXIMO
 
@@ -1220,12 +1427,11 @@ PRÓXIMO
 
 `;
 
-}
+else if(st===4)
 
-
-else if(step===4){
-
-content.innerHTML=`
+page.innerHTML=
+head("Diagnóstico")+
+`
 
 <div class="card">
 
@@ -1237,8 +1443,8 @@ Qual é o diagnóstico mais provável?
 
 ${c.diagnosis.map((x,k)=>`
 
-<button class="choice"
-onclick="diagnosis(${i},${k})">
+<button class="option"
+onclick="diagnose(${i},${k})">
 
 ${x}
 
@@ -1248,60 +1454,53 @@ ${x}
 
 </div>
 
-`;
+`
 
 }
 
-}
-
-
-function diagnosis(i,k){
+function diagnose(i,k){
 
 let c=casesData[i];
 
-if(k!==c.correct){
-
-alert(
-"Hipótese incorreta. Revise os achados clínicos e tente novamente."
+if(k!==c.correct)
+return toast(
+"Hipótese incorreta — revise os achados."
 );
 
-return;
-
-}
-
-content.innerHTML=`
+page.innerHTML=
+head("Conduta")+
+`
 
 <div class="card">
 
 ${steps(5)}
 
-<b>
-Conduta inicial
-</b>
+<div style="background:#eaf7ec;border-radius:10px;padding:10px;font-size:11px">
 
-<div class="success">
-
-Diagnóstico selecionado:
+Diagnóstico:
 <b>${c.diagnosis[k]}</b>
 
 </div>
 
-<div class="row">
-☑️ Orientar tutor
-<span>✓</span>
+${[
+"Orientar tutor",
+"Registrar achados",
+"Solicitar acompanhamento"
+].map(x=>`
+
+<div class="list-row">
+
+☑️ ${x}
+
+<span>
+✓
+</span>
+
 </div>
 
-<div class="row">
-☑️ Registrar achados
-<span>✓</span>
-</div>
+`).join("")}
 
-<div class="row">
-☑️ Solicitar acompanhamento
-<span>✓</span>
-</div>
-
-<button class="btn"
+<button class="primary"
 onclick="finishCase(${i})">
 
 FINALIZAR
@@ -1310,10 +1509,9 @@ FINALIZAR
 
 </div>
 
-`;
+`
 
 }
-
 
 function finishCase(i){
 
@@ -1321,28 +1519,26 @@ let c=casesData[i];
 
 s.done++;
 
-s.stock--;
-
 s.missions.patients++;
-
 s.missions.diagnosis++;
-
 s.missions.exams++;
-
-s.history.push(c.name);
 
 addXP(150);
 
-content.innerHTML=`
+s.coins+=c.reward;
 
-<div class="card hero"
-style="background:#07877f;color:#fff">
+save();
+stats();
 
-<div class="pet">
+page.innerHTML=`
+
+<div class="result">
+
+<div class="big">
 ${c.pet}
 </div>
 
-<div class="stars">
+<div style="font-size:28px">
 ★★★
 </div>
 
@@ -1352,24 +1548,24 @@ Caso Concluído!
 
 <p>
 Ótimo trabalho, doutora!
-Você concluiu o caso corretamente.
+Você chegou ao diagnóstico correto.
 </p>
 
-<div class="grid2">
+<div class="reward">
 
-<div class="mini">
-⭐
-<b>XP +150</b>
+<div>
+⭐<br>
+XP +150
 </div>
 
-<div class="mini">
-🪙
-<b>+${c.reward}</b>
+<div>
+🪙<br>
++${c.reward}
 </div>
 
 </div>
 
-<button class="btn gold"
+<button class="primary"
 onclick="cases()">
 
 CONTINUAR
@@ -1378,153 +1574,111 @@ CONTINUAR
 
 </div>
 
-`;
+`
 
 }
 
-
 function missions(){
 
-nav("n-missions");
+nav("missionNav");
 
-content.innerHTML=`
-
-<div class="screenTitle">
-Missões Diárias
-</div>
+page.innerHTML=
+head("Missões Diárias")+
+`
 
 <div class="card">
 
-<div class="row">
-Atender 3 pacientes
+${[
+["Atender 3 pacientes",s.missions.patients,3,"🪙100"],
+["Acertar 2 diagnósticos",s.missions.diagnosis,2,"🪙150"],
+["Solicitar 5 exames",s.missions.exams,5,"🪙100"],
+["Completar 1 caso perfeito",s.done?1:0,1,"🪙200"]
+].map(x=>`
+
+<div class="list-row">
+
+☑️ ${x[0]}
+
 <span>
-${Math.min(3,s.missions.patients)}/3 🪙100
+${Math.min(x[1],x[2])}/${x[2]}
+${x[3]}
 </span>
-</div>
-
-<div class="row">
-Acertar 2 diagnósticos
-<span>
-${Math.min(2,s.missions.diagnosis)}/2 🪙150
-</span>
-</div>
-
-<div class="row">
-Solicitar 5 exames
-<span>
-${Math.min(5,s.missions.exams)}/5 🪙100
-</span>
-</div>
-
-<div class="row">
-Completar 1 caso perfeito
-<span>
-${s.done?1:0}/1 🪙200
-</span>
-</div>
 
 </div>
 
-<div class="card">
+`).join("")}
+
+</div>
+
+<div class="card"
+style="text-align:center">
 
 <b>
-Novas missões em:
+Novas missões em
 </b>
 
-<h2 style="text-align:center">
+<h2>
 12h 45m
 </h2>
 
 </div>
 
-`;
+`
 
 }
 
-
 function ranking(){
 
-content.innerHTML=`
-
-<div class="screenTitle">
-Ranking
-</div>
+page.innerHTML=
+head("Ranking")+
+`
 
 <div class="card">
 
-<div class="row">
-🥇 Larissa Vet
-<b>12.540 XP</b>
-</div>
+${[
+["🥇","Larissa Vet","12.540 XP"],
+["🥈","Vet_Player","11.890 XP"],
+["🥉","Júlia Martins (você)",(s.xp+800*(s.level-1))+" XP"],
+["4️⃣","MedVet","9.870 XP"],
+["5️⃣","AnimalCare","9.210 XP"]
+].map(r=>`
 
-<div class="row">
-🥈 Vet_Player
-<b>11.890 XP</b>
-</div>
+<div class="list-row">
 
-<div class="row">
-🥉 Júlia Martins (você)
 <b>
-${s.xp+800*(s.level-1)} XP
+${r[0]} ${r[1]}
 </b>
+
+<span>
+${r[2]}
+</span>
+
 </div>
 
-<div class="row">
-4️⃣ MedVet
-<b>9.870 XP</b>
-</div>
+`).join("")}
 
-<div class="row">
-5️⃣ AnimalCare
-<b>9.210 XP</b>
-</div>
-
-<button class="btn">
+<button class="primary">
 VER RECOMPENSAS
 </button>
 
 </div>
 
-`;
+`
 
 }
 
-
 function shop(){
 
-content.innerHTML=`
+page.innerHTML=
+head("Loja")+
+`
 
-<div class="screenTitle">
-Loja
-</div>
-
-<div class="tabs">
-
-<button class="tab active">
-Especial
-</button>
-
-<button class="tab">
-Clínica
-</button>
-
-<button class="tab">
-Personalização
-</button>
-
-<button class="tab">
-Recursos
-</button>
-
-</div>
-
-
-<div class="grid2">
+<div class="shop-grid">
 
 ${[
 ["🏥","Novo Consultório",1500],
 ["🖥️","Ultrassom",2000],
-["👩‍⚕️","Jaleco Premium",300],
+["🥼","Jaleco Premium",300],
 ["🪴","Planta Decorativa",200],
 ["🦴","Quadro Anatômico",150],
 ["🐾","Tapete Pet",100]
@@ -1532,7 +1686,7 @@ ${[
 
 <div class="product">
 
-<div class="ico">
+<div class="pico">
 ${x[0]}
 </div>
 
@@ -1544,7 +1698,7 @@ ${x[1]}
 🪙 ${x[2]}
 </p>
 
-<button class="btn light"
+<button class="smallbtn"
 onclick="buy(${x[2]})">
 
 COMPRAR
@@ -1557,124 +1711,107 @@ COMPRAR
 
 </div>
 
-`;
+`
 
 }
-
 
 function buy(n){
 
-if(s.coins<n){
-
-alert("Moedas insuficientes.");
-
-return;
-
-}
+if(s.coins<n)
+return toast("Moedas insuficientes.");
 
 s.coins-=n;
 
 save();
-
 stats();
 
-alert("Item comprado!");
+toast("Item comprado!")
 
 }
-
 
 function more(){
 
-nav("n-more");
+nav("moreNav");
 
-content.innerHTML=`
+page.innerHTML=
+head("Mais")+
+`
 
-<div class="screenTitle">
-Mais
-</div>
+<div class="menu-grid">
 
-<div class="card">
-
-<div class="grid2">
-
-<button class="mini"
+<button class="menu-card"
 onclick="shop()">
 
+<div class="ico">
 🛒
-<b>LOJA</b>
+</div>
+
+<b>
+LOJA
+</b>
 
 </button>
 
-<button class="mini"
+<button class="menu-card"
 onclick="ranking()">
 
+<div class="ico">
 🏆
-<b>RANKING</b>
+</div>
+
+<b>
+RANKING
+</b>
 
 </button>
 
-<button class="mini"
+<button class="menu-card"
 onclick="home()">
 
+<div class="ico">
 🏠
-<b>INÍCIO</b>
+</div>
+
+<b>
+INÍCIO
+</b>
 
 </button>
 
-<button class="mini"
+<button class="menu-card"
 onclick="resetGame()">
 
+<div class="ico">
 🔄
-<b>REINICIAR</b>
+</div>
+
+<b>
+REINICIAR
+</b>
 
 </button>
 
 </div>
 
-</div>
-
-`;
+`
 
 }
-
-
-function changeAvatar(){
-
-let a=[
-"👩‍⚕️",
-"👨‍⚕️",
-"🧑‍⚕️",
-"👩‍🔬",
-"🧑‍🔬"
-];
-
-s.avatar=
-a[(a.indexOf(s.avatar)+1)%a.length];
-
-save();
-
-profile();
-
-}
-
 
 function resetGame(){
 
-if(confirm("Reiniciar todo o progresso?")){
+if(confirm("Reiniciar o progresso?")){
 
-s=JSON.parse(JSON.stringify(initial));
+s=JSON.parse(JSON.stringify(data));
 
 save();
-
-home();
-
-}
+stats();
+home()
 
 }
 
+}
 
 stats();
-
 home();
 
 </script>
